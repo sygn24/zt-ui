@@ -1,0 +1,106 @@
+.zt-button {
+	display: inline-block;
+	line-height: 1;
+	white-space: nowrap;
+	cursor: pointer;
+	text-align: center;
+	outline: none;
+	padding: 12px 24px;
+	font-size: 14px;
+	transition: all 0.3s ease-out;
+	border-radius: 3px;
+	&-hover:hover,
+	&-focus:focus {
+		opacity: 0.8;
+	}
+	// 类型
+	&--default {
+		background: var(--default);
+		border: 1px solid var(--border);
+		color: var(--text-color);
+		&:hover,
+		&:focus {
+			border: 1px solid var(--primary);
+			color: var(--primary);
+		}
+	}
+	&--dashed {
+		background: var(--default);
+		border: 1px dashed var(--border);
+		color: var(--text-color);
+		&:hover,
+		&:focus {
+			border: 1px dashed var(--primary);
+			color: var(--primary);
+		}
+	}
+	&--text {
+		background: var(--default);
+		border: none;
+		color: var(--text-color);
+		&:hover,
+		&:focus {
+			color: var(--primary);
+		}
+	}
+	&--primary {
+		background: var(--primary);
+		border: 1px solid var(--primary);
+		color: var(--text);
+	}
+	&--info {
+		background: var(--info);
+		border: 1px solid var(--info);
+		color: var(--text);
+	}
+	&--success {
+		background: var(--success);
+		border: 1px solid var(--success);
+		color: var(--text);
+	}
+	&--warning {
+		background: var(--warning);
+		border: 1px solid var(--warning);
+		color: var(--text);
+	}
+	&--danger {
+		background: var(--danger);
+		border: 1px solid var(--danger);
+		color: var(--text);
+	}
+	// 尺寸
+	&--large {
+		padding: 12px 24px;
+	}
+	&--medium {
+		padding: 10px 20px;
+	}
+	&--small {
+		padding: 9px 15px;
+		font-size: 12px;
+		border-radius: 2px;
+	}
+	&--mini {
+		padding: 7px 15px;
+		font-size: 12px;
+		border-radius: 2px;
+	}
+}
+// 点击后是否抖动
+.is-shake:active {
+	transform: translateY(3px);
+}
+// 是否是圆角按钮
+.is-round {
+	border-radius: 20px;
+}
+// 是否是圆形按钮
+.is-circle {
+	padding: 12px;
+	border-radius: 50%;
+}
+// 是否禁用
+.is-disabled {
+	cursor: not-allowed;
+	opacity: 0.6;
+}

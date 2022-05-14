@@ -1,0 +1,28 @@
+/* 基础淡入淡出 */
+.baseFade-enter-active,
+.baseFade-leave-active {
+    transition: opacity .3s linear;
+}
+
+.baseFade-enter,
+.baseFade-leave-to {
+    opacity: 0;
+}
+
+/* 顶部淡淡进入或离开 */
+.slideFade-enter-to,
+.slideFade-leave {
+    transform: translateY(0px);
+    opacity: 1;
+}
+
+.slideFade-enter-active,
+.slideFade-leave-active {
+    transition: all 0.3s ease-out;
+}
+
+.slideFade-enter,
+.slideFade-leave-to {
+    transform: translateY(-30px);
+    opacity: 0;
+}

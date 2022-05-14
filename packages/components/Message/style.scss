@@ -1,0 +1,41 @@
+.zt-message-box {
+	position: fixed;
+	z-index: 999;
+	top: 30px;
+	left: 50%;
+	transform: translateX(-50%);
+	transition: all 0.3s ease-out;
+}
+.zt-message {
+	position: relative;
+	display: inline-block;
+	font-size: 14px;
+	box-shadow: 0px 5px 5px var(--border);
+	padding: 8px 18px;
+	border-radius: 4px;
+	&-msg {
+		padding: 0 5px;
+	}
+	&-close {
+		position: absolute;
+		top: 50%;
+		right: 5px;
+		transform: translateY(-50%);
+		cursor: pointer;
+		&:hover {
+			font-weight: 700;
+		}
+	}
+	&-info {
+		background: var(--text-bg-info);
+	}
+	&-success {
+		background: var(--text-bg-success);
+	}
+	&-warning {
+		background: var(--text-bg-warning);
+	}
+	&-error {
+		background: var(--text-bg-danger);
+	}
+}

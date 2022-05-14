@@ -1,0 +1,65 @@
+<template>
+	<div>
+		<div class="row">
+			<h3>不同类型,默认3s自动后关闭</h3>
+			<zt-button type="primary" @click="handleClick1()">默认提示</zt-button>
+			<zt-button type="success" @click="handleClick2()" iconL="zt-icon-success">成功信息</zt-button>
+			<zt-button type="warning" @click="handleClick3()" iconL="zt-icon-warning">警告信息</zt-button>
+			<zt-button type="danger" @click="handleClick4()" iconL="zt-icon-error" textColor="#fff">错误信息</zt-button>
+		</div>
+		<div class="row">
+			<h3>手动关闭，自定义几秒后关闭</h3>
+			<zt-button @click="handleClick5()">可以手动关闭的消息</zt-button>
+			<zt-button type="dashed" @click="handleClick6()">自定义10秒后关闭</zt-button>
+			<zt-button round @click="handleClick7()">自定义距顶部偏移距离</zt-button>
+		</div>
+	</div>
+</template>
+
+<script>
+export default {
+	name: "Message",
+
+	data() {
+		return {};
+	},
+
+	mounted() {},
+
+	methods: {
+		handleClick1() {
+			this.$msg("默认提示信息");
+		},
+		handleClick2() {
+			this.$msg.success("成功信息");
+		},
+		handleClick3() {
+			this.$msg.warning({ msg: "警告信息" });
+		},
+		handleClick4() {
+			this.$msg.error({ msg: "错误信息" });
+		},
+		handleClick5() {
+			this.$msg.info({ msg: "可以手动关闭", showClose: true });
+		},
+		handleClick6() {
+			this.$msg.info({ msg: "10s后关闭", dt: 10000 });
+		},
+		handleClick7() {
+			this.$msg.info({ msg: "距顶部偏移200px", offsetTop: 200 });
+		},
+	},
+};
+</script>
+
+<style lang="scss" scoped>
+.row {
+	margin-bottom: 20px;
+	h3 {
+		padding: 10px 0;
+	}
+	.zt-button {
+		margin: 10px 10px 10px 0;
+	}
+}
+</style>

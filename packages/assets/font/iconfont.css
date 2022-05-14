@@ -1,0 +1,139 @@
+@font-face {
+    font-family: "iconfont";
+    /* Project id 3390785 */
+    src: url('//at.alicdn.com/t/font_3390785_658abwjo2oa.woff2?t=1652263060733') format('woff2'),
+        url('//at.alicdn.com/t/font_3390785_658abwjo2oa.woff?t=1652263060733') format('woff'),
+        url('//at.alicdn.com/t/font_3390785_658abwjo2oa.ttf?t=1652263060733') format('truetype');
+}
+
+[class*='zt-icon-'] {
+    font-family: "iconfont" !important;
+    font-size: 14px;
+    font-style: normal;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.zt-icon-add:before {
+    content: "\e664";
+}
+
+.zt-icon-bottom:before {
+    content: "\e666";
+}
+
+.zt-icon-close:before {
+    content: "\e668";
+}
+
+.zt-icon-complete:before {
+    content: "\e669";
+}
+
+.zt-icon-download:before {
+    content: "\e66c";
+}
+
+.zt-icon-edit:before {
+    content: "\e66e";
+}
+
+.zt-icon-fabulous:before {
+    content: "\e66f";
+}
+
+.zt-icon-file:before {
+    content: "\e671";
+}
+
+.zt-icon-good:before {
+    content: "\e673";
+}
+
+.zt-icon-meh:before {
+    content: "\e677";
+}
+
+.zt-icon-navigation:before {
+    content: "\e67a";
+}
+
+.zt-icon-select:before {
+    content: "\e67e";
+}
+
+.zt-icon-switch:before {
+    content: "\e680";
+}
+
+.zt-icon-setting:before {
+    content: "\e67d";
+}
+
+.zt-icon-upload:before {
+    content: "\e682";
+}
+
+.zt-icon-arrow-left-bold:before {
+    content: "\e685";
+}
+
+.zt-icon-arrow-up-bold:before {
+    content: "\e686";
+}
+
+.zt-icon-arrow-down-bold:before {
+    content: "\e687";
+}
+
+.zt-icon-arrow-right-bold:before {
+    content: "\e688";
+}
+
+.zt-icon-select-bold:before {
+    content: "\e689";
+}
+
+.zt-icon-comment-filling:before {
+    content: "\e68a";
+}
+
+.zt-icon-check-item-filling:before {
+    content: "\e68b";
+}
+
+.zt-icon-favorite-filling:before {
+    content: "\e68c";
+}
+
+.zt-icon-user-filling:before {
+    content: "\e68d";
+}
+
+.zt-icon-eye:before {
+    content: "\e633";
+}
+
+.zt-icon-eyeoff:before {
+    content: "\e634";
+}
+
+.zt-icon-success:before {
+    content: "\e8c3";
+    /* color: var(--success); */
+}
+
+.zt-icon-error:before {
+    content: "\e8c5";
+    /* color: var(--danger); */
+}
+
+.zt-icon-warning:before {
+    content: "\e8c6";
+    /* color: var(--warning); */
+}
+
+.zt-icon-info:before {
+    content: "\e8c6";
+    /* color: var(--primary); */
+}

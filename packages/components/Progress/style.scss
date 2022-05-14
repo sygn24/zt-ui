@@ -1,0 +1,165 @@
+// 进度条背景盒子
+.progressBox {
+	position: relative;
+	width: 100%;
+	height: 6px;
+	background-color: #eee;
+	border-radius: 6px;
+}
+/* 已播放的进度条颜色 */
+.progressBar {
+	position: absolute;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	width: 0;
+	background-color: var(--primary);
+	border-radius: 6px;
+	transition: all 0.3s ease-out;
+}
+// 进度条小球按钮
+.radiusBtn {
+	position: absolute;
+	top: 50%;
+	left: 0;
+	border-radius: 50%;
+	border: 2px solid var(--primary);
+	background: #fff;
+	transition: all 0.3s ease-out;
+	&::after {
+		content: "";
+		position: absolute;
+		left: 50%;
+		top: 50%;
+		transform: translate(-50%, -50%);
+		width: 40%;
+		height: 40%;
+		border-radius: 50%;
+		background-color: var(--circleColor);
+		transition: all 0.3s ease-out;
+	}
+}
+/* 悬停显示百分比 */
+.tooltip {
+	position: absolute;
+	transform: translateX(-50%);
+	background-color: var(--dark);
+	color: #fff;
+	font-size: 12px;
+	padding: 5px 6px;
+	border-radius: 4px;
+	&::after {
+		content: "";
+		position: absolute;
+		top: 100%;
+		left: 50%;
+		transform: translateX(-50%);
+		width: 0;
+		height: 0;
+		border: 5px solid;
+		border-color: var(--dark) transparent transparent transparent;
+	}
+}
+/* 进度活跃条动画 */
+.activeBar {
+	position: absolute;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	background-color: #000;
+	border-radius: 6px;
+	animation: activebar 2s ease-out infinite;
+}
+@keyframes activebar {
+	0% {
+		opacity: 0.3;
+		width: 0;
+	}
+	100% {
+		opacity: 0;
+		width: 100%;
+	}
+}
+
+/* 
+垂直模式
+ */
+.progressBox-vertical {
+	position: relative;
+	height: 100%;
+	width: 6px;
+	background-color: #eee;
+	border-radius: 6px;
+}
+.progressBar-vertical {
+	position: absolute;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	height: 0;
+	background-color: var(--primary);
+	border-radius: 6px;
+	transition: all 0.3s ease-out;
+}
+.radiusBtn-vertical {
+	position: absolute;
+	left: 50%;
+	bottom: 0;
+	border-radius: 50%;
+	border: 2px solid var(--primary);
+	background: #fff;
+	transition: all 0.3s ease-out;
+	&::after {
+		content: "";
+		position: absolute;
+		left: 50%;
+		top: 50%;
+		transform: translate(-50%, -50%);
+		width: 40%;
+		height: 40%;
+		border-radius: 50%;
+		background-color: var(--circleColor);
+		transition: all 0.3s ease-out;
+	}
+}
+.tooltip-vertical {
+	position: absolute;
+	transform: translateY(50%);
+	background-color: var(--dark);
+	color: #fff;
+	font-size: 12px;
+	padding: 5px 6px;
+	border-radius: 4px;
+	&::after {
+		content: "";
+		position: absolute;
+		top: 50%;
+		right: 100%;
+		transform: translateY(-50%);
+		width: 0;
+		height: 0;
+		border: 6px solid;
+		border-color: transparent var(--dark) transparent transparent;
+	}
+}
+.activeBar-vertical {
+	position: absolute;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	background-color: #000;
+	border-radius: 6px;
+	animation: activebar-vertical 2s ease-out infinite;
+}
+@keyframes activebar-vertical {
+	0% {
+		opacity: 0.3;
+		height: 0;
+	}
+	100% {
+		opacity: 0;
+		height: 100%;
+	}
+}
