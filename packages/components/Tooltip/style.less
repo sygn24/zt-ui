@@ -2,11 +2,13 @@
 	position: relative;
 	display: inline-block;
 }
+
 .tooltip-content {
 	position: absolute;
 	z-index: 9999;
 	border-radius: 4px;
 	border: 1px solid;
+
 	// 文本内容
 	&-text {
 		font-size: 12px;
@@ -14,63 +16,76 @@
 		padding: 8px 6px;
 		text-align: center;
 	}
+
 	// 小三角
 	&-triangle {
 		position: absolute;
 		width: 0;
 		height: 0;
 		border: 6px solid;
+
 		// 三角不同位置
 		&-top,
 		&-bottom {
 			left: 50%;
 			transform: translateX(-50%);
 		}
+
 		&-top-start,
 		&-bottom-start {
 			left: 15px;
 		}
+
 		&-top-end,
 		&-bottom-end {
 			right: 15px;
 		}
+
 		&-left,
 		&-right {
 			top: 50%;
 			transform: translateY(-50%);
 		}
+
 		&-left-start,
 		&-right-start {
 			top: 15%;
 		}
+
 		&-left-end,
 		&-right-end {
 			bottom: 15%;
 		}
 	}
+
 	// tooltipContent不同位置
 	&-top,
 	&-bottom {
 		left: 50%;
 		transform: translateX(-50%);
 	}
+
 	&-top-start,
 	&-bottom-start {
 		left: 0;
 	}
+
 	&-top-end,
 	&-bottom-end {
 		right: 0;
 	}
+
 	&-left,
 	&-right {
 		top: 50%;
 		transform: translateY(-50%);
 	}
+
 	&-left-start,
 	&-right-start {
 		top: 0;
 	}
+
 	&-left-end,
 	&-right-end {
 		bottom: 0;
@@ -81,33 +96,40 @@
 [class*="tooltip-content-top"] {
 	bottom: calc(100% + 8px);
 }
+
 // 顶部三角
 [class*="tooltip-content-triangle-top"] {
 	top: 100%;
 	border-color: var(--dark) transparent transparent transparent;
 }
+
 //tooltipConten位于底部
 [class*="tooltip-content-bottom"] {
 	top: calc(100% + 8px);
 }
+
 // 底部三角
 [class*="tooltip-content-triangle-bottom"] {
 	bottom: 100%;
 	border-color: transparent transparent var(--dark) transparent;
 }
+
 //tooltipConten位于左边
 [class*="tooltip-content-left"] {
 	right: calc(100% + 8px);
 }
+
 // 左边三角
 [class*="tooltip-content-triangle-left"] {
 	left: 100%;
 	border-color: transparent transparent transparent var(--dark);
 }
+
 //tooltipConten位于右边
 [class*="tooltip-content-right"] {
 	left: calc(100% + 8px);
 }
+
 // 右边三角
 [class*="tooltip-content-triangle-right"] {
 	right: 100%;
@@ -119,23 +141,27 @@
 	position: absolute;
 	border: 5px solid;
 }
+
 [class*="tooltip-content-triangle-border-top"] {
 	top: -6px;
 	left: -5px;
-	border-color: #fff transparent transparent transparent;
+	border-color: var(--light) transparent transparent transparent;
 }
+
 [class*="tooltip-content-triangle-border-bottom"] {
 	bottom: -6px;
 	left: -5px;
-	border-color: transparent transparent #fff transparent;
+	border-color: transparent transparent var(--light) transparent;
 }
+
 [class*="tooltip-content-triangle-border-left"] {
 	bottom: -5px;
 	left: -6px;
-	border-color: transparent transparent transparent #fff;
+	border-color: transparent transparent transparent var(--light);
 }
+
 [class*="tooltip-content-triangle-border-right"] {
 	bottom: -5px;
 	right: -6px;
-	border-color: transparent #fff transparent transparent;
+	border-color: transparent var(--light) transparent transparent;
 }

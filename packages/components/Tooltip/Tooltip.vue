@@ -1,6 +1,6 @@
 <template>
 	<div class="tooltip" @mouseenter="tooltipMouseEnter" @mouseleave="tooltipMouseLeave">
-		<transition name="baseFade">
+		<transition name="base-fade">
 			<div ref="tooltipContent" class="tooltip-content" :class="`tooltip-content-${placement}`" :style="themeStyle" v-show="show">
 				<div class="tooltip-content-triangle" :class="`tooltip-content-triangle-${placement}`">
 					<div :class="`tooltip-content-triangle-border-${placement}`" v-if="theme == 'light'"></div>
@@ -77,6 +77,6 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped>
-@import "./style.scss";
+<style lang="less" scoped>
+@import "./style.less";
 </style>

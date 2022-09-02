@@ -1,9 +1,9 @@
 @font-face {
     font-family: "iconfont";
     /* Project id 3390785 */
-    src: url('//at.alicdn.com/t/font_3390785_658abwjo2oa.woff2?t=1652263060733') format('woff2'),
-        url('//at.alicdn.com/t/font_3390785_658abwjo2oa.woff?t=1652263060733') format('woff'),
-        url('//at.alicdn.com/t/font_3390785_658abwjo2oa.ttf?t=1652263060733') format('truetype');
+    src: url('//at.alicdn.com/t/c/font_3390785_4lwsmlk8ica.woff2?t=1662107500839') format('woff2'),
+        url('//at.alicdn.com/t/c/font_3390785_4lwsmlk8ica.woff?t=1662107500839') format('woff'),
+        url('//at.alicdn.com/t/c/font_3390785_4lwsmlk8ica.ttf?t=1662107500839') format('truetype');
 }
 
 [class*='zt-icon-'] {
@@ -12,6 +12,21 @@
     font-style: normal;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+}
+.zt-icon-loading3:before {
+    content: "\e60d";
+}
+
+.zt-icon-loading2:before {
+    content: "\e65e";
+}
+
+.zt-icon-loading1:before {
+    content: "\e7c5";
+}
+
+.zt-icon-loading:before {
+    content: "\e676";
 }
 
 .zt-icon-add:before {
@@ -120,20 +135,16 @@
 
 .zt-icon-success:before {
     content: "\e8c3";
-    /* color: var(--success); */
 }
 
 .zt-icon-error:before {
     content: "\e8c5";
-    /* color: var(--danger); */
 }
 
 .zt-icon-warning:before {
     content: "\e8c6";
-    /* color: var(--warning); */
 }
 
 .zt-icon-info:before {
     content: "\e8c6";
-    /* color: var(--primary); */
 }

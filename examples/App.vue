@@ -1,6 +1,6 @@
 <template>
 	<div id="app">
-		<header>ZtjUI测试</header>
+		<header>zt-ui测试</header>
 		<main>
 			<leftNav />
 			<div class="rightContent">
@@ -18,7 +18,7 @@ export default {
 };
 </script>
 
-<style lang="scss">
+<style lang="less">
 header {
 	height: 80px;
 	width: 100%;

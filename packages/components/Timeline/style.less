@@ -1,0 +1,46 @@
+.zt-timeline {
+  margin: 0;
+  padding: 0;
+
+  &-item {
+    margin: 0 !important;
+    padding: 0 0 12px;
+    list-style: none;
+    position: relative;
+
+    &-line {
+      height: 100%;
+      border-left: 1px solid var(--border);
+      position: absolute;
+      left: 6px;
+      top: 0;
+
+      &-pending {
+        .zt-timeline-item:nth-last-child(2) .zt-timeline-item-line {
+          border-left: 1px dotted var(--border);
+        }
+      }
+    }
+
+    &-circle {
+      width: 13px;
+      height: 13px;
+      background-color: #fff;
+      border-radius: 50%;
+      border: 1px solid transparent;
+      position: absolute;
+    }
+
+    &-content {
+      padding: 1px 1px 10px 24px;
+      font-size: 14px;
+      position: relative;
+      top: -3px;
+    }
+
+    // 去掉最后一个item的竖线
+    &:last-child &-line {
+      display: none;
+    }
+  }
+}

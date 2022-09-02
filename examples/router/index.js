@@ -29,6 +29,26 @@ const routes = [
 		name: "Tooltip",
 		component: () => import("../views/Tooltip.vue"),
 	},
+	{
+		path: "/timeline",
+		name: "Timeline",
+		component: () => import("../views/Timeline.vue"),
+	},
+	{
+		path: "/modal",
+		name: "Modal",
+		component: () => import("../views/Modal.vue"),
+	},
+	{
+		path: "/confirm",
+		name: "Confirm",
+		component: () => import("../views/Confirm.vue"),
+	},
+	{
+		path: "/loading",
+		name: "Loading",
+		component: () => import("../views/Loading.vue"),
+	},
 ];
 
 const router = new VueRouter({

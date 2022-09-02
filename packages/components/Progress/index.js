@@ -1,7 +1,7 @@
-import ZtProgress from "./ZtProgress.vue";
+import Progress from './Progress.vue'
 
-ZtProgress.install = function (Vue) {
-	Vue.component(ZtProgress.name, ZtProgress);
-};
+Progress.install = function (Vue) {
+  Vue.component(Progress.name, Progress)
+}
 
-export default ZtProgress;
+export default Progress

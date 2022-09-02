@@ -23,7 +23,7 @@
 				v-model="progress3"
 				@onChange="changeProgress3"
 				:showToolTip="false"
-				:progressColor="['var(--warning)', 'var(--success)']"
+				:progressColor="['var(--warning)', 'var(--success  )']"
 				progressBgColor="#666"
 				:progressSize="12"
 			></zt-progress>
@@ -37,13 +37,13 @@
 				:showRadiusBtn="false"
 				:progressSize="8"
 				:isActiveBar="false"
-				progressColor="var(--joker)"
+				progressColor="var(--success  )"
 			></zt-progress>
 			<div>进度百分比：{{ progress4 }}%</div>
 		</div>
 		<div class="row">
 			<h3>禁用状态</h3>
-			<zt-progress v-model="progress5" progressColor="var(--success)" disabled></zt-progress>
+			<zt-progress v-model="progress5" progressColor="var(--success  )" disabled></zt-progress>
 			<div>进度百分比：{{ progress5 }}%</div>
 		</div>
 		<div class="row">
@@ -91,7 +91,7 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped>
+<style lang="less" scoped>
 .row {
 	-webkit-user-select: none;
 	-moz-user-select: none;

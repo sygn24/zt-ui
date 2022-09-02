@@ -1,7 +1,7 @@
-import ZtTooltip from "./ZtTooltip.vue";
+import Tooltip from './Tooltip.vue'
 
-ZtTooltip.install = function (Vue) {
-	Vue.component(ZtTooltip.name, ZtTooltip);
-};
+Tooltip.install = function (Vue) {
+  Vue.component(Tooltip.name, Tooltip)
+}
 
-export default ZtTooltip;
+export default Tooltip

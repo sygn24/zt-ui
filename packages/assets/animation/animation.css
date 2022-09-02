@@ -1,28 +1,77 @@
 /* 基础淡入淡出 */
-.baseFade-enter-active,
-.baseFade-leave-active {
+.base-fade-enter-active,
+.base-fade-leave-active {
     transition: opacity .3s linear;
 }
 
-.baseFade-enter,
-.baseFade-leave-to {
+.base-fade-enter,
+.base-fade-leave-to {
     opacity: 0;
 }
 
-/* 顶部淡淡进入或离开 */
-.slideFade-enter-to,
-.slideFade-leave {
+/* message消息提示动画 淡入或离开 */
+.message-fade-enter-to,
+.message-fade-leave {
     transform: translateY(0px);
     opacity: 1;
 }
 
-.slideFade-enter-active,
-.slideFade-leave-active {
+.message-fade-enter-active,
+.message-fade-leave-active {
     transition: all 0.3s ease-out;
 }
 
-.slideFade-enter,
-.slideFade-leave-to {
+.message-fade-enter,
+.message-fade-leave-to {
     transform: translateY(-30px);
     opacity: 0;
+}
+
+/* loading循环旋转 */
+.loading-loop {
+    display: inline-block;
+    animation: rotate 2s linear infinite;
+}
+
+@keyframes rotate {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+/* 对话框动画 */
+.modal-fade-enter-active {
+    animation: modal-fade-in .3s
+}
+
+.modal-fade-leave-active {
+    animation: modal-fade-out .3s
+}
+
+@keyframes modal-fade-in {
+    0% {
+        transform: translate3d(0, -20px, 0);
+        opacity: 0
+    }
+
+    100% {
+        transform: translate3d(0, 0, 0);
+        opacity: 1
+    }
+}
+
+@keyframes modal-fade-out {
+    0% {
+        transform: translate3d(0, 0, 0);
+        opacity: 1
+    }
+
+    100% {
+        transform: translate3d(0, -20px, 0);
+        opacity: 0
+    }
 }

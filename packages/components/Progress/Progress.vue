@@ -12,7 +12,7 @@
 			<div :class="vertical ? 'activeBar-vertical' : 'activeBar'" v-if="isActiveBar && !disabled"></div>
 		</div>
 		<!-- 进度条上圆形按钮 -->
-		<transition name="baseFade">
+		<transition name="base-fade">
 			<div
 				:class="vertical ? 'radiusBtn-vertical' : 'radiusBtn'"
 				ref="radiusBtn"
@@ -24,7 +24,7 @@
 			></div>
 		</transition>
 		<!--提示框  -->
-		<transition name="baseFade">
+		<transition name="base-fade">
 			<div
 				:class="vertical ? 'tooltip-vertical' : 'tooltip'"
 				ref="tooltip"
@@ -286,6 +286,6 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped>
-@import "./style.scss";
+<style lang="less" scoped>
+@import "./style.less";
 </style>

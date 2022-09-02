@@ -1,38 +1,54 @@
 :root {
-    --primary: #2d8cf0;
-    --info: #909399;
-    --success: #2bb669;
-    --warning: #FFB800;
-    --danger: #ec4141;
-    --joker: #009688;
-    --dark: #303133;
-    --light: #fff;
+  --primary: #2d8cf0;
+  --info: #909399;
+  --success: #2bb669;
+  --warning: #ffb800;
+  --danger: #ed4014;
+  --normal: #e6ebf1;
+  --white: #fff;
+  --black: #000;
+  --dark: #303133;
+  --light: #fff;
+  --joker: #009688;
 
-    /* 字体颜色 */
-    --text: #fff;
-    --text-color: #515a6e;
-    --text-title: #17233d;
-    --text-bold: #1f4e79;
+  /* 文字 */
+  --text: #fff;
+  --text-color: #515a6e;
+  --text-title: #17233d;
+  --text-bold: #1f4e79;
 
-    /**字体背景色*/
-    --text-bg-dark: #585e6b;
-    --text-bg-info: #f0faff;
-    --text-bg-success: #edfff3;
-    --text-bg-warning: #fff9e6;
-    --text-bg-danger: #ffefe6;
+  /**字体背景色*/
+  --text-bg-dark: #585e6b;
+  --text-bg-info: #f0faff;
+  --text-bg-success: #edfff3;
+  --text-bg-warning: #fff9e6;
+  --text-bg-danger: #ffefe6;
 
-    /* 背景颜色 */
-    --bg-color: #eaeef2;
+  /* 背景 */
+  --bg-color: #eaeef2;
 
-    /*边框颜色*/
-    --border-tint: #767676;
-    --border: #DCDFE6;
-    --border-tt: #e8eaec;
+  /* 边框 */
+  --border: #dcdfe6;
+  --border-tint: #767676;
+  --border-tt: #e8eaec;
 
+  --font-family: "Helvetica Neue", Helvetica, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑", Arial, sans-serif;
+  --code-family: Consolas, Menlo, Courier, monospace;
+  --font-size-base: 14px;
+  --font-size-small: 12px;
+  --font-size-large: 16px;
+  --border-radius-base: 6px;
+  --border-radius-small: 4px;
+  --cursor-disabled: not-allowed;
 }
 
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: var(--font-family);
+  font-size: var(--font-size-base);
 }
