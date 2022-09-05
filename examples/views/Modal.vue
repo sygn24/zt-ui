@@ -80,8 +80,8 @@
         </div>
         <template #footer>
           <div>
-            <zt-button size="medium" @click="onCancel" style="margin-right:10px">取 消</zt-button>
-            <zt-button type="primary" size="medium" @click="sumbit" :loading="loading">提 交</zt-button>
+            <zt-button size="small" @click="onCancel" style="margin-right:10px">取 消</zt-button>
+            <zt-button type="primary" size="small" @click="sumbit" :loading="loading">提 交</zt-button>
           </div>
         </template>
       </zt-modal>
@@ -132,8 +132,8 @@
         >内层对话框</zt-modal>
         <template #footer>
           <div class="zt-modal-btns">
-            <zt-button size="medium" @click="show6=false" style="margin-right:10px">取 消</zt-button>
-            <zt-button type="primary" size="medium" @click="show1=true">打开内层对话框</zt-button>
+            <zt-button size="small" @click="show6=false" style="margin-right:10px">取 消</zt-button>
+            <zt-button type="primary" size="small" @click="show1=true">打开内层对话框</zt-button>
           </div>
         </template>
       </zt-modal>

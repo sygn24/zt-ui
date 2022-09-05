@@ -82,6 +82,10 @@ export default {
     cancel() {
       this.onCancel && this.onCancel()
       this.visable = false
+    },
+    remove() {
+      this.visable = false
+      this.loadingBtn = false
     }
   }
 }

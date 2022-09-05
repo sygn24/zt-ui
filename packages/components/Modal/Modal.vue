@@ -1,23 +1,30 @@
 <template>
-  <transition name="modal-fade" @after-enter="afterEnter" @after-leave="afterLeave">
+  <transition name="base-fade" @after-enter="afterEnter" @after-leave="afterLeave">
     <div class="zt-modal-wrapper" v-show="visible" @click.self="maskClose" ref="ztModal">
-      <div class="zt-modal" :style="style">
-        <div class="zt-modal-header">
-          <slot name="title">
-            <span>{{ title }}</span>
-          </slot>
-          <ZtIcon icon="close" class="zt-modal-header-close" @click="handelClose" v-if="showClose" />
+      <transition name="modal-fade">
+        <div class="zt-modal" :style="style" v-show="visible">
+          <div class="zt-modal-header">
+            <slot name="title">
+              <span>{{ title }}</span>
+            </slot>
+            <ZtIcon
+              icon="close"
+              class="zt-modal-header-close"
+              @click="handelClose"
+              v-if="showClose"
+            />
+          </div>
+          <div class="zt-modal-body">
+            <slot></slot>
+          </div>
+          <div class="zt-modal-footer" v-if="showFooter">
+            <slot name="footer">
+              <zt-button size="small" @click="cancel">取 消</zt-button>
+              <zt-button type="primary" size="small" @click="ok">确 认</zt-button>
+            </slot>
+          </div>
         </div>
-        <div class="zt-modal-body">
-          <slot></slot>
-        </div>
-        <div class="zt-modal-footer" v-if="showFooter">
-          <slot name="footer">
-            <zt-button @click="cancel">取 消</zt-button>
-            <zt-button type="primary" @click="ok">确 认</zt-button>
-          </slot>
-        </div>
-      </div>
+      </transition>
     </div>
   </transition>
 </template>

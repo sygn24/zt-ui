@@ -22,8 +22,7 @@ const confirm = (options) => {
 // 添加移除方法，异步关闭时调用
 confirm.remove = () => {
   if (instance.visable) {
-    instance.visable = false
-    instance.loadingBtn = false
+    instance.remove()
   }
 }
 // 挂载不同的提示类型
