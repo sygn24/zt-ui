@@ -11,14 +11,13 @@ const loading = (options) => {
   const constructor = Vue.extend(Loading)
   instance = new constructor({
     el: document.createElement('div'),
-    propsData: options
+    propsData: options,
+    data: { isFull: true }
   })
+  // 显示加载
+  instance.show = true
   //将实例挂载到body下
   document.body.appendChild(instance.$el)
-}
-loading.start = (options) => {
-  loading(options)
-  instance.show = true 
 }
 
 // 添加关闭方法

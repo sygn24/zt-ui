@@ -7,6 +7,7 @@ import Icon from './components/Icon'
 import Modal from './components/Modal'
 import Confirm from './components/Confirm'
 import Loading from './components/Loading'
+import loadingDirective from './components/Loading/directive'
 import { Timeline, TimelineItem } from './components/Timeline'
 import "./assets/index.css"
 // 组件列表
@@ -22,6 +23,8 @@ const install = function (Vue) {
   Vue.prototype.$msg = Message
   Vue.prototype.$confirm = Confirm
   Vue.prototype.$loading = Loading
+  // 自定义加载指令
+  loadingDirective(Vue)
 }
 
 // 判断是否是直接引入文件
