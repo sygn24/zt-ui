@@ -27,7 +27,7 @@
     </div>
     <div class="row">
       <h3>使用指令局部加载,自定义加载图标、背景色、文字</h3>
-      <zt-button type="primary" @click="start2">开启加载"</zt-button>
+      <zt-button type="primary" @click="start2">开启加载</zt-button>
       <div class="box2" v-loading="loadingOptions">
         <ul>
           <li>我是列表内容</li>
