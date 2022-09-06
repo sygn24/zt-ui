@@ -21,7 +21,8 @@ export default {
         { name: 'Modal对话框', path: '/modal' },
         { name: 'Confirm确认框', path: '/confirm' },
         { name: 'Loading加载中', path: '/loading' },
-        { name: 'Timeline时间轴', path: '/timeline' },
+        { name: 'Tabs标签页', path: '/tabs' },
+        { name: 'Timeline时间轴', path: '/timeline' }
         // { name: 'radio单选框', path: '/radio' },
         // { name: 'checkbox复选框', path: '/checkbox' },
         // { name: 'alert警告', path: '/alert' },

@@ -7,11 +7,12 @@ import Icon from './components/Icon'
 import Modal from './components/Modal'
 import Confirm from './components/Confirm'
 import Loading from './components/Loading'
-import loadingDirective from './components/Loading/directive'
+import { Tabs, TabPane } from './components/Tabs'
 import { Timeline, TimelineItem } from './components/Timeline'
+import loadingDirective from './components/Loading/directive'
 import "./assets/index.css"
 // 组件列表
-const components = [Button, Progress, Tooltip, Icon, Modal, Timeline, TimelineItem]
+const components = [Button, Progress, Tooltip, Icon, Modal, Tabs, TabPane, Timeline, TimelineItem]
 
 // 定义 install 方法，接收 Vue 作为参数。如果使用 use 注册插件，那么所有的组件都会被注册
 const install = function (Vue) {

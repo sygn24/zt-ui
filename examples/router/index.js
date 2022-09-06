@@ -49,6 +49,11 @@ const routes = [
 		name: "Loading",
 		component: () => import("../views/Loading.vue"),
 	},
+	{
+		path: "/tabs",
+		name: "Tabs",
+		component: () => import("../views/Tabs.vue"),
+	},
 ];
 
 const router = new VueRouter({
