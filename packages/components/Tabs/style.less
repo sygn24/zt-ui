@@ -1,29 +1,50 @@
 .zt-tabs {
+  width: 100%;
+  height: 100%;
+
   &-nav {
     position: relative;
     display: flex;
     justify-content: flex-start;
     align-items: center;
     border-bottom: 2px solid var(--border);
+
     &-item {
       display: inline-block;
-      padding: 8px 16px;
+      height: 34px;
+      line-height: 36px;
+      padding: 0 16px;
       cursor: pointer;
       transition: color .3s ease-out;
-      &:hover{
+
+      &:hover {
         color: var(--primary);
       }
     }
-    &-active-line{
+
+    &-active-line {
       position: absolute;
       left: 0;
       bottom: -2px;
       height: 2px;
       background: var(--primary);
-      transition: all .3s ease-out;
     }
   }
-  &-pane{
-    padding:10px 0
+
+  &-panes {
+    position: relative;
+    padding-top: 10px;
+    height: calc(100% - 36px);
+    width: 100%;
+    overflow: auto;
+    /* 隐藏滚动条 */
+    /* firefox */
+    scrollbar-width: none;
+    /* IE 10+ */
+    -ms-overflow-style: none;
+    /* Chrome Safari */
+    &::-webkit-scrollbar {
+      display: none;
+    }
   }
 }

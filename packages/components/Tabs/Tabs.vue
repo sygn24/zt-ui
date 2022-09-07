@@ -6,13 +6,13 @@
                 :style="{ color: activeKey === item.name ? 'var(--primary)' : '' }"
                 v-for="(item, index) in navList"
                 :key="index"
-                @click="handleChange(item)"
+                @click="handleChange(item, index)"
             >
                 {{ item.label }}
             </div>
             <div class="zt-tabs-nav-active-line" :style="activeLineStyle"></div>
         </div>
-        <div class="zt-tabs-pane-content">
+        <div class="zt-tabs-panes">
             <slot></slot>
         </div>
     </div>
@@ -25,6 +25,11 @@ export default {
         // 当前激活tab面板的name
         value: {
             type: [String, Number]
+        },
+        // 是否开启切换动画
+        animated: {
+            type: Boolean,
+            default: false
         }
     },
     model: {
@@ -47,7 +52,8 @@ export default {
         activeLineStyle() {
             return {
                 width: `${this.lineWidth}px`,
-                left: `${this.lineOffset}px`
+                left: `${this.lineOffset}px`,
+                transition: this.animated ? 'all .3s ease-out' : 'none'
             }
         }
     },
@@ -108,8 +114,17 @@ export default {
             })
         },
         // 点击tabNavItem,更改activeKey为当前点击的name
-        handleChange(item) {
+        handleChange(item, index) {
+            console.log(this.animated)
             if (!item.name) return
+            if (this.animated) {
+                // 获取点击前的索引
+                const lastIndex = this.navList.findIndex(nav => nav.name === this.activeKey)
+                // 如果当前点击的索引号小于上一个索引，就设置反向动画
+                this.$children.forEach(child => {
+                    index < lastIndex ? (child.isReverse = true) : (child.isReverse = false)
+                })
+            }
             this.activeKey = item.name
             this.$emit('onClick', item.name)
         }

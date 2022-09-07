@@ -75,3 +75,40 @@
         opacity: 0
     }
 }
+
+/* tabPane切换动画 */
+.tab-slide-enter-to,
+.tab-slide-leave {
+    transform: translateX(0);
+    opacity: 1;
+}
+
+.tab-slide-enter-active,
+.tab-slide-leave-active {
+    transition: all 0.3s ease-out;
+    position: absolute;
+    left: 0;
+    top: 10px;
+    width: 100%;
+    height: 100%;
+}
+
+.tab-slide-enter{
+    transform: translateX(100%);
+    opacity: 0;
+}
+
+.tab-slide-leave-to{
+    transform: translateX(-100%);
+    opacity: 0;
+}
+
+/* 反向动画 */
+/* 没有空格表示.tab-slide-enter.reverse在一个元素上，该元素必须同时又这两个class才生效 */
+.tab-slide-enter.reverse{
+    transform: translateX(-100%);
+}
+.tab-slide-leave-to.reverse{
+    transform: translateX(100%);
+}
+
