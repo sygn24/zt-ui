@@ -54,6 +54,11 @@ const routes = [
 		name: "Tabs",
 		component: () => import("../views/Tabs.vue"),
 	},
+	{
+		path: "/rate",
+		name: "Rate",
+		component: () => import("../views/Rate.vue"),
+	},
 ];
 
 const router = new VueRouter({

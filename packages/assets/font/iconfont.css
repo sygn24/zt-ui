@@ -1,10 +1,9 @@
 @font-face {
-    font-family: "iconfont";
-    /* Project id 3390785 */
-    src: url('//at.alicdn.com/t/c/font_3390785_4lwsmlk8ica.woff2?t=1662107500839') format('woff2'),
-        url('//at.alicdn.com/t/c/font_3390785_4lwsmlk8ica.woff?t=1662107500839') format('woff'),
-        url('//at.alicdn.com/t/c/font_3390785_4lwsmlk8ica.ttf?t=1662107500839') format('truetype');
-}
+    font-family: "iconfont"; /* Project id 3390785 */
+    src: url('//at.alicdn.com/t/c/font_3390785_29rlq8pfi.woff2?t=1662532282778') format('woff2'),
+         url('//at.alicdn.com/t/c/font_3390785_29rlq8pfi.woff?t=1662532282778') format('woff'),
+         url('//at.alicdn.com/t/c/font_3390785_29rlq8pfi.ttf?t=1662532282778') format('truetype');
+  }
 
 [class*='zt-icon-'] {
     font-family: "iconfont" !important;
@@ -13,6 +12,19 @@
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
 }
+
+.zt-icon-star:before {
+    content: "\e9a2";
+}
+
+.zt-icon-star-half:before {
+    content: "\e9a3";
+}
+
+.zt-icon-star-fill:before {
+    content: "\e9a1";
+}
+
 .zt-icon-loading3:before {
     content: "\e60d";
 }

@@ -1,5 +1,5 @@
 <template>
-  <i :class="classes" :style="styles" @click="handleClick"></i>
+  <i :class="classes" :style="styles" @click="handleClick" @mouseenter="handleMouseEnter"></i>
 </template>
 <script>
 const prefixCls = 'zt-icon'
@@ -41,9 +41,11 @@ export default {
   methods: {
     handleClick(event) {
       this.$emit('click', event)
+    },
+    handleMouseEnter() {
+      this.$emit('mouseenter')
     }
   }
 }
 </script>
-<style lang="less" scoped>
-</style>
+<style lang="less" scoped></style>

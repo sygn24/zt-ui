@@ -22,6 +22,7 @@ export default {
         { name: 'Confirm确认框', path: '/confirm' },
         { name: 'Loading加载中', path: '/loading' },
         { name: 'Tabs标签页', path: '/tabs' },
+        { name: 'Rate评分', path: '/rate' },
         { name: 'Timeline时间轴', path: '/timeline' }
         // { name: 'radio单选框', path: '/radio' },
         // { name: 'checkbox复选框', path: '/checkbox' },
