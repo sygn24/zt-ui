@@ -107,8 +107,10 @@
 /* 没有空格表示.tab-slide-enter.reverse在一个元素上，该元素必须同时又这两个class才生效 */
 .tab-slide-enter.reverse{
     transform: translateX(-100%);
+    opacity: 0;
 }
 .tab-slide-leave-to.reverse{
     transform: translateX(100%);
+    opacity: 0;
 }
 

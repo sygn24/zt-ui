@@ -115,7 +115,6 @@ export default {
         },
         // 点击tabNavItem,更改activeKey为当前点击的name
         handleChange(item, index) {
-            console.log(this.animated)
             if (!item.name) return
             if (this.animated) {
                 // 获取点击前的索引
