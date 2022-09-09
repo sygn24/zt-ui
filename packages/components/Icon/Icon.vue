@@ -1,5 +1,5 @@
 <template>
-  <i :class="classes" :style="styles" @click="handleClick" @mouseenter="handleMouseEnter"></i>
+  <i :class="classes" :style="styles" @click="handleClick"></i>
 </template>
 <script>
 const prefixCls = 'zt-icon'

@@ -1,31 +1,82 @@
 <template>
-  <ZtIcon class="star" :icon="starIcon" :color="starColor" size="18" @mouseenter="enterStar" @click="clickStar" />
+  <span class="half">
+    <ZtIcon class="star" :icon="starIcon" :color="starColor" size="18" />
+    <span
+      class="mask1"
+      @mouseenter="enterHalfStar"
+      @mouseleave="leaveHalfStar"
+      @click.stop="clickHalfStar"
+      v-if="allowHalf"
+    ></span>
+    <span class="mask2" v-if="showHalf" @mouseenter="showHalf = false">
+      <ZtIcon icon="star-fill" color="var(--border)" size="18" />
+    </span>
+  </span>
 </template>
 
 <script>
 export default {
   name: 'Star',
   props: {
-    index: {
+    allowHalf: {
+      type: Boolean,
+      default: false
+    },
+    num: {
       type: Number
     }
   },
-  inject: ['rateInstance'],
   data() {
     return {
       starIcon: 'star',
-      starColor: 'var(--info)'
+      starColor: 'var(--border)',
+      showHalf: false,
+      select: false
     }
   },
   methods: {
-    // 鼠标进入，设置对应星星高亮
-    enterStar() {
-      this.rateInstance.setLightStar(this.index)
+    enterHalfStar() {
+      this.showHalf = true
     },
-    clickStar() {
-      this.rateInstance.score = this.index
-      this.rateInstance.setLightStar(this.index)
+    leaveHalfStar() {
+      if (!this.select) {
+        this.showHalf = false
+      }
+    },
+    clickHalfStar() {
+      this.select = true //点击选择半星标识，当鼠标离开时不清空选择
+      this.$emit('clickHalfStar', this.num - 0.5)
     }
   }
 }
 </script>
+<style lang="less" scoped>
+.half {
+  position: relative;
+  cursor: pointer;
+  .mask1 {
+    height: 20px;
+    width: 12px;
+    background: transparent;
+    position: absolute;
+    left: 0px;
+  }
+  .mask2 {
+    height: 18px;
+    width: 10px;
+    overflow: hidden;
+    background: #fff;
+    position: absolute;
+    left: 12px;
+    .zt-icon {
+      position: absolute;
+      left: -9px;
+      transition: all 0.3s ease-out;
+    }
+  }
+}
+.star {
+  padding: 0 3px;
+  transition: all 0.3s ease-out;
+}
+</style>
