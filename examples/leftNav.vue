@@ -23,6 +23,8 @@ export default {
         { name: 'Loading加载中', path: '/loading' },
         { name: 'Tabs标签页', path: '/tabs' },
         { name: 'Rate评分', path: '/rate' },
+        { name: 'Switch开关', path: '/switch' },
+        { name: 'Pagination分页', path: '/pagination' },
         { name: 'Timeline时间轴', path: '/timeline' }
         // { name: 'radio单选框', path: '/radio' },
         // { name: 'checkbox复选框', path: '/checkbox' },

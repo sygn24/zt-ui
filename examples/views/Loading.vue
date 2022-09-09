@@ -14,7 +14,7 @@
     </div>
     <div class="row">
       <h3>使用指令局部加载,绑定指令的元素必须有宽高</h3>
-      <zt-button type="primary" @click="start1">开启加载</zt-button>
+      <zt-switch v-model="loading" default-text size="large"></zt-switch>
       <div class="box" v-loading="loading">
         <ul>
           <li>我是列表内容</li>
@@ -27,7 +27,7 @@
     </div>
     <div class="row">
       <h3>使用指令局部加载,自定义加载图标、背景色、文字</h3>
-      <zt-button type="primary" @click="start2">开启加载</zt-button>
+      <zt-switch v-model="loadingOptions.loading" default-text false-color="red" true-color="var(--success)" size="large"></zt-switch>
       <div class="box2" v-loading="loadingOptions">
         <ul>
           <li>我是列表内容</li>
@@ -66,7 +66,7 @@ export default {
     loadingD() {
       this.$loading({
         animationType: 'dot',
-        color:"var(--success)"
+        color: 'var(--success)'
       })
       setTimeout(() => {
         this.$loading.close()
@@ -75,7 +75,7 @@ export default {
     loadingR() {
       this.$loading({
         animationType: 'rectangle',
-        color:"var(--joker)"
+        color: 'var(--joker)'
       })
       setTimeout(() => {
         this.$loading.close()

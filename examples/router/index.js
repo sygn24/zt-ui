@@ -59,6 +59,16 @@ const routes = [
 		name: "Rate",
 		component: () => import("../views/Rate.vue"),
 	},
+	{
+		path: "/switch",
+		name: "Switch",
+		component: () => import("../views/Switch.vue"),
+	},
+	{
+		path: "/pagination",
+		name: "Pagination",
+		component: () => import("../views/Pagination.vue"),
+	},
 ];
 
 const router = new VueRouter({
