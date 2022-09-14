@@ -1,0 +1,93 @@
+.zt-pagination {
+  display: flex;
+  align-items: center;
+  white-space: nowrap;
+  padding: 2px 5px;
+  font-size: 13px;
+  font-weight: 700;
+  color: #606266;
+  user-select: none;
+
+  &-total {
+    font-size: 12px;
+    font-weight: 400;
+  }
+
+  & button {
+    border: none;
+    background: none;
+  }
+
+  &-prev,
+  &-next {
+    margin: 0 5px;
+    width: 30px;
+    height: 30px;
+    line-height: 30px;
+    border-radius: 2px;
+
+    &.allowed:hover {
+      color: var(--primary);
+    }
+
+    &.small {
+      width: 22px;
+      height: 22px;
+      line-height: 22px;
+      margin: 0;
+      padding: 0 4px;
+      font-size: 12px;
+    }
+  }
+
+  &-pager {
+    display: inline-block;
+
+    &-btns {
+      display: inline-block;
+    }
+
+    &-num {
+      display: inline-block;
+      width: 30px;
+      height: 30px;
+      line-height: 30px;
+      text-align: center;
+      border-radius: 2px;
+      margin-right: 5px;
+      cursor: pointer;
+
+      &:hover {
+        color: var(--primary);
+      }
+
+      &.small {
+        width: 22px;
+        height: 22px;
+        line-height: 22px;
+        margin: 0;
+        padding: 0 4px;
+        font-size: 12px;
+      }
+
+      &.bg {
+        background: #f4f4f5;
+      }
+
+      // 激活页样式
+      &.active {
+        color: var(--primary);
+        cursor: default;
+      }
+
+      // 激活页带背景色样式
+      &.active-bg {
+        background: var(--primary);
+        color: #fff;
+        cursor: default;
+
+      }
+    }
+  }
+
+}

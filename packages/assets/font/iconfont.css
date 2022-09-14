@@ -1,9 +1,10 @@
 @font-face {
-    font-family: "iconfont"; /* Project id 3390785 */
-    src: url('//at.alicdn.com/t/c/font_3390785_29rlq8pfi.woff2?t=1662532282778') format('woff2'),
-         url('//at.alicdn.com/t/c/font_3390785_29rlq8pfi.woff?t=1662532282778') format('woff'),
-         url('//at.alicdn.com/t/c/font_3390785_29rlq8pfi.ttf?t=1662532282778') format('truetype');
-  }
+    font-family: "iconfont";
+    /* Project id 3390785 */
+    src: url('//at.alicdn.com/t/c/font_3390785_w1cdggtzsf8.woff2?t=1663040052760') format('woff2'),
+        url('//at.alicdn.com/t/c/font_3390785_w1cdggtzsf8.woff?t=1663040052760') format('woff'),
+        url('//at.alicdn.com/t/c/font_3390785_w1cdggtzsf8.ttf?t=1663040052760') format('truetype');
+}
 
 [class*='zt-icon-'] {
     font-family: "iconfont" !important;
@@ -13,12 +14,20 @@
     -moz-osx-font-smoothing: grayscale;
 }
 
-.zt-icon-star:before {
-    content: "\e9a2";
+.zt-icon-ellipsis:before {
+    content: "\e708";
 }
 
-.zt-icon-star-half:before {
-    content: "\e9a3";
+.zt-icon-double-arrow-right:before {
+    content: "\e6c4";
+}
+
+.zt-icon-double-arrow-left:before {
+    content: "\e6c5";
+}
+
+.zt-icon-star:before {
+    content: "\e9a2";
 }
 
 .zt-icon-star-fill:before {
