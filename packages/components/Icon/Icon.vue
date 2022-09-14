@@ -41,9 +41,6 @@ export default {
   methods: {
     handleClick(event) {
       this.$emit('click', event)
-    },
-    handleMouseEnter() {
-      this.$emit('mouseenter')
     }
   }
 }
