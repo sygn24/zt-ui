@@ -1,6 +1,6 @@
 <template>
   <button :class="btnClass" :style="btnStyle" :disabled="disabled" @click="handleClick">
-    <ZtIcon class="loading-loop" icon="loading" v-if="loading"/>
+    <ZtIcon class="loading-loop" icon="loading" v-if="loading" />
     <ZtIcon :icon="icon" :custom="customIcon" v-if="(icon || customIcon) && !loading" />
     <span style="padding:0 2px" v-if="$slots.default">
       <slot></slot>
@@ -104,7 +104,8 @@ export default {
           'is-round': this.round,
           'is-circle': this.circle,
           'is-shake': this.shake && !this.disabled && !this.loading,
-          'is-disabled': this.disabled || this.loading
+          'is-disabled': this.disabled,
+          'is-loading': this.loading
         }
       ]
     },
