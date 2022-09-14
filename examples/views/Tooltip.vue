@@ -63,12 +63,17 @@
           <zt-button>右下</zt-button>
         </zt-tooltip>
       </div>
-      <zt-tooltip placement="right-end">
-        <zt-button>测试插槽使用</zt-button>
-        <div slot="content">
-          测试测试测试测试测试测试
-          <br />第二行信息
-        </div>
+      <div class="item2">
+        <zt-tooltip placement="right-end">
+          <zt-button>测试插槽使用</zt-button>
+          <div slot="content">
+            测试测试测试测试测试测试
+            <br />第二行信息
+          </div>
+        </zt-tooltip>
+      </div>
+      <zt-tooltip placement="right-end" :delay="1000" content="延时1s显示">
+        <zt-button>延时1s显示</zt-button>
       </zt-tooltip>
     </div>
   </div>
