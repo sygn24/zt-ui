@@ -30,8 +30,10 @@
 </template>
 
 <script>
+import ZtIcon from '../Icon'
 export default {
   name: 'ZtModal',
+  components: { ZtIcon },
   props: {
     visible: {
       type: Boolean,

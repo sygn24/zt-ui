@@ -88,7 +88,6 @@ export default {
     },
     tooltipMouseLeave() {
       this.show = false
-			console.log(this.timer);
       this.timer !== null && clearTimeout(this.timer)
     }
   }

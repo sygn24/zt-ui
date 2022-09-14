@@ -26,8 +26,10 @@
 </template>
 
 <script>
+import ZtIcon from '../Icon'
 export default {
   name: 'ZtConfirm',
+  components: { ZtIcon },
   data() {
     return {
       visable: false,

@@ -165,7 +165,7 @@ export default {
     },
     sumbit() {
       this.loading = true
-      this.$msg("提交")
+      this.$msg('提交')
       setTimeout(() => {
         this.show3 = false
         this.loading = false

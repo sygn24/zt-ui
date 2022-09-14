@@ -16,12 +16,13 @@
 </template>
 
 <script>
+import ZtIcon from '../Icon'
 import LoadingCircle from './LoadingAnimation/LoadingCircle.vue'
 import LoadingDots from './LoadingAnimation/LoadingDots.vue'
 import LoadingRectangles from './LoadingAnimation/LoadingRectangles.vue'
 export default {
   name: 'ZtLoading',
-  components: { LoadingCircle, LoadingDots, LoadingRectangles },
+  components: { LoadingCircle, LoadingDots, LoadingRectangles, ZtIcon },
   props: {
     text: {
       type: String,

@@ -11,8 +11,10 @@
 </template>
 
 <script>
+import ZtIcon from '../Icon'
 export default {
   name: 'Message',
+  components: { ZtIcon },
   props: {
     type: {
       type: String,

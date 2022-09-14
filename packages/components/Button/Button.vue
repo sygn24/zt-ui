@@ -9,9 +9,11 @@
 </template>
 
 <script>
+import ZtIcon from '../Icon'
 const prefixCls = 'zt-button'
 export default {
   name: 'ZtButton',
+  components: { ZtIcon },
   props: {
     type: {
       type: String,

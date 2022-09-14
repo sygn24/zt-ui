@@ -78,8 +78,10 @@
 </template>
 
 <script>
+import ZtIcon from '../Icon'
 export default {
   name: 'ZtPagination',
+  components: { ZtIcon },
   props: {
     // 总条数
     total: {

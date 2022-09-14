@@ -15,8 +15,10 @@
 </template>
 
 <script>
+import ZtIcon from '../Icon'
 export default {
   name: 'Star',
+  components: { ZtIcon },
   props: {
     allowHalf: {
       type: Boolean,
