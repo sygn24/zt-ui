@@ -87,7 +87,6 @@ export default {
       })
     },
     enterStar(num) {
-      console.log(234);
       if (this.disabled) return
       this.stars.forEach((item, index) => {
         this.setStarColor(item, index, num)
