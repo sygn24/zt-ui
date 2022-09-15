@@ -70,6 +70,11 @@ const routes = [
 		component: () => import("../views/Switch.vue"),
 	},
 	{
+		path: "/select",
+		name: "Select",
+		component: () => import("../views/Select.vue"),
+	},
+	{
 		path: "/pagination",
 		name: "Pagination",
 		component: () => import("../views/Pagination.vue"),

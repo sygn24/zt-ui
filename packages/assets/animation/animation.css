@@ -93,24 +93,40 @@
     height: 100%;
 }
 
-.tab-slide-enter{
+.tab-slide-enter {
     transform: translateX(100%);
     opacity: 0;
 }
 
-.tab-slide-leave-to{
+.tab-slide-leave-to {
     transform: translateX(-100%);
     opacity: 0;
 }
 
 /* 反向动画 */
 /* 没有空格表示.tab-slide-enter.reverse在一个元素上，该元素必须同时又这两个class才生效 */
-.tab-slide-enter.reverse{
+.tab-slide-enter.reverse {
     transform: translateX(-100%);
     opacity: 0;
 }
-.tab-slide-leave-to.reverse{
+
+.tab-slide-leave-to.reverse {
     transform: translateX(100%);
     opacity: 0;
 }
 
+/* Select选择器动画 */
+.select-down-enter {
+    opacity: 0;
+    transform: translate(0px, -80px) scaleY(0.2);
+}
+
+.select-down-leave-to {
+    opacity: 0;
+    transform: translate(0px, -80px) scaleY(0.2);
+}
+
+.select-down-enter-active,
+.select-down-leave-active {
+    transition: all 0.2s ease-out;
+}
