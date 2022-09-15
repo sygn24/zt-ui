@@ -1,87 +1,52 @@
 <template>
   <div class="zt-pagination">
-    <!-- 总条数 -->
-    <span class="zt-pagination-total" v-show="showTotal">共 {{Math.ceil(total)}} 条</span>
-    <!-- 上一页按钮 -->
-    <button
-      type="button"
-      class="zt-pagination-prev"
-      :class="{allowed:currentPage!==1,small:small}"
-      :style="{cursor: this.currentPage === 1 ? 'not-allowed' : 'pointer',background: this.background ? '#f4f4f5' : ''}"
-      :disabled="currentPage===1"
-      @click="singleArrowClick(-1)"
-    >
-      <ZtIcon icon="arrow-left-bold" :size="small?12:13" />
-    </button>
-    <!-- 页码 -->
-    <div class="zt-pagination-pager">
-      <!-- 第一页 -->
-      <span class="zt-pagination-pager-num" :class="pageNumClass(1)" @click="staticPageClick(1)">1</span>
-      <!-- 动态页码按钮 -->
-      <div class="zt-pagination-pager-btns" v-show="!isOnePage">
-        <!-- 省略号or双箭头left -->
-        <span
-          title="向前5页"
-          class="zt-pagination-pager-num"
-          :class="{small:small}"
-          :style="background?'background:#f4f4f5':''"
-          v-show="!isLessThan10 && doublePrev"
-          @mouseenter="ellipsisPrev=false"
-          @mouseleave="ellipsisPrev=true"
-          @click="doubleArrowClick(-1)"
-        >
-          <ZtIcon :icon="ellipsisPrev?'ellipsis':'double-arrow-left'" />
-        </span>
-        <!-- 动态页码 -->
-        <span
-          v-for="page in dynamicPageArr"
-          :key="page"
-          class="zt-pagination-pager-num"
-          :class="pageNumClass(page)"
-          @click="dynamicPageClick(page)"
-        >{{page}}</span>
-        <!-- 省略号or双箭头right -->
-        <span
-          title="向后5页"
-          class="zt-pagination-pager-num"
-          :class="{small:small}"
-          :style="background?'background:#f4f4f5':''"
-          v-show="!isLessThan10 && doubleNext"
-          @mouseenter="ellipsisNext=false"
-          @mouseleave="ellipsisNext=true"
-          @click="doubleArrowClick(1)"
-        >
-          <ZtIcon :icon="ellipsisNext?'ellipsis':'double-arrow-right'" />
-        </span>
-      </div>
+    <span class="zt-pagination-total" v-show="showTotal">共 {{ Math.ceil(total) }} 条</span>
+    <toggle-btn
+      direction="left"
+      :page="1"
+      :disabled="currentPage === 1"
+      @singleArrowClick="singleArrowClick(-1)"
+    />
+    <page-num :page="1" @pageNumClick="staticPageClick(1)" />
+    <!-- 动态页码 -->
+    <div v-show="!isOnePage" style="display:inline-block">
+      <double-arrow
+        title="向前5页"
+        direction="left"
+        v-show="!isLessThan10 && doublePrev"
+        @doubleArrowClick="doubleArrowClick(-1)"
+      />
+      <page-num
+        v-for="page in dynamicPageArr"
+        :key="page"
+        :page="page"
+        @pageNumClick="dynamicPageClick(page)"
+      />
+      <double-arrow
+        title="向后5页"
+        direction="right"
+        v-show="!isLessThan10 && doubleNext"
+        @doubleArrowClick="doubleArrowClick(1)"
+      />
       <!-- 最后一页 -->
-      <span
-        class="zt-pagination-pager-num"
-        :class="pageNumClass(lastPageNum)"
-        style="margin-right:0"
-        v-show="!isOnePage"
-        @click="staticPageClick(lastPageNum)"
-      >{{lastPageNum}}</span>
+      <page-num :page="lastPageNum" @pageNumClick="staticPageClick(lastPageNum)" />
     </div>
-    <!-- 下一页按钮 -->
-    <button
-      type="button"
-      class="zt-pagination-next"
-      :class="{allowed:currentPage!==lastPageNum,small:small}"
-      :style="{cursor: this.currentPage === lastPageNum ? 'not-allowed' : 'pointer',background: this.background ? '#f4f4f5' : ''}"
-      :disabled="currentPage===lastPageNum"
-      @click="singleArrowClick(1)"
-    >
-      <ZtIcon icon="arrow-right-bold" :size="small?12:13" />
-    </button>
+    <toggle-btn
+      direction="right"
+      :page="lastPageNum"
+      :disabled="currentPage === lastPageNum"
+      @singleArrowClick="singleArrowClick(1)"
+    />
   </div>
 </template>
 
 <script>
-import ZtIcon from '../Icon'
+import DoubleArrow from './components/DoubleArrows.vue'
+import ToggleBtn from './components/ToggleBtn.vue'
+import PageNum from './components/PageNum.vue'
 export default {
   name: 'ZtPagination',
-  components: { ZtIcon },
+  components: { DoubleArrow, ToggleBtn, PageNum },
   props: {
     // 总条数
     total: {
@@ -114,15 +79,15 @@ export default {
       default: false
     }
   },
-
   data() {
     return {
       doublePrev: false, //是否显示左双箭头
       doubleNext: false, //是否显示右双箭头
-      ellipsisPrev: true, //省略号or左双箭头
-      ellipsisNext: true, //省略号or右双箭头
       dynamicPageArr: [] //动态页码数组
     }
+  },
+  provide() {
+    return { Pagination: this }
   },
   mounted() {
     this.initDynamicPage()
@@ -148,13 +113,16 @@ export default {
   methods: {
     // 初始化动态页码
     initDynamicPage() {
-      let arrLength = this.isLessThan10 ? this.lastPageNum - 2 : 5
-      this.dynamicPageArr = Array.from(
-        { length: arrLength },
-        (_, index) => index + 2
-      )
-      // 如果大于10页，根据当前页设置动态页码
-      !this.isLessThan10 && this.setDynamicPage(this.currentPage)
+      // 如果页数小于10页
+      if (this.isLessThan10) {
+        this.dynamicPageArr = Array.from(
+          { length: this.lastPageNum - 2 },
+          (_, index) => index + 2
+        )
+      } else {
+        // 如果大于10页，根据当前页设置动态页码
+        this.setDynamicPage(this.currentPage)
+      }
     },
     // 初始化当前页码
     initCurrent() {
@@ -198,24 +166,16 @@ export default {
     dynamicPageClick(currentPage) {
       if (currentPage === this.currentPage) return
       this.updateCurrentPage(currentPage)
+      let currentIndex = this.dynamicPageArr.findIndex(
+        (page) => page === currentPage
+      )
       // 如果显示向右的双箭头并且点击的是动态页码最后两项，重新设置动态页码
-      if (this.doubleNext) {
-        let lastIndex = this.dynamicPageArr.length - 1
-        if (
-          currentPage === this.dynamicPageArr[lastIndex] ||
-          currentPage === this.dynamicPageArr[lastIndex - 1]
-        ) {
-          this.setDynamicPage(currentPage)
-        }
+      if (this.doubleNext && (currentIndex === 3 || currentIndex === 4)) {
+        this.setDynamicPage(currentPage)
       }
-      //如果显示向左的双箭头并且点击的是动态页码前两项，重新设置动态页码
-      if (this.doublePrev) {
-        if (
-          currentPage === this.dynamicPageArr[0] ||
-          currentPage === this.dynamicPageArr[1]
-        ) {
-          this.setDynamicPage(currentPage)
-        }
+      // 如果显示向左的双箭头并且点击的是动态页码前两项，重新设置动态页码
+      if (this.doublePrev && (currentIndex === 0 || currentIndex === 1)) {
+        this.setDynamicPage(currentPage)
       }
     },
     //点击省略号双箭头
@@ -230,15 +190,6 @@ export default {
     singleArrowClick(num) {
       let current = num === 1 ? this.currentPage + 1 : this.currentPage - 1
       this.dynamicPageClick(current)
-    },
-    // 动态设置页码类名
-    pageNumClass(page) {
-      return {
-        bg: this.background,
-        active: !this.background && page === this.currentPage,
-        'active-bg': this.background && page === this.currentPage,
-        small: this.small
-      }
     }
   },
   watch: {

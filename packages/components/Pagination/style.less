@@ -18,12 +18,12 @@
     background: none;
   }
 
-  &-prev,
-  &-next {
+  &-toggle {
     margin: 0 5px;
     width: 30px;
     height: 30px;
     line-height: 30px;
+    min-width: 30px;
     border-radius: 2px;
 
     &.allowed:hover {
@@ -34,59 +34,54 @@
       width: 22px;
       height: 22px;
       line-height: 22px;
+      min-width: 22px;
       margin: 0;
       padding: 0 4px;
       font-size: 12px;
     }
   }
 
-  &-pager {
+  &-num {
     display: inline-block;
+    width: 30px;
+    height: 30px;
+    line-height: 30px;
+    min-width: 30px;
+    text-align: center;
+    border-radius: 2px;
+    margin:0 3px;
+    cursor: pointer;
 
-    &-btns {
-      display: inline-block;
+    &:hover {
+      color: var(--primary);
     }
 
-    &-num {
-      display: inline-block;
-      width: 30px;
-      height: 30px;
-      line-height: 30px;
-      text-align: center;
-      border-radius: 2px;
-      margin-right: 5px;
-      cursor: pointer;
+    &.small {
+      width: 22px;
+      height: 22px;
+      line-height: 22px;
+      min-width: 22px;
+      margin: 0;
+      padding: 0 4px;
+      font-size: 12px;
+    }
 
-      &:hover {
-        color: var(--primary);
-      }
+    &.bg {
+      background: #f4f4f5;
+    }
 
-      &.small {
-        width: 22px;
-        height: 22px;
-        line-height: 22px;
-        margin: 0;
-        padding: 0 4px;
-        font-size: 12px;
-      }
+    // 激活页样式
+    &.active {
+      color: var(--primary);
+      cursor: default;
+    }
 
-      &.bg {
-        background: #f4f4f5;
-      }
+    // 激活页带背景色样式
+    &.active-bg {
+      background: var(--primary);
+      color: #fff;
+      cursor: default;
 
-      // 激活页样式
-      &.active {
-        color: var(--primary);
-        cursor: default;
-      }
-
-      // 激活页带背景色样式
-      &.active-bg {
-        background: var(--primary);
-        color: #fff;
-        cursor: default;
-
-      }
     }
   }
 
