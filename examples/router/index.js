@@ -15,6 +15,11 @@ const routes = [
 		component: () => import("../views/Button.vue"),
 	},
 	{
+		path: "/icon",
+		name: "Icon",
+		component: () => import("../views/Icon.vue"),
+	},
+	{
 		path: "/progress",
 		name: "Progress",
 		component: () => import("../views/Progress.vue"),

@@ -1,14 +1,14 @@
 @font-face {
     font-family: "iconfont";
     /* Project id 3390785 */
-    src: url('//at.alicdn.com/t/c/font_3390785_w1cdggtzsf8.woff2?t=1663040052760') format('woff2'),
-        url('//at.alicdn.com/t/c/font_3390785_w1cdggtzsf8.woff?t=1663040052760') format('woff'),
-        url('//at.alicdn.com/t/c/font_3390785_w1cdggtzsf8.ttf?t=1663040052760') format('truetype');
+    src: url('//at.alicdn.com/t/c/font_3390785_5337rr7ym8p.woff2?t=1663212833176') format('woff2'),
+        url('//at.alicdn.com/t/c/font_3390785_5337rr7ym8p.woff?t=1663212833176') format('woff'),
+        url('//at.alicdn.com/t/c/font_3390785_5337rr7ym8p.ttf?t=1663212833176') format('truetype');
 }
 
 [class*='zt-icon-'] {
     font-family: "iconfont" !important;
-    font-size: 14px;
+    font-size: 16px;
     font-style: normal;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
@@ -26,23 +26,15 @@
     content: "\e6c5";
 }
 
-.zt-icon-star:before {
-    content: "\e9a2";
-}
-
 .zt-icon-star-fill:before {
     content: "\e9a1";
 }
 
-.zt-icon-loading3:before {
-    content: "\e60d";
+.zt-icon-star:before {
+    content: "\e9a2";
 }
 
-.zt-icon-loading2:before {
-    content: "\e65e";
-}
-
-.zt-icon-loading1:before {
+.zt-icon-loadding-dot:before {
     content: "\e7c5";
 }
 
@@ -50,12 +42,40 @@
     content: "\e676";
 }
 
-.zt-icon-add:before {
-    content: "\e664";
+.zt-icon-loading-circle:before {
+    content: "\e60d";
 }
 
-.zt-icon-bottom:before {
-    content: "\e666";
+.zt-icon-share:before {
+    content: "\e65f";
+}
+
+.zt-icon-comment:before {
+    content: "\e891";
+}
+
+.zt-icon-eye:before {
+    content: "\e633";
+}
+
+.zt-icon-eyeoff:before {
+    content: "\e634";
+}
+
+.zt-icon-success:before {
+    content: "\e8c3";
+}
+
+.zt-icon-warning:before {
+    content: "\e8c5";
+}
+
+.zt-icon-info:before {
+    content: "\e8c6";
+}
+
+.zt-icon-add:before {
+    content: "\e664";
 }
 
 .zt-icon-close:before {
@@ -74,7 +94,7 @@
     content: "\e66e";
 }
 
-.zt-icon-fabulous:before {
+.zt-icon-like:before {
     content: "\e66f";
 }
 
@@ -130,42 +150,14 @@
     content: "\e689";
 }
 
-.zt-icon-comment-filling:before {
+.zt-icon-comment-fill:before {
     content: "\e68a";
 }
 
-.zt-icon-check-item-filling:before {
+.zt-icon-check-fill:before {
     content: "\e68b";
 }
 
-.zt-icon-favorite-filling:before {
-    content: "\e68c";
-}
-
-.zt-icon-user-filling:before {
+.zt-icon-user-fill:before {
     content: "\e68d";
-}
-
-.zt-icon-eye:before {
-    content: "\e633";
-}
-
-.zt-icon-eyeoff:before {
-    content: "\e634";
-}
-
-.zt-icon-success:before {
-    content: "\e8c3";
-}
-
-.zt-icon-error:before {
-    content: "\e8c5";
-}
-
-.zt-icon-warning:before {
-    content: "\e8c6";
-}
-
-.zt-icon-info:before {
-    content: "\e8c6";
 }

@@ -15,6 +15,7 @@ export default {
     return {
       list: [
         { name: 'Button按钮', path: '/button' },
+        { name: 'Icon图标', path: '/icon' },
         { name: 'Progress进度条', path: '/progress' },
         { name: 'Message消息提示', path: '/message' },
         { name: 'Tooltip文字提示', path: '/tooltip' },
@@ -22,9 +23,9 @@ export default {
         { name: 'Confirm确认框', path: '/confirm' },
         { name: 'Loading加载中', path: '/loading' },
         { name: 'Tabs标签页', path: '/tabs' },
+        { name: 'Pagination分页', path: '/pagination' },
         { name: 'Rate评分', path: '/rate' },
         { name: 'Switch开关', path: '/switch' },
-        { name: 'Pagination分页', path: '/pagination' },
         { name: 'Timeline时间轴', path: '/timeline' }
         // { name: 'radio单选框', path: '/radio' },
         // { name: 'checkbox复选框', path: '/checkbox' },
