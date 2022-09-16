@@ -1,5 +1,10 @@
 <template>
-  <div class="zt-select-option" @click="selectCurrent">
+  <div
+    class="zt-select-option ellipsis"
+    :class="calsses"
+    @click="selectCurrent"
+    :title="!disabled?label:''"
+  >
     <span>{{label}}</span>
   </div>
 </template>
@@ -9,15 +14,25 @@ export default {
   name: 'ZtOption',
   props: {
     label: String,
-    value: [String, Number]
+    value: [String, Number],
+    disabled: {
+      type: Boolean,
+      default: false
+    }
   },
-  data() {
-    return {}
+  computed: {
+    calsses() {
+      return {
+        current: this.label == this.$parent.label,
+        disabled: this.disabled
+      }
+    }
   },
   methods: {
     selectCurrent() {
-      if (this.$parent.$options.name === 'ZtSelect') {
+      if (!this.disabled && this.$parent.$options.name === 'ZtSelect') {
         this.$parent.updateVal(this.label, this.value)
+        this.$parent.toggleSelect()
       }
     }
   }

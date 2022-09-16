@@ -1,13 +1,38 @@
 <template>
-  <div class="zt-select">
-    <div class="zt-select-content" :class="{plac:label==''}" @click="showSelect=!showSelect">
-      <div class="zt-select-content-label">{{label==""?placeholder:label}}</div>
-      <ZtIcon icon="arrow-down-bold" class="zt-select-content-trangle" />
+  <div class="zt-select" :class="{ disabled: disabled }" :style="styles">
+    <div
+      ref="selectContent"
+      class="zt-select-content"
+      @click="toggleSelect"
+      @mouseenter="showClear=true"
+      @mouseleave="showClear=false"
+    >
+      <div
+        class="zt-select-content-label ellipsis"
+        :class="{ plac: label == '' }"
+        :title="label"
+      >{{ label == '' ? placeholder : label }}</div>
+      <ZtIcon
+        icon="clear"
+        :size="fontSize"
+        class="zt-select-content-icon"
+        v-if="clearable && showClear && label!==''"
+        @click.stop="updateVal('', '')"
+      />
+      <ZtIcon
+        icon="arrow-down-bold"
+        :size="fontSize"
+        class="zt-select-content-icon"
+        :class="{ flip: showSelect, 'reverse-flip': !showSelect }"
+        v-else
+      />
     </div>
     <transition name="select-down">
-      <div class="zt-select-list" v-show="showSelect" @click="showSelect=!showSelect">
-        <slot v-if="$slots.default"></slot>
-        <div v-else class="no-data">暂无数据</div>
+      <div class="zt-select-drop" v-show="showSelect" ref="selectList">
+        <div class="zt-select-drop-list">
+          <slot v-if="$slots.default"></slot>
+          <div v-else class="no-data">暂无数据</div>
+        </div>
       </div>
     </transition>
   </div>
@@ -25,9 +50,25 @@ export default {
       type: String,
       default: '请选择'
     },
-    labelInValue: {
+    clearable: {
       type: Boolean,
       default: false
+    },
+    disabled: {
+      type: Boolean,
+      default: false
+    },
+    width: {
+      type: [String, Number],
+      default: 240
+    },
+    height: {
+      type: [String, Number],
+      default: 40
+    },
+    fontSize: {
+      type: [String, Number],
+      default: 14
     }
   },
   model: {
@@ -38,18 +79,36 @@ export default {
     return {
       showSelect: false,
       label: '',
-      options: []
+      options: [],
+      showClear: false
     }
   },
   mounted() {
     this.getOptions()
     this.setLabel()
+    this.mouseupCloseSelect()
+  },
+  updated() {
+    this.getOptions()
+    this.setLabel()
+  },
+  computed: {
+    styles() {
+      return {
+        width: this.width + 'px',
+        height: this.height + 'px',
+        lineHeight: this.height + 'px',
+        fontSize: this.fontSize + 'px'
+      }
+    }
   },
   methods: {
     setLabel() {
       const option = this.options.find((item) => item.value == this.value)
-      if (option !== undefined) {
+      if (option !== undefined && option.label) {
         this.label = option.label
+      } else {
+        this.label = ''
       }
     },
     getOptions() {
@@ -59,7 +118,25 @@ export default {
     },
     updateVal(label, value) {
       this.$emit('valueChange', value)
-      this.$emit('onChange', label)
+      label !== '' && this.$emit('onChange', label)
+    },
+    toggleSelect() {
+      if (this.disabled) return
+      this.showSelect = !this.showSelect
+    },
+    // 点击页面其他部分关闭下拉框
+    mouseupCloseSelect() {
+      document.addEventListener('mouseup', (e) => {
+        let selectContent = this.$refs.selectContent
+        let selectList = this.$refs.selectList
+        if (selectContent || selectList) {
+          if (selectContent.contains(e.target) || selectList.contains(e.target))
+            return
+          else {
+            this.showSelect = false
+          }
+        }
+      })
     }
   },
   watch: {
