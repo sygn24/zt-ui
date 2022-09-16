@@ -3,7 +3,7 @@
     <div class="row">
       <h3>基础用法</h3>
       <h4>页数少于10</h4>
-      <zt-pagination :total="60" :current-page.sync="currentPage1"></zt-pagination>
+      <zt-pagination :total="60" :current-page.sync="currentPage1" :page-size.sync="pageSize1"></zt-pagination>
       <h4>页数大于10</h4>
       <zt-pagination :total="150" :current-page.sync="currentPage2"></zt-pagination>
     </div>
@@ -13,15 +13,15 @@
     </div>
     <div class="row">
       <h3>带有背景色</h3>
-      <zt-pagination :total="200" :current-page.sync="currentPage3" background></zt-pagination>
+      <zt-pagination :total="200" :current-page.sync="currentPage3" background show-total></zt-pagination>
     </div>
     <div class="row">
       <h3>自定义当前页码和每页数量，显示总条数</h3>
-      <h4>每页数量：{{pageSize}}</h4>
+      <h4>每页数量：{{pageSize6}}</h4>
       <zt-pagination
         :total="1200"
         :current-page.sync="currentPage4"
-        :page-size="pageSize"
+        :page-size.sync="pageSize6"
         background
         show-total
       ></zt-pagination>
@@ -31,7 +31,7 @@
       <zt-pagination
         :total="1200"
         :current-page.sync="currentPage5"
-        :page-size="pageSize"
+        :page-size.sync="pageSize6"
         @current-change="pageChange"
         background
         show-total
@@ -49,10 +49,11 @@ export default {
       currentPage1: 1,
       currentPage2: 1,
       currentPage3: 1,
-      currentPage4: 10,
+      currentPage4: 1,
       currentPage5: 8,
       currentPage6: 2,
-      pageSize: 60
+      pageSize6: 60,
+      pageSize1:10
     }
   },
   methods: {

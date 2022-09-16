@@ -37,6 +37,7 @@
       :disabled="currentPage === lastPageNum"
       @singleArrowClick="singleArrowClick(1)"
     />
+    <PageSizeSelect :page-szies="pageSizes" @pageSizeChange="pageSizeChange" />
   </div>
 </template>
 
@@ -44,9 +45,10 @@
 import DoubleArrow from './components/DoubleArrows.vue'
 import ToggleBtn from './components/ToggleBtn.vue'
 import PageNum from './components/PageNum.vue'
+import PageSizeSelect from './components/PageSizeSelect.vue'
 export default {
   name: 'ZtPagination',
-  components: { DoubleArrow, ToggleBtn, PageNum },
+  components: { DoubleArrow, ToggleBtn, PageNum, PageSizeSelect },
   props: {
     // 总条数
     total: {
@@ -63,6 +65,11 @@ export default {
       type: Number,
       default: 10
     },
+    // 每页显示个数选择器的选项设置
+    pageSizes: {
+      type: Array,
+      default: () => [10, 20, 30, 40, 50, 100]
+    },
     // 是否为分页按钮添加背景色
     background: {
       type: Boolean,
@@ -77,13 +84,18 @@ export default {
     small: {
       type: Boolean,
       default: false
+    },
+    showSizes: {
+      type: Boolean,
+      default: false
     }
   },
   data() {
     return {
       doublePrev: false, //是否显示左双箭头
       doubleNext: false, //是否显示右双箭头
-      dynamicPageArr: [] //动态页码数组
+      dynamicPageArr: [], //动态页码数组
+      size: this.pageSize
     }
   },
   provide() {
@@ -97,7 +109,7 @@ export default {
     // 最后一页页码
     lastPageNum() {
       if (this.total <= 0) return 1
-      return Math.ceil(this.total / this.pageSize)
+      return Math.ceil(this.total / this.size)
     },
     // 是否为一页
     isOnePage() {
@@ -190,6 +202,12 @@ export default {
     singleArrowClick(num) {
       let current = num === 1 ? this.currentPage + 1 : this.currentPage - 1
       this.dynamicPageClick(current)
+    },
+    //
+    pageSizeChange(pageSize) {
+      this.size = pageSize
+      this.$emit('update:PageSize', pageSize)
+      this.$emit('size-change', pageSize)
     }
   },
   watch: {
@@ -197,6 +215,9 @@ export default {
       this.initDynamicPage()
     },
     pageSize() {
+      this.initDynamicPage()
+    },
+    size() {
       this.initDynamicPage()
     }
   }
