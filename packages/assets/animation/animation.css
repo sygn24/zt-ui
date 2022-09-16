@@ -118,15 +118,15 @@
 /* Select选择器动画 */
 .select-down-enter {
     opacity: 0;
-    transform: translate(0px, -80px) scaleY(0.2);
+    transform: translateY(-80px) scaleY(0.2);
 }
 
 .select-down-leave-to {
     opacity: 0;
-    transform: translate(0px, -80px) scaleY(0.2);
+    transform: translateY(-80px) scaleY(0.2);
 }
 
 .select-down-enter-active,
 .select-down-leave-active {
-    transition: all 0.2s ease-out;
+    transition: all 0.3s ease-out;
 }

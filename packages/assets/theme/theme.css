@@ -20,7 +20,9 @@
   --success-bg: #edfff3;
   --warning-bg: #fff9e6;
   --danger-bg: #ffefe6;
-
+  /* 状态背景色 */
+  --hover-bg:#f5f7fa;
+  --disabled-bg:#f5f7fa;
   /* 容器背景色 */
   --darker-bg1: #cccccc;
   --darker-bg2: #E6E8EB;
@@ -33,14 +35,3 @@
   --font-size-base: 14px;
 }
 
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-body {
-  font-family: var(--font-family);
-  font-size: var(--font-size-base);
-  color: var(--primary-text);
-}
