@@ -67,7 +67,7 @@ export default {
         item.starColor = 'var(--warning)'
       } else {
         item.starIcon = 'star'
-        item.starColor = 'var(--border)'
+        item.starColor = 'var(--base-border)'
       }
     },
     setLightStar(num) {

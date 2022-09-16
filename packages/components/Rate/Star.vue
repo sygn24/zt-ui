@@ -9,7 +9,7 @@
       v-if="allowHalf"
     ></span>
     <span class="mask2" v-if="showHalf" @mouseenter="showHalf = false">
-      <ZtIcon icon="star-fill" color="var(--border)" size="18" />
+      <ZtIcon icon="star-fill" color="var(--base-border)" size="18" />
     </span>
   </span>
 </template>
@@ -31,7 +31,7 @@ export default {
   data() {
     return {
       starIcon: 'star',
-      starColor: 'var(--border)',
+      starColor: 'var(--base-border)',
       showHalf: false,
       select: false
     }

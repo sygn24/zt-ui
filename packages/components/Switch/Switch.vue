@@ -46,7 +46,7 @@ export default {
     },
     falseColor: {
       type: String,
-      default: 'var(--bg-color)'
+      default: 'var(--darker-bg1)'
     },
     loading: {
       type: Boolean,

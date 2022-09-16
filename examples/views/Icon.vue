@@ -31,7 +31,7 @@ export default {
         'eye',
         'eyeoff',
         'success',
-        'warning',
+        'error',
         'info',
         'add',
         'close',

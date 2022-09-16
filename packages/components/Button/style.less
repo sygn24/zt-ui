@@ -8,6 +8,7 @@
 	font-size: 14px;
 	transition: all 0.3s ease-out;
 	border-radius: 3px;
+
 	&-hover:hover,
 	&-focus:focus {
 		opacity: 0.8;
@@ -15,9 +16,9 @@
 
 	// 类型
 	&--default {
-		background: var(--white);
-		border: 1px solid var(--border);
-		color: var(--text-color);
+		background: #fff;
+		border: 1px solid var(--base-border);
+		color: var(--primary-text);
 
 		&:hover,
 		&:focus {
@@ -27,9 +28,9 @@
 	}
 
 	&--dashed {
-		background: var(--white);
-		border: 1px dashed var(--border);
-		color: var(--text-color);
+		background: #fff;
+		border: 1px dashed var(--base-border);
+		color: var(--primary-text);
 
 		&:hover,
 		&:focus {
@@ -39,9 +40,9 @@
 	}
 
 	&--text {
-		background: var(--white);
+		background: #fff;
 		border: none;
-		color: var(--text-color);
+		color: var(--primary-text);
 
 		&:hover,
 		&:focus {
@@ -52,31 +53,31 @@
 	&--primary {
 		background: var(--primary);
 		border: 1px solid var(--primary);
-		color: var(--white);
+		color: #fff;
 	}
 
 	&--info {
 		background: var(--info);
 		border: 1px solid var(--info);
-		color: var(--white);
+		color: #fff;
 	}
 
 	&--success {
 		background: var(--success);
 		border: 1px solid var(--success);
-		color: var(--white);
+		color: #fff;
 	}
 
 	&--warning {
 		background: var(--warning);
 		border: 1px solid var(--warning);
-		color: var(--white);
+		color: #fff;
 	}
 
 	&--danger {
 		background: var(--danger);
 		border: 1px solid var(--danger);
-		color: var(--white);
+		color: #fff;
 	}
 
 	// 尺寸
@@ -122,7 +123,8 @@
 	cursor: not-allowed;
 	opacity: 0.6;
 }
-.is-loading{
+
+.is-loading {
 	cursor: default;
 	opacity: 0.6;
 }

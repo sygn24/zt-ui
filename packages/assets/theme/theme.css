@@ -5,41 +5,32 @@
   --warning: #ffb800;
   --danger: #ed4014;
   --normal: #e6ebf1;
-  --white: #fff;
-  --black: #000;
   --dark: #303133;
   --light: #fff;
   --joker: #009688;
 
   /* 文字 */
-  --text: #fff;
-  --text-color: #515a6e;
-  --text-title: #17233d;
-  --text-bold: #1f4e79;
+  --primary-text: #303133;
+  --common-text: #606266;
+  --plac-text: #A8ABB2;
+  --disabled-text: #C0C4CC;
 
-  /**字体背景色*/
-  --text-bg-dark: #585e6b;
-  --text-bg-info: #f0faff;
-  --text-bg-success: #edfff3;
-  --text-bg-warning: #fff9e6;
-  --text-bg-danger: #ffefe6;
+  /**不同类型背景色*/
+  --info-bg: #f0faff;
+  --success-bg: #edfff3;
+  --warning-bg: #fff9e6;
+  --danger-bg: #ffefe6;
 
-  /* 背景 */
-  --bg-color: #cccccc;
-
+  /* 容器背景色 */
+  --darker-bg1: #cccccc;
+  --darker-bg2: #E6E8EB;
+  --darker-bg3: #EBEDF0;
+  --darker-bg4: #F2F3F5;
   /* 边框 */
-  --border: #dcdfe6;
-  --border-tint: #767676;
-  --border-tt: #e8eaec;
+  --base-border: #dcdfe6;
 
   --font-family: "Helvetica Neue", Helvetica, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑", Arial, sans-serif;
-  --code-family: Consolas, Menlo, Courier, monospace;
   --font-size-base: 14px;
-  --font-size-small: 12px;
-  --font-size-large: 16px;
-  --border-radius-base: 6px;
-  --border-radius-small: 4px;
-  --cursor-disabled: not-allowed;
 }
 
 * {
@@ -51,4 +42,5 @@
 body {
   font-family: var(--font-family);
   font-size: var(--font-size-base);
+  color: var(--primary-text);
 }

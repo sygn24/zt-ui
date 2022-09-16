@@ -34,7 +34,7 @@ export default {
   computed: {
     styles() {
       return {
-        background: this.Pagination.background ? '#f4f4f5' : ''
+        background: this.Pagination.background ? 'var(--darker-bg4)' : ''
       }
     },
     classes() {
