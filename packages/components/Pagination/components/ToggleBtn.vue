@@ -1,53 +1,44 @@
 <template>
-  <button
-    type="button"
-    class="zt-pagination-toggle"
-    :class="classes"
-    :style="styles"
-    :disabled="disabled"
-    @click="singleArrowClick"
-  >
-    <ZtIcon :icon="`arrow-${direction}-bold`" :size="Pagination.small ? 12 : 13" />
-  </button>
+    <button class="zt-pagination-toggle" :class="classes" :style="styles" :disabled="disabled" @click="togglePageNum">
+        <ZtIcon :icon="`arrow-${direction}-bold`" :size="$parent.small ? 12 : 13" />
+    </button>
 </template>
 
 <script>
 import ZtIcon from '../../Icon'
 export default {
-  name: 'ToggleBtn',
-  components: { ZtIcon },
-  inject: ['Pagination'],
-  props: {
-    page: Number,
-    disabled: {
-      type: Boolean,
-      default: false
+    name: 'ToggleBtn',
+    components: { ZtIcon },
+    props: {
+        page: Number,
+        disabled: {
+            type: Boolean,
+            default: false
+        },
+        direction: {
+            validator: item => {
+                return ['left', 'right'].includes(item)
+            }
+        }
     },
-    direction: {
-      validator: (item) => {
-        return ['left', 'right'].includes(item)
-      }
-    }
-  },
-  computed: {
-    styles() {
-      return {
-        cursor:
-          this.Pagination.currentPage === this.page ? 'not-allowed' : 'pointer',
-        background: this.Pagination.background ? 'var(--darker-bg4)' : ''
-      }
+    computed: {
+        styles() {
+            return {
+                cursor: this.$parent.currentPage === this.page ? 'not-allowed' : 'pointer',
+                background: this.$parent.background ? 'var(--darker-bg4)' : ''
+            }
+        },
+        classes() {
+            return {
+                allowed: this.$parent.currentPage !== this.page,
+                small: this.$parent.small
+            }
+        }
     },
-    classes() {
-      return {
-        allowed: this.Pagination.currentPage !== this.page,
-        small: this.Pagination.small
-      }
+    methods: {
+        togglePageNum() {
+            this.$emit('togglePageNum')
+        }
     }
-  },
-  methods: {
-    singleArrowClick() {
-      this.$emit('singleArrowClick')
-    }
-  }
 }
 </script>

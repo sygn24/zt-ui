@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="page">
     <div class="row">
       <h3>基础用法</h3>
       <h4>页数少于10</h4>
@@ -37,6 +37,34 @@
         show-total
       ></zt-pagination>
     </div>
+    <div class="row">
+      <h3>可设置每页显示数量,不传page-sizes，默认[10,20,30,40,50]</h3>
+      <zt-pagination
+        :total="1200"
+        :current-page.sync="currentPage7"
+        background
+        show-total
+        show-sizes
+      ></zt-pagination>
+    </div>
+    <div class="row">
+      <h3>
+        可设置每页显示数量,传page-sizes[100,200,300,400,500]
+        <zt-button type="primary" @click="total+=200">总条数增加200</zt-button>
+      </h3>
+
+      <zt-pagination
+        :total="total"
+        :current-page="currentPage8"
+        :page-size.sync="pageSize8"
+        :page-sizes="[100,200,300,400,500]"
+        @size-change="pageSzieChange2"
+        @current-change="pageChange2"
+        background
+        show-total
+        show-sizes
+      ></zt-pagination>
+    </div>
   </div>
 </template>
 
@@ -52,14 +80,26 @@ export default {
       currentPage4: 1,
       currentPage5: 8,
       currentPage6: 2,
+      currentPage7: 4,
+      currentPage8: 1,
+      pageSize1: 10,
       pageSize6: 60,
-      pageSize1:10
+      pageSize8: 100,
+      total: 1200
     }
   },
   methods: {
     pageChange(page) {
       this.$msg('第' + this.currentPage5 + '页')
       console.log(page)
+    },
+    pageSzieChange2(size) {
+      this.$msg(this.pageSize8 + '条/页')
+      console.log(size)
+    },
+    pageChange2(page) {
+      this.currentPage8 = page
+      this.$msg('第' + page + '页')
     }
   }
 }

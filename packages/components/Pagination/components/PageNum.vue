@@ -1,32 +1,27 @@
 <template>
-  <span class="zt-pagination-num" :class="classes" @click="pageNumClick">{{page}}</span>
+    <span class="zt-pagination-num" :class="classes" @click="pageNumClick">{{ page }}</span>
 </template>
 
 <script>
 export default {
-  name: 'PageNum',
-  inject: ['Pagination'],
-  props: {
-    page: Number
-  },
-  computed: {
-    classes() {
-      return {
-        small: this.Pagination.small,
-        bg: this.Pagination.background,
-        active:
-          !this.Pagination.background &&
-          this.page === this.Pagination.currentPage,
-        'active-bg':
-          this.Pagination.background &&
-          this.page === this.Pagination.currentPage
-      }
+    name: 'PageNum',
+    props: {
+        page: Number
+    },
+    computed: {
+        classes() {
+            return {
+                small: this.$parent.small,
+                active: !this.$parent.background && this.page === this.$parent.currentPage,
+                'bg-color': this.$parent.background,
+                'active-bg-color': this.$parent.background && this.page === this.$parent.currentPage
+            }
+        }
+    },
+    methods: {
+        pageNumClick() {
+            this.$emit('pageNumClick')
+        }
     }
-  },
-  methods: {
-    pageNumClick() {
-      this.$emit('pageNumClick', this.page)
-    }
-  }
 }
 </script>
