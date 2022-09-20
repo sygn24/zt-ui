@@ -1,21 +1,21 @@
 <template>
-  <div class="zt-timeline" :class="{'zt-timeline-item-line-pending':pending}">
-    <slot></slot>
-  </div>
+    <div class="zt-timeline" :class="{ 'zt-timeline-item-line-pending': pending }">
+        <slot></slot>
+    </div>
 </template>
 
 <script>
-  export default {
-    name:"Timeline",
-    props:{
-      pending:{
-        type:Boolean,
-        default:false
-      }
-    },
-  }
+export default {
+    name: 'Timeline',
+    props: {
+        pending: {
+            type: Boolean,
+            default: false
+        }
+    }
+}
 </script>
 
 <style lang="less" scoped>
-@import "./style.less";
+@import './style.less';
 </style>

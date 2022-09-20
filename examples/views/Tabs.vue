@@ -49,7 +49,7 @@ export default {
     },
     methods: {
         toggleTab(name) {
-            // this.$msg('切换到'+ name)
+            this.$msg('切换到' + name)
         }
     }
 }
@@ -58,7 +58,7 @@ export default {
 <style lang="less" scoped>
 .tabs {
     width: 500px;
-    .tab1{
+    .tab1 {
         margin-bottom: 50px;
     }
     .row {
