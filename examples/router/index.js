@@ -60,6 +60,11 @@ const routes = [
 		component: () => import("../views/Tabs.vue"),
 	},
 	{
+		path: "/pagination",
+		name: "Pagination",
+		component: () => import("../views/Pagination.vue"),
+	},
+	{
 		path: "/rate",
 		name: "Rate",
 		component: () => import("../views/Rate.vue"),
@@ -75,10 +80,11 @@ const routes = [
 		component: () => import("../views/Select.vue"),
 	},
 	{
-		path: "/pagination",
-		name: "Pagination",
-		component: () => import("../views/Pagination.vue"),
+		path: "/input",
+		name: "Input",
+		component: () => import("../views/Input.vue"),
 	},
+
 ];
 
 const router = new VueRouter({

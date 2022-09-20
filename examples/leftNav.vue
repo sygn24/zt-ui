@@ -24,6 +24,7 @@ export default {
                 { name: 'Rate评分', path: '/rate' },
                 { name: 'Switch开关', path: '/switch' },
                 { name: 'Select选择器', path: '/select' },
+                { name: 'Input输入框', path: '/input' },
                 { name: 'Timeline时间轴', path: '/timeline' }
                 // { name: 'radio单选框', path: '/radio' },
                 // { name: 'checkbox复选框', path: '/checkbox' },

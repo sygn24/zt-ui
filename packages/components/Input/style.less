@@ -1,0 +1,153 @@
+.zt-input {
+  position: relative;
+  display: inline-block;
+  vertical-align: middle;
+
+  &-icon-prefix {
+    position: absolute;
+    left: 5px;
+  }
+
+  &-icon-suffix {
+    position: absolute;
+    right: 5px;
+
+    &.function {
+      color: var(--plac-text);
+      cursor: pointer;
+    }
+  }
+
+  &-limit {
+    position: absolute;
+    right: 5px;
+    color: var(--plac-text);
+    font-size: 12px;
+  }
+
+  &-self {
+    display: inline-block;
+    width: 100%;
+    height: 100%;
+    color: var(--common-text);
+    border: 1px solid var(--base-border);
+    border-radius: 4px;
+    transition: all .3s ease-out;
+    background: #fff;
+    outline: none;
+
+    &:hover {
+      border-color: var(--primary);
+    }
+
+    &:focus {
+      border-color: var(--primary);
+      box-shadow: 0 0 3px 1px var(--input-shadow);
+    }
+
+    &.disabled {
+      background: var(--disabled-bg);
+      cursor: not-allowed;
+
+      &:hover {
+        border-color: var(--base-border);
+      }
+    }
+
+    // 修改占位字体颜色
+    &::placeholder {
+      /* Most modern browsers support this now. */
+      color: var(--plac-text);
+    }
+
+    &::-webkit-input-placeholder {
+      /* WebKit, Blink, Edge */
+      color: var(--plac-text);
+    }
+
+    &:-moz-placeholder {
+      /* Mozilla Firefox 4 to 18 */
+      color: var(--plac-text);
+      opacity: 1;
+    }
+
+    &::-moz-placeholder {
+      /* Mozilla Firefox 19+ */
+      color: var(--plac-text);
+      opacity: 1;
+    }
+
+    &:-ms-input-placeholder {
+      /* Internet Explorer 10-11 */
+      color: var(--plac-text);
+    }
+
+    &::-ms-input-placeholder {
+      /* Microsoft Edge */
+      color: var(--plac-text);
+    }
+  }
+}
+
+// .zt-input-self {
+//   display: inline-block;
+//   width: 100%;
+//   height: 100%;
+//   color: var(--common-text);
+//   border: 1px solid var(--base-border);
+//   border-radius: 4px;
+//   transition: all .3s ease-out;
+//   background: #fff;
+//   outline: none;
+
+//   &:hover {
+//     border-color: var(--primary);
+//   }
+
+//   &:focus {
+//     border-color: var(--primary);
+//     box-shadow: 0 0 3px 1px var(--input-shadow);
+//   }
+
+//   &.disabled {
+//     background: var(--disabled-bg);
+//     cursor: not-allowed;
+
+//     &:hover {
+//       border-color: var(--base-border);
+//     }
+//   }
+
+//   // 修改占位字体颜色
+//   &::placeholder {
+//     /* Most modern browsers support this now. */
+//     color: var(--plac-text);
+//   }
+
+//   &::-webkit-input-placeholder {
+//     /* WebKit, Blink, Edge */
+//     color: var(--plac-text);
+//   }
+
+//   &:-moz-placeholder {
+//     /* Mozilla Firefox 4 to 18 */
+//     color: var(--plac-text);
+//     opacity: 1;
+//   }
+
+//   &::-moz-placeholder {
+//     /* Mozilla Firefox 19+ */
+//     color: var(--plac-text);
+//     opacity: 1;
+//   }
+
+//   &:-ms-input-placeholder {
+//     /* Internet Explorer 10-11 */
+//     color: var(--plac-text);
+//   }
+
+//   &::-ms-input-placeholder {
+//     /* Microsoft Edge */
+//     color: var(--plac-text);
+//   }
+// }

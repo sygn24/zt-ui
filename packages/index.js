@@ -12,6 +12,7 @@ import Rate from './components/Rate'
 import Switch from './components/Switch'
 import Pagination from './components/Pagination'
 import { Select, Option } from './components/Select'
+import Input from './components/Input'
 import { Timeline, TimelineItem } from './components/Timeline'
 import loadingDirective from './components/Loading/directive'
 import "./assets/index.css"
@@ -29,6 +30,7 @@ const components = [
   Pagination,
   Select,
   Option,
+  Input,
   Timeline,
   TimelineItem
 ]
