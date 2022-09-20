@@ -55,7 +55,7 @@ export default {
     },
     computed: {
         backgroundColor() {
-            return [{ [`zt-message-${this.type}`]: this.background }]
+            return { [`zt-message-${this.type}`]: this.background }
         },
         iconColor() {
             let color = 'var(--primary) '
