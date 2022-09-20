@@ -171,9 +171,6 @@ export default {
 </script>
 
 <style lang="less" scoped>
-.select {
-  height: 800px;
-}
 .row {
   margin-bottom: 20px;
   h3 {

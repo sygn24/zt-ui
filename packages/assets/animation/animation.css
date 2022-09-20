@@ -116,6 +116,11 @@
 }
 
 /* Select选择器动画 */
+.select-down-enter-active,
+.select-down-leave-active {
+    transition: all 0.3s ease-out;
+}
+
 .select-down-enter {
     opacity: 0;
     transform: translateY(-80px) scaleY(0.2);
@@ -126,7 +131,12 @@
     transform: translateY(-80px) scaleY(0.2);
 }
 
-.select-down-enter-active,
-.select-down-leave-active {
-    transition: all 0.3s ease-out;
+.select-down-enter.reverse {
+    opacity: 0;
+    transform: translateY(80px) scaleY(0.2);
+}
+
+.select-down-leave-to.reverse {
+    opacity: 0;
+    transform: translateY(80px) scaleY(0.2);
 }

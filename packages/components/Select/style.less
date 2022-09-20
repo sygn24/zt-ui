@@ -26,7 +26,7 @@
 
     &-label {
       flex: 1;
-      padding: 0 10px;
+      padding-left: 10px;
       color: var(--common-text);
 
       &.plac {
@@ -52,7 +52,6 @@
 
   &-drop {
     position: absolute;
-    top: calc(100% + 10px);
     width: 100%;
     z-index: 99;
     background: #fff;
@@ -63,19 +62,48 @@
     &::before {
       content: '';
       position: absolute;
-      top: -16px;
       left: 20px;
       border: 8px solid;
-      border-color: transparent transparent var(--base-border) transparent;
     }
 
     &::after {
       content: '';
       position: absolute;
-      top: -14.5px;
       left: 20px;
       border: 8px solid;
-      border-color: transparent transparent var(--light) transparent;
+    }
+
+    &.bottom {
+      top: calc(100% + 10px);
+
+      &::before {
+        top: -16px;
+        border-color: transparent transparent var(--base-border) transparent;
+      }
+
+      &::after {
+        top: -14.5px;
+        border-color: transparent transparent var(--light) transparent;
+
+      }
+
+    }
+
+    &.top {
+      bottom: calc(100% + 10px);
+
+      &::before {
+        bottom: -16px;
+        border-color: var(--base-border) transparent transparent transparent;
+
+      }
+
+      &::after {
+        bottom: -14.5px;
+        border-color: var(--light) transparent transparent transparent;
+
+      }
+
     }
 
     &-list {
@@ -108,8 +136,6 @@
       }
     }
   }
-
-
 
   &-option {
     width: 100%;
