@@ -16,6 +16,7 @@ export default {
     data() {
         return {
             iconList: [
+                'search',
                 'clear',
                 'ellipsis',
                 'double-arrow-right',

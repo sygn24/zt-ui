@@ -21,8 +21,8 @@
   --warning-bg: #fff9e6;
   --danger-bg: #ffefe6;
   /* 状态背景色 */
-  --hover-bg:#f5f7fa;
-  --disabled-bg:#f5f7fa;
+  --hover-bg: #f5f7fa;
+  --disabled-bg: #f5f7fa;
   /* 容器背景色 */
   --darker-bg1: #cccccc;
   --darker-bg2: #E6E8EB;
@@ -30,8 +30,9 @@
   --darker-bg4: #F2F3F5;
   /* 边框 */
   --base-border: #dcdfe6;
-
+  /* 阴影 */
+  --box-shadow: rgb(0, 0, 0, .2);
+  --input-shadow: rgba(45, 140, 240, .5);
   --font-family: "Helvetica Neue", Helvetica, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑", Arial, sans-serif;
   --font-size-base: 14px;
 }
-
