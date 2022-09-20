@@ -180,21 +180,22 @@ export default {
     methods: {
         // 获取鼠标在进度条上的位置，返回一个百分比值
         getMousePosition(e) {
+            let progressBox = this.$refs.progressBox
             if (!this.vertical) {
-                let progressBoxWidth = this.$refs.progressBox.getBoundingClientRect().width //进度条总宽度
-                let progressBoxLeft = this.$refs.progressBox.getBoundingClientRect().left //进度条距左边距离
-                let mousePositon = e.clientX - progressBoxLeft
-                mousePositon = mousePositon <= 0 ? 0 : mousePositon //设置最小边界值
-                mousePositon = mousePositon >= progressBoxWidth ? progressBoxWidth : mousePositon //设置最大边界值
-                let percentLength = Math.ceil((mousePositon * 100) / progressBoxWidth)
+                let pWidth = progressBox.getBoundingClientRect().width //进度条总宽度
+                let pLeft = progressBox.getBoundingClientRect().left //进度条距左边距离
+                let mPositon = e.clientX - pLeft //鼠标在进度条上的位置
+                mPositon = mPositon <= 0 ? 0 : mPositon //设置最小边界值
+                mPositon = mPositon >= pWidth ? pWidth : mPositon //设置最大边界值
+                let percentLength = Math.ceil((mPositon * 100) / pWidth)
                 return percentLength
             } else {
-                let progressBoxHeight = this.$refs.progressBox.getBoundingClientRect().height
-                let progressBoxBottom = this.$refs.progressBox.getBoundingClientRect().bottom
-                let mousePositon = progressBoxBottom - e.clientY
-                mousePositon = mousePositon <= 0 ? 0 : mousePositon //设置最小边界值
-                mousePositon = mousePositon >= progressBoxHeight ? progressBoxHeight : mousePositon //设置最大边界值
-                let percentLength = Math.ceil((mousePositon * 100) / progressBoxHeight)
+                let pHeight = progressBox.getBoundingClientRect().height
+                let pBottom = progressBox.getBoundingClientRect().bottom
+                let mPositon = pBottom - e.clientY
+                mPositon = mPositon <= 0 ? 0 : mPositon
+                mPositon = mPositon >= pHeight ? pHeight : mPositon
+                let percentLength = Math.ceil((mPositon * 100) / pHeight)
                 return percentLength
             }
         },

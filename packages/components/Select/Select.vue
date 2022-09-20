@@ -37,8 +37,10 @@
 </template>
 
 <script>
+import ZtIcon from '../Icon'
 export default {
     name: 'ZtSelect',
+    components: { ZtIcon },
     props: {
         value: {
             type: [String, Number],
