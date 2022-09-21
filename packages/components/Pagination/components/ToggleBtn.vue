@@ -36,8 +36,10 @@ export default {
         }
     },
     methods: {
+        // 点击上一页或下一页按钮
         togglePageNum() {
-            this.$emit('togglePageNum')
+            let current = this.direction == 'right' ? this.$parent.currentPage + 1 : this.$parent.currentPage - 1
+            this.$parent.dynamicPageClick(current)
         }
     }
 }

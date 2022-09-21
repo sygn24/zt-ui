@@ -41,8 +41,13 @@ export default {
         }
     },
     methods: {
+        // 向前或向后5页
         moreBtnClick() {
-            this.$emit('moreBtnClick')
+            let current = this.direction == 'right' ? this.$parent.currentPage + 5 : this.$parent.currentPage - 5
+            current = current > 0 ? current : 1
+            current = current < this.$parent.lastPageNum ? current : this.$parent.lastPageNum
+            this.$parent.setDynamicPage(current)
+            this.$parent.updateCurrentPage(current)
         }
     }
 }

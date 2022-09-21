@@ -20,7 +20,11 @@ export default {
     },
     methods: {
         pageNumClick() {
-            this.$emit('pageNumClick')
+            if (this.page === 1 || this.page === this.$parent.lastPageNum) {
+                this.$parent.staticPageClick(this.page)
+            } else {
+                this.$parent.dynamicPageClick(this.page)
+            }
         }
     }
 }

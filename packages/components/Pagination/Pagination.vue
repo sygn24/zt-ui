@@ -2,15 +2,16 @@
     <div class="zt-pagination">
         <span class="zt-pagination-total" v-show="showTotal">共 {{ Math.ceil(total) }} 条</span>
         <page-size-select v-show="showSizes" @pageSizeChange="pageSizeChange" />
-        <toggle-btn direction="left" :page="1" :disabled="currentPage === 1" @togglePageNum="togglePageNum(-1)" />
-        <page-num :page="1" @pageNumClick="staticPageClick(1)" />
+        <toggle-btn direction="left" :page="1" :disabled="currentPage === 1" />
+        <page-num :page="1" />
         <div v-show="!isOnePage" style="display: inline-block">
-            <more-btn title="向前5页" direction="left" v-show="!isLessThan10 && showPrevMore" @moreBtnClick="moreBtnClick(-1)" />
-            <page-num v-for="page in dynamicPageArr" :key="page" :page="page" @pageNumClick="dynamicPageClick(page)" />
-            <more-btn title="向后5页" direction="right" v-show="!isLessThan10 && showNextMore" @moreBtnClick="moreBtnClick(1)" />
-            <page-num :page="lastPageNum" @pageNumClick="staticPageClick(lastPageNum)" />
+            <more-btn title="向前5页" direction="left" v-show="!isLessThan10 && showPrevMore" />
+            <page-num v-for="page in dynamicPageArr" :key="page" :page="page" />
+            <more-btn title="向后5页" direction="right" v-show="!isLessThan10 && showNextMore" />
+            <page-num :page="lastPageNum" />
         </div>
-        <toggle-btn direction="right" :page="lastPageNum" :disabled="currentPage === lastPageNum" @togglePageNum="togglePageNum(1)" />
+        <toggle-btn direction="right" :page="lastPageNum" :disabled="currentPage === lastPageNum" />
+        <page-num-jumper v-show="showJumper" />
     </div>
 </template>
 
@@ -19,9 +20,10 @@ import MoreBtn from './components/MoreBtn.vue'
 import ToggleBtn from './components/ToggleBtn.vue'
 import PageNum from './components/PageNum.vue'
 import PageSizeSelect from './components/PageSizeSelect.vue'
+import PageNumJumper from './components/PageNumJumper.vue'
 export default {
     name: 'ZtPagination',
-    components: { MoreBtn, ToggleBtn, PageNum, PageSizeSelect },
+    components: { MoreBtn, ToggleBtn, PageNum, PageSizeSelect, PageNumJumper },
     props: {
         // 总条数
         total: {
@@ -60,6 +62,10 @@ export default {
         },
         // 是否显示每页数量选择器
         showSizes: {
+            type: Boolean,
+            default: false
+        },
+        showJumper: {
             type: Boolean,
             default: false
         }
@@ -129,7 +135,7 @@ export default {
             this.$emit('update:currentPage', currentPage)
             this.$emit('current-change', currentPage)
         },
-        // 静态页码点击
+        // // 静态页码点击
         staticPageClick(currentPage) {
             if (currentPage === this.currentPage) return
             this.updateCurrentPage(currentPage)
@@ -138,7 +144,7 @@ export default {
                 this.setDynamicPage(currentPage)
             }
         },
-        // 动态页码点击
+        // // 动态页码点击
         dynamicPageClick(currentPage) {
             if (currentPage === this.currentPage) return
             this.updateCurrentPage(currentPage)
@@ -151,19 +157,6 @@ export default {
             if (this.showPrevMore && (currentIndex === 0 || currentIndex === 1)) {
                 this.setDynamicPage(currentPage)
             }
-        },
-        // 点击向前或向后5页按钮
-        moreBtnClick(num) {
-            let current = num === 1 ? this.currentPage + 5 : this.currentPage - 5
-            current = current > 0 ? current : 1
-            current = current < this.lastPageNum ? current : this.lastPageNum
-            this.setDynamicPage(current)
-            this.updateCurrentPage(current)
-        },
-        // 点击上一页或下一页按钮
-        togglePageNum(num) {
-            let current = num === 1 ? this.currentPage + 1 : this.currentPage - 1
-            this.dynamicPageClick(current)
         },
         // 每页显示数量改变
         pageSizeChange(size) {

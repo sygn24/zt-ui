@@ -43,10 +43,9 @@
         </div>
         <div class="row">
             <h3>
-                可设置每页显示数量,传page-sizes[100,200,300,400,500]
-                <zt-button type="primary" @click="total += 200">总条数增加200</zt-button>
+                可设置每页显示数量,传page-sizes[100,200,300,400,500],显示跳转
+                <zt-button size="small" type="primary" @click="total += 200">总条数增加200</zt-button>
             </h3>
-
             <zt-pagination
                 :total="total"
                 :current-page="currentPage8"
@@ -57,6 +56,7 @@
                 background
                 show-total
                 show-sizes
+                show-jumper
             ></zt-pagination>
         </div>
     </div>
@@ -74,7 +74,7 @@ export default {
             currentPage5: 8,
             currentPage6: 2,
             currentPage7: 4,
-            currentPage8: 1,
+            currentPage8: 6,
             pageSize1: 10,
             pageSize6: 60,
             pageSize8: 100,
