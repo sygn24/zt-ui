@@ -1,5 +1,5 @@
 <template>
-    <div class="zt-select-option ellipsis" :class="calsses" @click="selectCurrent" :title="!disabled ? label : ''">
+    <div class="zt-select-option ellipsis" :class="calsses" @click.stop="selectCurrent" :title="!disabled ? label : ''">
         <span>{{ label }}</span>
     </div>
 </template>

@@ -6,9 +6,9 @@
   transition: all .3s ease-out;
   background: #fff;
   cursor: pointer;
-
   &:hover {
     border-color: var(--primary);
+    box-shadow: 0 0 3px 1px var(--input-shadow);
   }
 
   &.disabled {
@@ -17,6 +17,7 @@
 
     &:hover {
       border-color: var(--base-border);
+      box-shadow: none;
     }
   }
 
