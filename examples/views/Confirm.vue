@@ -9,7 +9,7 @@
             <zt-button type="primary" @click="confirm2">自定义</zt-button>
         </div>
         <div class="row">
-            <h3>异步关闭</h3>
+            <h3>异步关闭，需要手动调用remove方法关闭对话框</h3>
             <zt-button type="primary" @click="confirm3">异步关闭</zt-button>
         </div>
         <div class="row">
@@ -56,11 +56,10 @@ export default {
         confirm3() {
             this.$confirm({
                 title: '异步关闭',
-                content: '对话框将在 2秒 后关闭',
+                content: '点击确认后对话框将在 2秒 后关闭',
                 loading: true,
                 onOk: () => {
                     setTimeout(() => {
-                        // 异步关闭需要手动调用remove方法关闭对话框
                         this.$confirm.remove()
                         this.$msg.info('异步关闭')
                     }, 2000)

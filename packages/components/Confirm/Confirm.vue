@@ -1,5 +1,5 @@
 <template>
-    <transition name="base-fade">
+    <transition name="base-fade" @after-leave="handleAfterLeave">
         <div class="zt-modal-wrapper" v-show="visable">
             <transition name="modal-fade">
                 <div class="zt-modal" :style="style" v-show="visable">
@@ -14,7 +14,7 @@
                             <ZtIcon :icon="type" :color="typeContent" size="20" v-else />
                             <span style="padding-left: 5px">{{ title }}</span>
                         </div>
-                        <ZtIcon icon="close" class="zt-modal-header-close" @click="visable = false" />
+                        <ZtIcon icon="close" class="zt-modal-header-close" @click="handleClose" />
                     </div>
                     <div class="zt-modal-body">{{ content }}</div>
                     <div class="zt-modal-footer">
@@ -63,10 +63,12 @@ export default {
             if (this.type == 'success') {
                 iconColor = 'var(--success)'
                 this.title = '成功'
-            } else if (this.type == 'error') {
+            }
+            if (this.type == 'error') {
                 iconColor = 'var(--danger)'
                 this.title = '错误'
-            } else if (this.type == 'warning') {
+            }
+            if (this.type == 'warning') {
                 iconColor = 'var(--warning)'
                 this.title = '警告'
             }
@@ -78,21 +80,23 @@ export default {
             this.onOk && this.onOk()
             // 是否异步关闭
             if (!this.loading) {
-                this.remove()
+                this.visable = false
             } else {
                 this.loadingBtn = this.loading
             }
         },
         cancel() {
+            if (this.loadingBtn) return
             this.onCancel && this.onCancel()
-            this.remove()
-        },
-        remove() {
             this.visable = false
-            this.loadingBtn = false
-            setTimeout(() => {
-                document.body.removeChild(this.$el)
-            }, 300)
+        },
+        handleClose() {
+            if (this.loadingBtn) return
+            this.visable = false
+        },
+        handleAfterLeave() {
+            this.$destroy(true)
+            this.$el.parentNode.removeChild(this.$el)
         }
     }
 }

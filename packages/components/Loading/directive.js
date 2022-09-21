@@ -53,10 +53,8 @@ const createLoading = (target, options) => {
 
 const remove = (target) => {
   if (!target) return
-  if (instance.show) {
-    instance.show = false
-    target.parentNode.LoadingInstance = null
-  }
+  instance.show = false
+  target.parentNode.LoadingInstance = null
 
 }
 

@@ -14,15 +14,17 @@ const confirm = (options) => {
     el: document.createElement('div'),
     data: options
   })
-  // 显示对话框
-  instance.visable = true
   //将实例挂载到body下
   document.body.appendChild(instance.$el)
+  Vue.nextTick(() => {
+    // 显示对话框
+    instance.visable = true
+  })
 }
 // 添加移除方法，异步关闭时调用
 confirm.remove = () => {
   if (instance.visable) {
-    instance.remove()
+    instance.visable = false
   }
 }
 // 挂载不同的提示类型

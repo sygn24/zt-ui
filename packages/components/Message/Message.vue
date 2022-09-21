@@ -1,7 +1,7 @@
 <template>
     <div class="zt-message-box" :style="{ top: top + 'px' }">
-        <transition name="message-fade">
-            <div class="zt-message" :class="backgroundColor" v-if="show">
+        <transition name="message-fade" @after-leave="handleAfterLeave">
+            <div class="zt-message" :class="backgroundColor" v-show="show">
                 <ZtIcon :icon="type" :color="iconColor" />
                 <span class="zt-message-text">{{ msg }}</span>
                 <ZtIcon icon="close" class="zt-message-close" v-if="showClose" @click="handleClose" />
@@ -61,9 +61,11 @@ export default {
             let color = 'var(--primary) '
             if (this.type == 'success') {
                 color = 'var(--success)'
-            } else if (this.type == 'error') {
+            }
+            if (this.type == 'error') {
                 color = 'var(--danger)'
-            } else if (this.type == 'warning') {
+            }
+            if (this.type == 'warning') {
                 color = 'var(--warning)'
             }
             return color
@@ -75,6 +77,10 @@ export default {
             this.onClose && this.onClose()
             clearTimeout(this.timer)
             this.timer = null
+        },
+        handleAfterLeave() {
+            this.$destroy(true)
+            this.$el.parentNode.removeChild(this.$el)
         }
     }
 }

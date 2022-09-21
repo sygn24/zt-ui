@@ -1,6 +1,6 @@
 <template>
-    <transition name="base-fade">
-        <div class="zt-loading" :class="classes" :style="styles" v-if="show">
+    <transition name="base-fade" @after-leave="handleAfterLeave">
+        <div class="zt-loading" :class="classes" :style="styles" v-show="show">
             <div class="zt-loading-content">
                 <ZtIcon :icon="icon" :size="iconSize" :color="color" class="loading-loop" v-if="icon !== ''" />
                 <component :is="loadingAnimation" :color="color" v-else></component>
@@ -48,6 +48,13 @@ export default {
             }
         }
     },
+
+    data() {
+        return {
+            show: false,
+            isFull: false
+        }
+    },
     computed: {
         classes() {
             return this.isFull ? 'zt-loading-full' : 'zt-loading-notfull'
@@ -59,18 +66,20 @@ export default {
             let animation
             if (this.animationType === 'circle') {
                 animation = 'LoadingCircle'
-            } else if (this.animationType === 'dot') {
+            }
+            if (this.animationType === 'dot') {
                 animation = 'LoadingDots'
-            } else {
+            }
+            if (this.animationType === 'rectangle') {
                 animation = 'LoadingRectangles'
             }
             return animation
         }
     },
-    data() {
-        return {
-            show: false,
-            isFull: false
+    methods: {
+        handleAfterLeave() {
+            this.$destroy(true)
+            this.$el.parentNode.removeChild(this.$el)
         }
     }
 }

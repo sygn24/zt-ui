@@ -28,21 +28,21 @@ function creatMsg (options) {
   }
   // 将新创建的实例存到实例数组中
   instanceArr.push(instance)
-  // 显示msg弹框
-  instance.show = true
   document.body.appendChild(instance.$el)
+  Vue.nextTick(() => {
+    // 显示对话框
+    instance.show = true
+  })
 }
 
 // 根据msgId从instanceArr实例数组中删除Msg实例
 function removeMsg (msgId) {
   let removeIndex
   let removeOffsetHeight
-  let removeItem
   instanceArr.forEach((item, i) => {
     if (item.msgId === msgId) {
       removeIndex = i
       removeOffsetHeight = item.$el.offsetHeight
-      removeItem = item
     }
   })
   //删除Msg实例
@@ -53,10 +53,6 @@ function removeMsg (msgId) {
       item.top = item.top - 15 - removeOffsetHeight
     }
   })
-  // 要显示动画效果，所以延迟0.3s移除dom元素
-  setTimeout(() => {
-    document.body.removeChild(removeItem.$el)
-  }, 300);
 }
 // 挂载不同类型的提示
 ['success', 'error', 'info', 'warning'].forEach(type => {
