@@ -1,8 +1,9 @@
 <template>
-    <div class="zt-input" :style="styles" @mouseenter="inputWrapperEnter" @mouseleave="inputWrapperLeave">
+    <div class="zt-input" ref="inputWrapper" :style="styles" @mouseenter="inputWrapperEnter" @mouseleave="inputWrapperLeave">
         <input
+            v-if="type !== 'textarea'"
             ref="input"
-            class="zt-input-self"
+            class="zt-input-inner"
             :class="inputClass"
             :style="inputStyle"
             :type="showPassword ? (showPwd ? 'text' : 'password') : type"
@@ -15,28 +16,52 @@
             :required="required"
             :autofocus="autofocus"
             :autocomplete="autocomplete"
-            @input="$emit('input', $event.target.value)"
+            @input="handelInput"
             @change="$emit('change', $event.target.value)"
             @blur="$emit('blur', $event.target.value)"
             @focus="$emit('focus', $event.target.value)"
+            @keyup.enter="$emit('keyupEnter', $event)"
         />
-        <ZtIcon class="zt-input-icon-prefix" :icon="prefixIcon" v-if="prefixIcon !== ''" />
-        <ZtIcon class="zt-input-icon-suffix" :icon="suffixIcon" v-if="suffixIcon !== ''" />
-        <ZtIcon
-            v-if="clearable && showClear && value !== '' && !showPassword"
-            class="zt-input-icon-suffix function"
-            icon="clear"
-            size="12"
-            @click="$emit('input', '')"
+        <textarea
+            v-else
+            ref="textarea"
+            class="zt-input-inner ztextarea"
+            :class="inputClass"
+            :style="inputStyle"
+            type="textarea"
+            :value="value"
+            :name="name"
+            :placeholder="placeholder"
+            :maxlength="maxlength"
+            :rows="rows"
+            :disabled="disabled"
+            :readonly="readonly"
+            :required="required"
+            :autofocus="autofocus"
+            :autocomplete="autocomplete"
+            @input="handelInput"
+            @change="$emit('change', $event.target.value)"
+            @blur="$emit('blur', $event.target.value)"
+            @focus="$emit('focus', $event.target.value)"
+            @keyup.enter="$emit('keyupEnter', $event)"
         />
+        <ZtIcon v-if="showClearIcon" class="zt-input-icon-suffix function" icon="clear" size="12" @click="$emit('input', '')" />
         <ZtIcon
-            v-if="showPassword && (showEye || value !== '')"
+            v-if="showEyeIcon"
             class="zt-input-icon-suffix function"
             :icon="showPwd ? 'eye' : 'eyeoff'"
             color="var(--plac-text)"
             @click="showPwd = !showPwd"
         />
-        <span class="zt-input-limit" v-if="maxlength && showLimit && !showClear">{{ value.length }}/{{ maxlength }}</span>
+        <span class="zt-input-limit" :class="limitTextPosition" v-if="showLimitText">{{ value.length }}/{{ maxlength }}</span>
+        <span class="zt-input-icon-prefix" v-if="$slots.prefix || showPrefixIcon">
+            <slot name="prefix" />
+            <ZtIcon :icon="prefixIcon" v-if="showPrefixIcon" />
+        </span>
+        <span class="zt-input-icon-suffix" v-if="$slots.suffix || showSuffixIcon">
+            <slot name="suffix" />
+            <ZtIcon :icon="suffixIcon" v-if="showSuffixIcon" />
+        </span>
     </div>
 </template>
 
@@ -48,7 +73,7 @@ export default {
     props: {
         type: {
             validator: type => {
-                return ['text', 'password', 'number'].includes(type)
+                return ['text', 'password', 'number', 'textarea', 'url', 'email', 'date', 'tel'].includes(type)
             },
             default: 'text'
         },
@@ -87,17 +112,9 @@ export default {
             type: String,
             default: 'off'
         },
-        width: {
-            type: [String, Number],
-            default: 200
-        },
-        height: {
-            type: [String, Number],
-            default: 32
-        },
-        fontSize: {
-            type: [String, Number],
-            default: 14
+        rows: {
+            type: Number,
+            default: 2
         },
         prefixIcon: {
             type: String,
@@ -123,10 +140,8 @@ export default {
     computed: {
         styles() {
             return {
-                height: `${this.height}px`,
-                width: `${this.width}px`,
-                lineHeight: `${this.height}px`,
-                fontSize: `${this.fontSize}px`
+                width: this.type == 'textarea' ? '400px' : '200px',
+                height: this.type == 'textarea' ? `${this.rows * 32}px` : '32px'
             }
         },
         inputClass() {
@@ -136,9 +151,31 @@ export default {
         },
         inputStyle() {
             return {
-                paddingLeft: this.prefixIcon == '' ? '10px' : '22px',
-                paddingRight: this.suffixIcon == '' && !this.clearable && !this.showPassword ? '10px' : '22px'
+                paddingLeft: this.type == 'textarea' || this.prefixIcon == '' ? '10px' : '22px',
+                paddingRight: this.type == 'textarea' || (this.suffixIcon == '' && !this.clearable && !this.showPassword) ? '10px' : '22px',
+                paddingTop: this.type == 'textarea' ? '6px' : '0px'
             }
+        },
+        showPrefixIcon() {
+            return this.type !== 'textarea' && this.prefixIcon !== ''
+        },
+        showSuffixIcon() {
+            return this.type !== 'textarea' && this.suffixIcon !== '' && (!this.showClear || this.value == '')
+        },
+        showClearIcon() {
+            return this.type !== 'textarea' && this.clearable && this.showClear && this.value !== '' && !this.showPassword && !this.readonly
+        },
+        showEyeIcon() {
+            return this.type !== 'textarea' && this.showPassword && (this.showEye || this.value !== '') && !this.showLimit
+        },
+        showLimitText() {
+            return this.maxlength && this.showLimit && (!this.showClear || this.value == '')
+        },
+        limitTextPosition() {
+            return this.type == 'textarea' ? 'bottom' : 'center'
+        },
+        getInput() {
+            return this.$refs.input || this.$refs.textarea
         }
     },
     data() {
@@ -156,6 +193,19 @@ export default {
         inputWrapperLeave() {
             this.clearable && (this.showClear = false)
             this.showPassword && (this.showEye = false)
+        },
+        handelInput(e) {
+            this.$emit('input', e.target.value)
+        },
+        //暴露的方法
+        focus() {
+            this.getInput.focus()
+        },
+        blur() {
+            this.getInput.blur()
+        },
+        select() {
+            this.getInput.select()
         }
     }
 }

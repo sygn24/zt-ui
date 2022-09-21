@@ -2,15 +2,20 @@
   position: relative;
   display: inline-block;
   vertical-align: middle;
-
+  line-height: 1.5;
+  font-size: 14px;
   &-icon-prefix {
     position: absolute;
     left: 5px;
+    top: 50%;
+    transform: translateY(-50%);
   }
 
   &-icon-suffix {
     position: absolute;
     right: 5px;
+    top: 50%;
+    transform: translateY(-50%);
 
     &.function {
       color: var(--plac-text);
@@ -23,13 +28,23 @@
     right: 5px;
     color: var(--plac-text);
     font-size: 12px;
+
+    &.center {
+      top: 50%;
+      transform: translateY(-50%);
+    }
+
+    &.bottom {
+      bottom: 0;
+    }
   }
 
-  &-self {
+  &-inner {
     display: inline-block;
     width: 100%;
     height: 100%;
     color: var(--common-text);
+    font-family: var(--font-family);
     border: 1px solid var(--base-border);
     border-radius: 4px;
     transition: all .3s ease-out;
@@ -54,100 +69,60 @@
       }
     }
 
-    // 修改占位字体颜色
+    // 修改占位字体
     &::placeholder {
       /* Most modern browsers support this now. */
       color: var(--plac-text);
+
     }
 
     &::-webkit-input-placeholder {
       /* WebKit, Blink, Edge */
       color: var(--plac-text);
+      font-family: var(--font-family);
     }
 
     &:-moz-placeholder {
       /* Mozilla Firefox 4 to 18 */
       color: var(--plac-text);
       opacity: 1;
+      font-family: var(--font-family);
     }
 
     &::-moz-placeholder {
       /* Mozilla Firefox 19+ */
       color: var(--plac-text);
       opacity: 1;
+      font-family: var(--font-family);
     }
 
     &:-ms-input-placeholder {
       /* Internet Explorer 10-11 */
       color: var(--plac-text);
+      font-family: var(--font-family);
     }
 
     &::-ms-input-placeholder {
       /* Microsoft Edge */
       color: var(--plac-text);
+      font-family: var(--font-family);
+    }
+
+    // 隐藏数字输入框上下箭头
+    &::-webkit-outer-spin-button,
+    &::-webkit-inner-spin-button {
+      -webkit-appearance: none;
+    }
+
+    &.ztextarea {
+      min-height: 32px;
+      max-height: 480px;
+      resize: none;
+
+      &::-webkit-scrollbar {
+        width: 0px;
+      }
+
     }
   }
 }
-
-// .zt-input-self {
-//   display: inline-block;
-//   width: 100%;
-//   height: 100%;
-//   color: var(--common-text);
-//   border: 1px solid var(--base-border);
-//   border-radius: 4px;
-//   transition: all .3s ease-out;
-//   background: #fff;
-//   outline: none;
-
-//   &:hover {
-//     border-color: var(--primary);
-//   }
-
-//   &:focus {
-//     border-color: var(--primary);
-//     box-shadow: 0 0 3px 1px var(--input-shadow);
-//   }
-
-//   &.disabled {
-//     background: var(--disabled-bg);
-//     cursor: not-allowed;
-
-//     &:hover {
-//       border-color: var(--base-border);
-//     }
-//   }
-
-//   // 修改占位字体颜色
-//   &::placeholder {
-//     /* Most modern browsers support this now. */
-//     color: var(--plac-text);
-//   }
-
-//   &::-webkit-input-placeholder {
-//     /* WebKit, Blink, Edge */
-//     color: var(--plac-text);
-//   }
-
-//   &:-moz-placeholder {
-//     /* Mozilla Firefox 4 to 18 */
-//     color: var(--plac-text);
-//     opacity: 1;
-//   }
-
-//   &::-moz-placeholder {
-//     /* Mozilla Firefox 19+ */
-//     color: var(--plac-text);
-//     opacity: 1;
-//   }
-
-//   &:-ms-input-placeholder {
-//     /* Internet Explorer 10-11 */
-//     color: var(--plac-text);
-//   }
-
-//   &::-ms-input-placeholder {
-//     /* Microsoft Edge */
-//     color: var(--plac-text);
-//   }
-// }
