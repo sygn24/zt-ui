@@ -24,13 +24,13 @@ export default {
     computed: {
         styles() {
             return {
-                cursor: this.$parent.currentPage === this.page ? 'not-allowed' : 'pointer',
+                cursor: this.$parent.page === this.page ? 'not-allowed' : 'pointer',
                 background: this.$parent.background ? 'var(--darker-bg4)' : ''
             }
         },
         classes() {
             return {
-                allowed: this.$parent.currentPage !== this.page,
+                allowed: this.$parent.page !== this.page,
                 small: this.$parent.small
             }
         }
@@ -38,7 +38,7 @@ export default {
     methods: {
         // 点击上一页或下一页按钮
         togglePageNum() {
-            let current = this.direction == 'right' ? this.$parent.currentPage + 1 : this.$parent.currentPage - 1
+            let current = this.direction == 'right' ? this.$parent.page + 1 : this.$parent.page - 1
             this.$parent.dynamicPageClick(current)
         }
     }

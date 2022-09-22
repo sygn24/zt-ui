@@ -6,12 +6,12 @@
         <page-num :page="1" />
         <div v-show="!isOnePage" style="display: inline-block">
             <more-btn title="向前5页" direction="left" v-show="!isLessThan10 && showPrevMore" />
-            <page-num v-for="page in dynamicPageArr" :key="page" :page="page" />
+            <page-num v-for="item in dynamicPageArr" :key="item" :page="item" />
             <more-btn title="向后5页" direction="right" v-show="!isLessThan10 && showNextMore" />
             <page-num :page="lastPageNum" />
         </div>
         <toggle-btn direction="right" :page="lastPageNum" :disabled="currentPage === lastPageNum" />
-        <page-num-jumper v-show="showJumper" />
+        <page-num-jumper :page="page" v-show="showJumper" />
     </div>
 </template>
 
@@ -75,7 +75,8 @@ export default {
             showPrevMore: false, //是否显示向后5页按钮
             showNextMore: false, //是否显示向前5页按钮
             dynamicPageArr: [], //动态页码数组
-            size: this.pageSize
+            limit: this.pageSize,
+            page: this.currentPage
         }
     },
     created() {
@@ -85,7 +86,7 @@ export default {
         // 最后一页页码
         lastPageNum() {
             if (this.total <= 0) return 1
-            return Math.ceil(this.total / this.size)
+            return Math.ceil(this.total / this.limit)
         },
         // 是否为一页
         isOnePage() {
@@ -109,13 +110,15 @@ export default {
                 this.dynamicPageArr = Array.from({ length: this.lastPageNum - 2 }, (_, index) => index + 2)
             } else {
                 // 如果大于10页，根据当前页设置动态页码
-                this.setDynamicPage(this.currentPage)
+                this.setDynamicPage(this.page)
             }
             // 初始化当前页码
-            if (this.currentPage > this.lastPageNum) {
+            if (this.page > this.lastPageNum) {
+                this.page = this.lastPageNum
                 this.$emit('update:currentPage', this.lastPageNum)
             }
-            if (this.currentPage < 1) {
+            if (this.page < 1) {
+                this.page = 1
                 this.$emit('update:currentPage', 1)
             }
         },
@@ -132,46 +135,47 @@ export default {
         },
         // 更新当前页
         updateCurrentPage(currentPage) {
+            this.page = currentPage
             this.$emit('update:currentPage', currentPage)
             this.$emit('current-change', currentPage)
         },
-        // // 静态页码点击
-        staticPageClick(currentPage) {
-            if (currentPage === this.currentPage) return
-            this.updateCurrentPage(currentPage)
+        // 静态页码点击
+        staticPageClick(pageNum) {
+            if (pageNum === this.page) return
+            this.updateCurrentPage(pageNum)
             // 如果显示向前or向后5页按钮时，点击第一页or最后一页设置动态页码
             if (this.showPrevMore || this.showNextMore) {
-                this.setDynamicPage(currentPage)
+                this.setDynamicPage(pageNum)
             }
         },
-        // // 动态页码点击
-        dynamicPageClick(currentPage) {
-            if (currentPage === this.currentPage) return
-            this.updateCurrentPage(currentPage)
-            let currentIndex = this.dynamicPageArr.findIndex(page => page === currentPage)
+        // 动态页码点击
+        dynamicPageClick(pageNum) {
+            if (pageNum === this.page) return
+            this.updateCurrentPage(pageNum)
+            let currentIndex = this.dynamicPageArr.findIndex(page => page === pageNum)
             // 如果显示向后5页按钮并且点击的是动态页码最后两项，重新设置动态页码
             if (this.showNextMore && (currentIndex === 3 || currentIndex === 4)) {
-                this.setDynamicPage(currentPage)
+                this.setDynamicPage(pageNum)
             }
             // 如果显示向前5页按钮并且点击的是动态页码前两项，重新设置动态页码
             if (this.showPrevMore && (currentIndex === 0 || currentIndex === 1)) {
-                this.setDynamicPage(currentPage)
+                this.setDynamicPage(pageNum)
             }
         },
         // 每页显示数量改变
-        pageSizeChange(size) {
-            this.size = size
+        pageSizeChange(pageSize) {
+            this.limit = pageSize
             this.initPagination()
-            this.$emit('update:pageSize', size)
-            this.$emit('size-change', size)
+            this.$emit('update:pageSize', pageSize)
+            this.$emit('size-change', pageSize)
         }
     },
     watch: {
         total() {
             this.initPagination()
         },
-        pageSize() {
-            this.initPagination()
+        pageSize(val) {
+            val !== this.limit && this.initPagination()
         }
     }
 }

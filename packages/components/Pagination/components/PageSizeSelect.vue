@@ -20,7 +20,7 @@ export default {
     },
     methods: {
         initPageSizes() {
-            this.value = this.$parent.size
+            this.value = this.$parent.limit
             this.$parent.pageSizes.forEach(page => {
                 let pageItem = {
                     value: page,

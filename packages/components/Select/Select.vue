@@ -87,7 +87,10 @@ export default {
     mounted() {
         this.getOptions()
         this.setLabel()
-        this.mouseupCloseSelect()
+        document.addEventListener('mouseup', e => this.mouseupCloseSelect(e))
+    },
+    beforeDestroy() {
+        document.removeEventListener('mouseup', e => this.mouseupCloseSelect(e))
     },
     computed: {
         styles() {
@@ -127,25 +130,23 @@ export default {
             this.showSelect = !this.showSelect
             this.showSelect && this.calcBottomHeight()
         },
-        // 点击页面其他部分关闭下拉框
-        mouseupCloseSelect() {
-            document.addEventListener('mouseup', e => {
-                let selectContent = this.$refs.selectContent
-                let selectList = this.$refs.selectList
-                if (selectContent || selectList) {
-                    if (selectContent.contains(e.target) || selectList.contains(e.target)) return
-                    else {
-                        this.showSelect = false
-                    }
-                }
-            })
-        },
         // 计算底部剩余高度,当底部高度没有选项列表高时，将选项列表置于上方
         calcBottomHeight() {
             let clientHeight = document.body.clientHeight
             let selectTop = this.$refs.ztSelect.getBoundingClientRect().top
             let selectListHeight = 216
             this.isTop = clientHeight - selectTop < selectListHeight
+        },
+        // 点击页面其他部分关闭下拉框
+        mouseupCloseSelect(e) {
+            let selectContent = this.$refs.selectContent
+            let selectList = this.$refs.selectList
+            if (selectContent || selectList) {
+                if (selectContent.contains(e.target) || selectList.contains(e.target)) return
+                else {
+                    this.showSelect = false
+                }
+            }
         }
     },
     watch: {

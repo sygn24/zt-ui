@@ -57,7 +57,7 @@
             </div>
             <div class="col">
                 <h3>只读</h3>
-                <zt-input readonly v-model="value1"></zt-input>
+                <zt-input readonly v-model="value8"></zt-input>
             </div>
         </div>
         <div class="row">
@@ -81,7 +81,6 @@
             <div class="col">
                 <h3>事件回调</h3>
                 <zt-input
-                    ref="input1"
                     @input="onInput"
                     @focus="foucs1"
                     @blur="blur1"

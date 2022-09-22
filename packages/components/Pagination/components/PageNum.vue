@@ -12,9 +12,9 @@ export default {
         classes() {
             return {
                 small: this.$parent.small,
-                active: !this.$parent.background && this.page === this.$parent.currentPage,
+                active: !this.$parent.background && this.page === this.$parent.page,
                 'bg-color': this.$parent.background,
-                'active-bg-color': this.$parent.background && this.page === this.$parent.currentPage
+                'active-bg-color': this.$parent.background && this.page === this.$parent.page
             }
         }
     },

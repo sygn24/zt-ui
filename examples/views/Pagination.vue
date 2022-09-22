@@ -48,7 +48,7 @@
             </h3>
             <zt-pagination
                 :total="total"
-                :current-page="currentPage8"
+                :current-page.sync="currentPage8"
                 :page-size.sync="pageSize8"
                 :page-sizes="[100, 200, 300, 400, 500]"
                 @size-change="pageSzieChange2"
@@ -87,8 +87,7 @@ export default {
             console.log(page)
         },
         pageSzieChange2(size) {
-            this.$msg(this.pageSize8 + '条/页')
-            console.log(size)
+            this.$msg(size + '条/页')
         },
         pageChange2(page) {
             this.currentPage8 = page
