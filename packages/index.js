@@ -13,6 +13,7 @@ import Switch from './components/Switch'
 import Pagination from './components/Pagination'
 import { Select, Option } from './components/Select'
 import Input from './components/Input'
+import { Radio, RadioGroup } from './components/Radio'
 import { Timeline, TimelineItem } from './components/Timeline'
 import loadingDirective from './components/Loading/directive'
 import "./assets/index.css"
@@ -31,6 +32,8 @@ const components = [
   Select,
   Option,
   Input,
+  Radio,
+  RadioGroup,
   Timeline,
   TimelineItem
 ]

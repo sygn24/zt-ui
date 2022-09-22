@@ -25,8 +25,8 @@ export default {
                 { name: 'Switch开关', path: '/switch' },
                 { name: 'Select选择器', path: '/select' },
                 { name: 'Input输入框', path: '/input' },
+                { name: 'Radio单选框', path: '/radio' },
                 { name: 'Timeline时间轴', path: '/timeline' }
-                // { name: 'radio单选框', path: '/radio' },
                 // { name: 'checkbox复选框', path: '/checkbox' },
                 // { name: 'alert警告', path: '/alert' },
                 // { name: 'notice通知提醒', path: '/notice' },
