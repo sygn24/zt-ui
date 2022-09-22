@@ -8,15 +8,9 @@
             :style="inputStyle"
             :type="showPassword ? (showPwd ? 'text' : 'password') : type"
             :value="value"
-            :name="name"
-            :placeholder="placeholder"
-            :maxlength="maxlength"
             :disabled="disabled"
-            :readonly="readonly"
-            :required="required"
-            :autofocus="autofocus"
-            :autocomplete="autocomplete"
-            @input="handelInput"
+            v-bind="$attrs"
+            @input="$emit('input', $event.target.value)"
             @change="$emit('change', $event.target.value)"
             @blur="$emit('blur', $event.target.value)"
             @focus="$emit('focus', $event.target.value)"
@@ -30,16 +24,10 @@
             :style="inputStyle"
             type="textarea"
             :value="value"
-            :name="name"
-            :placeholder="placeholder"
-            :maxlength="maxlength"
             :rows="rows"
             :disabled="disabled"
-            :readonly="readonly"
-            :required="required"
-            :autofocus="autofocus"
-            :autocomplete="autocomplete"
-            @input="handelInput"
+            v-bind="$attrs"
+            @input="$emit('input', $event.target.value)"
             @change="$emit('change', $event.target.value)"
             @blur="$emit('blur', $event.target.value)"
             @focus="$emit('focus', $event.target.value)"
@@ -53,13 +41,13 @@
             color="var(--plac-text)"
             @click="showPwd = !showPwd"
         />
-        <span class="zt-input-limit" :class="limitTextPosition" v-if="showLimitText">{{ value.length }}/{{ maxlength }}</span>
+        <span class="zt-input-limit" :class="limitTextPosition" v-if="showLimitText">{{ value.length }}/{{ $attrs.maxlength }}</span>
         <span class="zt-input-icon-prefix" v-if="$slots.prefix || showPrefixIcon">
-            <slot name="prefix" />
+            <slot name="prefix" v-if="$slots.prefix" />
             <ZtIcon :icon="prefixIcon" v-if="showPrefixIcon" />
         </span>
         <span class="zt-input-icon-suffix" v-if="$slots.suffix || showSuffixIcon">
-            <slot name="suffix" />
+            <slot name="suffix" v-if="$slots.suffix" />
             <ZtIcon :icon="suffixIcon" v-if="showSuffixIcon" />
         </span>
     </div>
@@ -77,40 +65,13 @@ export default {
             },
             default: 'text'
         },
-        placeholder: {
-            type: String,
-            default: '请输入内容'
-        },
         value: {
             type: [String, Number],
             default: ''
         },
-        name: {
-            type: String,
-            default: ''
-        },
-        maxlength: {
-            type: [String, Number]
-        },
-        required: {
-            type: Boolean,
-            default: false
-        },
         disabled: {
             type: Boolean,
             default: false
-        },
-        readonly: {
-            type: Boolean,
-            default: false
-        },
-        autofocus: {
-            type: Boolean,
-            default: false
-        },
-        autocomplete: {
-            type: String,
-            default: 'off'
         },
         rows: {
             type: Number,
@@ -163,13 +124,13 @@ export default {
             return this.type !== 'textarea' && this.suffixIcon !== '' && (!this.showClear || this.value == '')
         },
         showClearIcon() {
-            return this.type !== 'textarea' && this.clearable && this.showClear && this.value !== '' && !this.showPassword && !this.readonly
+            return this.type !== 'textarea' && this.clearable && this.showClear && this.value !== '' && !this.showPassword
         },
         showEyeIcon() {
             return this.type !== 'textarea' && this.showPassword && (this.showEye || this.value !== '') && !this.showLimit
         },
         showLimitText() {
-            return this.maxlength && this.showLimit && (!this.showClear || this.value == '')
+            return this.$attrs.maxlength && this.showLimit && (!this.showClear || this.value == '')
         },
         limitTextPosition() {
             return this.type == 'textarea' ? 'bottom' : 'center'
@@ -193,9 +154,6 @@ export default {
         inputWrapperLeave() {
             this.clearable && (this.showClear = false)
             this.showPassword && (this.showEye = false)
-        },
-        handelInput(e) {
-            this.$emit('input', e.target.value)
         },
         //暴露的方法
         focus() {

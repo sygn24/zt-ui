@@ -106,6 +106,9 @@ export default {
 </script>
 
 <style lang="less" scoped>
+.page{
+    height: 1200px;
+}
 .row {
     margin-bottom: 20px;
     h3,

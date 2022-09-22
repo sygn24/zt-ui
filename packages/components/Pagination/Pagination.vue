@@ -11,7 +11,7 @@
             <page-num :page="lastPageNum" />
         </div>
         <toggle-btn direction="right" :page="lastPageNum" :disabled="page === lastPageNum" />
-        <page-num-jumper :page.sync="page" v-show="showJumper" />
+        <page-num-jumper :page="page" v-show="showJumper" />
     </div>
 </template>
 
