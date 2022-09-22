@@ -2,7 +2,7 @@
     <div class="zt-pagination">
         <span class="zt-pagination-total" v-show="showTotal">共 {{ Math.ceil(total) }} 条</span>
         <page-size-select v-show="showSizes" @pageSizeChange="pageSizeChange" />
-        <toggle-btn direction="left" :page="1" :disabled="currentPage === 1" />
+        <toggle-btn direction="left" :page="1" :disabled="page === 1" />
         <page-num :page="1" />
         <div v-show="!isOnePage" style="display: inline-block">
             <more-btn title="向前5页" direction="left" v-show="!isLessThan10 && showPrevMore" />
@@ -10,8 +10,8 @@
             <more-btn title="向后5页" direction="right" v-show="!isLessThan10 && showNextMore" />
             <page-num :page="lastPageNum" />
         </div>
-        <toggle-btn direction="right" :page="lastPageNum" :disabled="currentPage === lastPageNum" />
-        <page-num-jumper :page="page" v-show="showJumper" />
+        <toggle-btn direction="right" :page="lastPageNum" :disabled="page === lastPageNum" />
+        <page-num-jumper :page.sync="page" v-show="showJumper" />
     </div>
 </template>
 
@@ -47,6 +47,10 @@ export default {
         },
         // 是否为分页按钮添加背景色
         background: {
+            type: Boolean,
+            default: false
+        },
+        border: {
             type: Boolean,
             default: false
         },

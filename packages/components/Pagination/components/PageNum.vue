@@ -12,9 +12,11 @@ export default {
         classes() {
             return {
                 small: this.$parent.small,
-                active: !this.$parent.background && this.page === this.$parent.page,
-                'bg-color': this.$parent.background,
-                'active-bg-color': this.$parent.background && this.page === this.$parent.page
+                active: this.page === this.$parent.page,
+                'border-model': this.$parent.border ,
+                'active-border-model': this.$parent.border && this.page === this.$parent.page,
+                'bg-model': this.$parent.background && !this.$parent.border,
+                'active-bg-model': this.$parent.background && this.page === this.$parent.page
             }
         }
     },

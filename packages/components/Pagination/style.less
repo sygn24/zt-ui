@@ -12,6 +12,7 @@
     font-weight: 400;
     margin-right: 10px;
   }
+
   & button {
     border: none;
     background: none;
@@ -23,8 +24,9 @@
     height: 30px;
     line-height: 30px;
     min-width: 30px;
-    border-radius: 2px;
+    border-radius: 3px;
     font-weight: 700;
+
     &.allowed:hover {
       color: var(--primary);
     }
@@ -38,6 +40,19 @@
       padding: 0 4px;
       font-size: 12px;
     }
+
+    &.bg-model {
+      background: var(--darker-bg4);
+    }
+
+    &.border-model {
+      border: 1px solid var(--base-border);
+      font-weight: 500;
+
+      &.border-allowed:hover {
+        border: 1px solid var(--primary);
+      }
+    }
   }
 
   &-num {
@@ -48,8 +63,8 @@
     min-width: 30px;
     text-align: center;
     font-weight: 700;
-    border-radius: 2px;
-    margin:0 3px;
+    border-radius: 3px;
+    margin: 0 3px;
     cursor: pointer;
 
     &:hover {
@@ -66,22 +81,33 @@
       font-size: 12px;
     }
 
-    &.bg-color {
+    &.bg-model {
       background: var(--darker-bg4);
     }
 
-    // 激活页样式
+    &.border-model {
+      border: 1px solid var(--base-border);
+      font-weight: 500;
+
+      &:hover {
+        border: 1px solid var(--primary);
+      }
+    }
+
     &.active {
       color: var(--primary);
       cursor: default;
     }
 
     // 激活页带背景色样式
-    &.active-bg-color {
+    &.active-bg-model {
       background: var(--primary);
       color: #fff;
-      cursor: default;
 
+    }
+
+    &.active-border-model {
+      border: 1px solid var(--primary);
     }
   }
 

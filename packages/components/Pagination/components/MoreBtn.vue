@@ -3,7 +3,6 @@
         :title="title"
         class="zt-pagination-num"
         :class="classes"
-        :style="styles"
         @mouseenter="ellipsis = false"
         @mouseleave="ellipsis = true"
         @click="moreBtnClick"
@@ -31,13 +30,11 @@ export default {
         }
     },
     computed: {
-        styles() {
-            return {
-                background: this.$parent.background ? 'var(--darker-bg4)' : ''
-            }
-        },
         classes() {
-            return { small: this.$parent.small }
+            return {
+                small: this.$parent.small,
+                'bg-model': this.$parent.background && !this.$parent.border,
+            }
         }
     },
     methods: {

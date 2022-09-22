@@ -24,14 +24,16 @@ export default {
     computed: {
         styles() {
             return {
-                cursor: this.$parent.page === this.page ? 'not-allowed' : 'pointer',
-                background: this.$parent.background ? 'var(--darker-bg4)' : ''
+                cursor: this.disabled ? 'not-allowed' : 'pointer'
             }
         },
         classes() {
             return {
-                allowed: this.$parent.page !== this.page,
-                small: this.$parent.small
+                allowed: !this.disabled,
+                small: this.$parent.small,
+                'bg-model': this.$parent.background && !this.$parent.border,
+                'border-model': this.$parent.border,
+                'border-allowed': !this.disabled
             }
         }
     },
