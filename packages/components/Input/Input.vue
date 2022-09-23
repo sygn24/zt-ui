@@ -43,11 +43,11 @@
         />
         <span class="zt-input-limit" :class="limitTextPosition" v-if="showLimitText">{{ value.length }}/{{ $attrs.maxlength }}</span>
         <span class="zt-input-icon-prefix" v-if="$slots.prefix || showPrefixIcon">
-            <slot name="prefix" v-if="$slots.prefix" />
+            <slot name="prefix"/>
             <ZtIcon :icon="prefixIcon" v-if="showPrefixIcon" />
         </span>
         <span class="zt-input-icon-suffix" v-if="$slots.suffix || showSuffixIcon">
-            <slot name="suffix" v-if="$slots.suffix" />
+            <slot name="suffix"/>
             <ZtIcon :icon="suffixIcon" v-if="showSuffixIcon" />
         </span>
     </div>

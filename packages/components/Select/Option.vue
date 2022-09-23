@@ -25,7 +25,7 @@ export default {
     },
     methods: {
         selectCurrent() {
-            if (!this.disabled && this.$parent.$options.name === 'ZtSelect') {
+            if (!this.disabled) {
                 this.$parent.updateVal(this.label, this.value)
                 this.$parent.toggleSelect()
             }

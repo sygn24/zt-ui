@@ -16,7 +16,7 @@
 </template>
 
 <script>
-import Star from './Star.vue'
+import Star from './components/Star.vue'
 export default {
     name: 'ZtRate',
     components: { Star },

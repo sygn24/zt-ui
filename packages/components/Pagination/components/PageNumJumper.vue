@@ -2,7 +2,7 @@
     <span>
         <span>前往 </span>
         <zt-input
-            style="width: 50px; height: 30px"
+            style="width: 50px; height: 32px"
             type="number"
             v-model="pageNum"
             :placeholder="placeholder"

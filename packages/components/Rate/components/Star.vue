@@ -1,5 +1,5 @@
 <template>
-    <span class="half">
+    <span class="star-wrapper">
         <ZtIcon class="star" :icon="starIcon" :color="starColor" size="18" />
         <span class="mask1" @mouseenter="enterHalfStar" @mouseleave="leaveHalfStar" @click.stop="clickHalfStar" v-if="allowHalf"></span>
         <span class="mask2" v-if="showHalf" @mouseenter="showHalf = false">
@@ -9,7 +9,7 @@
 </template>
 
 <script>
-import ZtIcon from '../Icon'
+import ZtIcon from '../../Icon'
 export default {
     name: 'Star',
     components: { ZtIcon },
@@ -27,7 +27,7 @@ export default {
             starIcon: 'star',
             starColor: 'var(--base-border)',
             showHalf: false,
-            select: false
+            select: false //是否选择半星
         }
     },
     methods: {
@@ -40,14 +40,14 @@ export default {
             }
         },
         clickHalfStar() {
-            this.select = true //点击选择半星标识，当鼠标离开时不清空选择
+            this.select = true
             this.$emit('clickHalfStar', this.num - 0.5)
         }
     }
 }
 </script>
 <style lang="less" scoped>
-.half {
+.star-wrapper {
     position: relative;
     cursor: pointer;
     .mask1 {

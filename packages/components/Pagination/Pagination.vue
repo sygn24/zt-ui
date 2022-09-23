@@ -40,7 +40,7 @@ export default {
             type: Number,
             default: 10
         },
-        // 每页显示个数选择器的选项设置
+        // 每页显示数量选择器的选项设置
         pageSizes: {
             type: Array,
             default: () => [10, 20, 30, 40, 50]
@@ -50,6 +50,7 @@ export default {
             type: Boolean,
             default: false
         },
+        // 是否为分页按钮添加边框
         border: {
             type: Boolean,
             default: false
@@ -69,6 +70,7 @@ export default {
             type: Boolean,
             default: false
         },
+          // 是否显示输入框跳转
         showJumper: {
             type: Boolean,
             default: false
