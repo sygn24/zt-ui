@@ -5,7 +5,7 @@
             <input style="display: none" type="radio" @click="onClick" :disabled="isDisabled" />
         </span>
         <span class="zt-radio-label" :class="{ disabled: isDisabled }">
-            <slot v-if="$slots.default">Radio</slot>
+            <slot v-if="$slots.default"></slot>
             <span v-else>{{ label }}</span>
         </span>
     </label>
@@ -16,10 +16,10 @@ export default {
     name: 'ZtRadio',
     props: {
         value: {
-            type: [String, Number]
+            type: [String, Number, Boolean]
         },
         label: {
-            type: [String, Number]
+            type: [String, Number, Boolean]
         },
         disabled: {
             type: Boolean,
@@ -75,8 +75,7 @@ export default {
         },
         isButton() {
             return this.isGroup && this.$parent.button
-        },
-        getSize() {}
+        }
     },
     methods: {
         onClick() {
@@ -92,7 +91,7 @@ export default {
     watch: {
         value: {
             handler() {
-                this.isChecked = this.value && this.value === this.label
+                this.isChecked = (this.value && this.value === this.label) || this.value
             },
             immediate: true
         }
