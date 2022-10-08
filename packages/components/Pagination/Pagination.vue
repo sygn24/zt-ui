@@ -134,7 +134,7 @@ export default {
             pageStart = pageStart < 2 ? 2 : pageStart
             pageStart = pageStart > this.lastPageNum - 5 ? this.lastPageNum - 5 : pageStart
             this.dynamicPageArr = Array.from({ length: 5 }, (_, index) => index + pageStart)
-            // 设置是否显示向前or向后5页按钮
+            // 设置是否显示向前或向后5页按钮
             let lastIndex = this.dynamicPageArr.length - 1
             this.showPrevMore = this.dynamicPageArr[0] === 2 ? false : true
             this.showNextMore = this.dynamicPageArr[lastIndex] === this.lastPageNum - 1 ? false : true
@@ -149,7 +149,7 @@ export default {
         staticPageClick(pageNum) {
             if (pageNum === this.page) return
             this.updateCurrentPage(pageNum)
-            // 如果显示向前or向后5页按钮时，点击第一页or最后一页设置动态页码
+            // 如果显示向前or向后5页按钮时，点击第一页或最后一页设置动态页码
             if (this.showPrevMore || this.showNextMore) {
                 this.setDynamicPage(pageNum)
             }

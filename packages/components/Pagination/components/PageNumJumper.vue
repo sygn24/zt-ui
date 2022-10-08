@@ -1,14 +1,7 @@
 <template>
     <span>
         <span>前往 </span>
-        <zt-input
-            style="width: 50px; height: 32px"
-            type="number"
-            v-model="pageNum"
-            :placeholder="placeholder"
-            @blur="tooglePage"
-            @keyupEnter="tooglePage"
-        ></zt-input>
+        <zt-input style="width: 50px; height: 32px" type="number" v-model="pageNum" @blur="tooglePage" @keyupEnter="tooglePage"></zt-input>
         <span> 页</span>
     </span>
 </template>
@@ -23,7 +16,6 @@ export default {
     },
     data() {
         return {
-            placeholder: '',
             pageNum: this.page
         }
     },
