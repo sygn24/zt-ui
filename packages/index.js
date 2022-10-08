@@ -14,6 +14,7 @@ import Pagination from './components/Pagination'
 import { Select, Option } from './components/Select'
 import Input from './components/Input'
 import { Radio, RadioGroup } from './components/Radio'
+import { Checkbox, CheckboxGroup } from './components/Checkbox'
 import { Timeline, TimelineItem } from './components/Timeline'
 import loadingDirective from './components/Loading/directive'
 import "./assets/index.css"
@@ -34,6 +35,8 @@ const components = [
   Input,
   Radio,
   RadioGroup,
+  Checkbox,
+  CheckboxGroup,
   Timeline,
   TimelineItem
 ]

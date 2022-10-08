@@ -26,10 +26,8 @@ export default {
                 { name: 'Select选择器', path: '/select' },
                 { name: 'Input输入框', path: '/input' },
                 { name: 'Radio单选框', path: '/radio' },
+                { name: 'checkbox复选框', path: '/checkbox' },
                 { name: 'Timeline时间轴', path: '/timeline' }
-                // { name: 'checkbox复选框', path: '/checkbox' },
-                // { name: 'alert警告', path: '/alert' },
-                // { name: 'notice通知提醒', path: '/notice' },
                 // { name: 'poptip气泡提示', path: '/poptip' },
                 // { name: 'circle进度环', path: '/circle' },
                 // { name: 'swiper轮播图', path: '/swiper' },
