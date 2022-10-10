@@ -1,12 +1,12 @@
 <template>
     <label class="zt-checkbox" :class="wrapperClass">
         <span class="zt-checkbox-outer">
-            <span class="zt-checkbox-inner" :class="innerClass" v-if="!isButton">
-                <zt-icon icon="select" :color="iconColor" size="12"></zt-icon>
+            <span class="zt-checkbox-inner" :class="innerClass" v-if="!isButton || checkAllBtn">
+                <zt-icon icon="select" :color="iconColor" size="12" style="font-weight: 700"></zt-icon>
             </span>
-            <input style="display: none" type="checkbox" @click="onClick" :disabled="isDisabled" />
+            <input style="display: none" type="checkbox" @change="onClick" :disabled="isDisabled" />
         </span>
-        <span class="zt-checkbox-label" :class="{ disabled: isDisabled }">
+        <span class="zt-checkbox-label">
             <slot v-if="$slots.default"></slot>
             <span v-else>{{ label }}</span>
         </span>
@@ -39,6 +39,10 @@ export default {
             validator: size => {
                 return ['large', 'medium', 'small'].includes(size)
             }
+        },
+        name: {
+            type: String,
+            default: 'zt-checkbox'
         }
     },
     model: {
@@ -49,9 +53,6 @@ export default {
         return {
             isChecked: false
         }
-    },
-    mounted() {
-        this.init()
     },
     computed: {
         wrapperClass() {
@@ -66,8 +67,9 @@ export default {
         },
         innerClass() {
             return {
-                checked: this.isChecked,
-                disabled: this.isDisabled
+                checked: this.isChecked || (this.checkAllBtn && this.$parent.checkSome),
+                disabled: this.isDisabled,
+                checksome: this.checkAllBtn && this.$parent.checkSome && !this.$parent.checkAll
             }
         },
         iconColor() {
@@ -92,26 +94,22 @@ export default {
         },
         isButton() {
             return this.isGroup && this.$parent.button
+        },
+        checkAllBtn() {
+            return this.isGroup && this.name === 'zt-checkbox-all'
         }
     },
     methods: {
-        init() {
-            if (this.isGroup) {
-                this.isChecked = this.$parent.options.includes(this.label)
-            } else {
-                this.isChecked = this.value
-            }
-        },
         onClick() {
-            if (this.isGroup) {
+            if (this.isGroup && !this.checkAllBtn) {
                 this.isChecked = !this.isChecked
                 if (this.isChecked) {
-                    this.$parent.options.push(this.label)
+                    this.$parent.checkboxOptions.push(this.label)
                 } else {
-                    let index = this.$parent.options.findIndex(item => item == this.label)
-                    this.$parent.options.splice(index, 1)
+                    let index = this.$parent.checkboxOptions.findIndex(item => item == this.label)
+                    this.$parent.checkboxOptions.splice(index, 1)
                 }
-                this.$parent.updateVal()
+                !this.$parent.isClickAll && this.$parent.updateVal()
             } else {
                 if (typeof this.value == 'boolean') {
                     this.isChecked = !this.isChecked
@@ -123,7 +121,7 @@ export default {
     watch: {
         value: {
             handler() {
-                if (!this.isGroup) {
+                if (!this.isGroup || this.checkAllBtn) {
                     this.isChecked = this.value
                 }
             },
