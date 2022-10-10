@@ -4,7 +4,7 @@
             <span class="zt-radio-inner" :class="innerClass" v-if="!isButton"></span>
             <input style="display: none" type="radio" @click="onClick" :disabled="isDisabled" />
         </span>
-        <span class="zt-radio-label" :class="{ disabled: isDisabled }">
+        <span class="zt-radio-label">
             <slot v-if="$slots.default"></slot>
             <span v-else>{{ label }}</span>
         </span>
