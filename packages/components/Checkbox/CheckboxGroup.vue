@@ -1,6 +1,6 @@
 <template>
     <div style="display: inline-block">
-        <div style="margin-bottom: 10px" v-if="showCheckAll">
+        <div v-if="showCheckAll">
             <zt-checkbox
                 name="zt-checkbox-all"
                 :border="checkAllBorder"

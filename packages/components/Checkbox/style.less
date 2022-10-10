@@ -1,6 +1,7 @@
 .zt-checkbox {
   display: inline-block;
   margin-right: 20px;
+  margin-bottom: 10px;
   cursor: pointer;
   user-select: none;
   transition: all .15s ease-out;
@@ -102,7 +103,6 @@
 
 .zt-checkbox-group {
   display: inline-block;
-  white-space: nowrap;
 
   .zt-checkbox:last-child {
     margin-right: 0;
@@ -110,6 +110,8 @@
   }
 
   &.button {
+    white-space: nowrap;
+
     .zt-checkbox {
       display: inline-block;
       border: 1px solid var(--base-border);

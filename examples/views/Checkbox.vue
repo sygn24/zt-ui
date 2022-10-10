@@ -196,13 +196,13 @@ export default {
             console.log(val)
             console.log(this.value4)
         },
-        checkAllChange(val){
+        checkAllChange(val) {
             console.log(val)
-            console.log(this.value44);
+            console.log(this.value44)
         },
-        groupChange2(val){
+        groupChange2(val) {
             console.log(val)
-            console.log(this.value44);
+            console.log(this.value44)
         }
     }
 }
