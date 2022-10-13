@@ -1,0 +1,45 @@
+.zt-form-item-wrapper {
+  position: relative;
+  margin-bottom: 20px;
+}
+
+.zt-form-item {
+  display: flex;
+  align-items: center;
+  &-label {
+    text-align: right;
+    padding: 0 10px 0 0;
+    vertical-align: middle;
+
+    .required-star {
+      padding-right: 4px;
+      color: red;
+    }
+  }
+}
+
+
+
+.error-tips {
+  color: var(--danger);
+  font-size: 12px;
+  line-height: 1;
+  padding-top: 4px;
+  position: absolute;
+}
+
+.error-fade-enter,
+.error-fade-leave-to {
+  transform: translateY(-10px);
+  opacity: 0;
+}
+.error-fade-enter-to,
+.error-fade-leave {
+    transform: translateY(0px);
+    opacity: 1;
+}
+
+.error-fade-enter-active,
+.error-fade-leave-active {
+  transition: all 0.3s;
+}

@@ -27,6 +27,7 @@ export default {
                 { name: 'Input输入框', path: '/input' },
                 { name: 'Radio单选框', path: '/radio' },
                 { name: 'Checkbox复选框', path: '/checkbox' },
+                { name: 'From表单', path: '/form' },
                 { name: 'Timeline时间轴', path: '/timeline' }
                 // { name: 'poptip气泡提示', path: '/poptip' },
                 // { name: 'circle进度环', path: '/circle' },

@@ -1,13 +1,13 @@
 .zt-checkbox {
   display: inline-block;
   margin-right: 20px;
-  margin-bottom: 10px;
   cursor: pointer;
   user-select: none;
   transition: all .15s ease-out;
 
   &.checked {
     color: var(--primary);
+
   }
 
   &.disabled {
@@ -21,11 +21,10 @@
 
     &.checked {
       border-color: var(--primary);
-      color: var(--primary);
+    }
 
-      &.disabled {
-        border-color: var(--base-border);
-      }
+    &.disabled {
+      border-color: var(--base-border);
     }
 
     &.medium {
@@ -81,10 +80,16 @@
           background-color: #fff;
           transition: transform 0.15s ease-out;
         }
+
+        &.disabled {
+          &::after {
+            background-color: red;
+          }
+        }
       }
 
       &.disabled {
-        border: 1px solid var(--base-border);
+        border-color: var(--base-border);
       }
     }
 

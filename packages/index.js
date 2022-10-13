@@ -15,6 +15,7 @@ import { Select, Option } from './components/Select'
 import Input from './components/Input'
 import { Radio, RadioGroup } from './components/Radio'
 import { Checkbox, CheckboxGroup } from './components/Checkbox'
+import { Form, FormItem } from './components/Form'
 import { Timeline, TimelineItem } from './components/Timeline'
 import loadingDirective from './components/Loading/directive'
 import "./assets/index.css"
@@ -37,6 +38,8 @@ const components = [
   RadioGroup,
   Checkbox,
   CheckboxGroup,
+  Form,
+  FormItem,
   Timeline,
   TimelineItem
 ]

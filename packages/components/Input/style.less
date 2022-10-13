@@ -4,6 +4,7 @@
   vertical-align: middle;
   line-height: 1.5;
   font-size: 14px;
+
   &-icon-prefix {
     position: absolute;
     left: 5px;
@@ -64,8 +65,19 @@
       background: var(--disabled-bg);
       cursor: not-allowed;
       color: var(--disabled-text);
+
       &:hover {
         border-color: var(--base-border);
+      }
+    }
+
+    &.validate {
+      border-color: var(--danger);
+
+      &:hover,
+      &:focus {
+        border-color: var(--danger);
+        box-shadow: none;
       }
     }
 

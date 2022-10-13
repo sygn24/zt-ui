@@ -94,6 +94,11 @@ const routes = [
 		name: "Checkbox",
 		component: () => import("../views/Checkbox.vue"),
 	},
+	{
+		path: "/form",
+		name: "Form",
+		component: () => import("../views/Form.vue"),
+	},
 
 ];
 

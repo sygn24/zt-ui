@@ -10,9 +10,9 @@
             :value="value"
             :disabled="disabled"
             v-bind="$attrs"
-            @input="$emit('input', $event.target.value)"
-            @change="$emit('change', $event.target.value)"
-            @blur="$emit('blur', $event.target.value)"
+            @input="handleEvent($event, 'input')"
+            @change="handleEvent($event, 'change')"
+            @blur="handleEvent($event, 'blur')"
             @focus="$emit('focus', $event.target.value)"
             @keyup.enter="$emit('keyupEnter', $event)"
         />
@@ -27,13 +27,13 @@
             :rows="rows"
             :disabled="disabled"
             v-bind="$attrs"
-            @input="$emit('input', $event.target.value)"
-            @change="$emit('change', $event.target.value)"
-            @blur="$emit('blur', $event.target.value)"
+            @input="handleEvent($event, 'input')"
+            @change="handleEvent($event, 'change')"
+            @blur="handleEvent($event, 'blur')"
             @focus="$emit('focus', $event.target.value)"
             @keyup.enter="$emit('keyupEnter', $event)"
         />
-        <ZtIcon v-if="showClearIcon" class="zt-input-icon-suffix function" icon="clear" size="12" @click="$emit('input', '')" />
+        <ZtIcon v-if="showClearIcon" class="zt-input-icon-suffix function" icon="clear" size="12" @click="clearValue" />
         <ZtIcon
             v-if="showEyeIcon"
             class="zt-input-icon-suffix function"
@@ -43,11 +43,11 @@
         />
         <span class="zt-input-limit" :class="limitTextPosition" v-if="showLimitText">{{ value.length }}/{{ $attrs.maxlength }}</span>
         <span class="zt-input-icon-prefix" v-if="$slots.prefix || showPrefixIcon">
-            <slot name="prefix"/>
+            <slot name="prefix" />
             <ZtIcon :icon="prefixIcon" v-if="showPrefixIcon" />
         </span>
         <span class="zt-input-icon-suffix" v-if="$slots.suffix || showSuffixIcon">
-            <slot name="suffix"/>
+            <slot name="suffix" />
             <ZtIcon :icon="suffixIcon" v-if="showSuffixIcon" />
         </span>
     </div>
@@ -107,7 +107,8 @@ export default {
         },
         inputClass() {
             return {
-                disabled: this.disabled
+                disabled: this.disabled,
+                validate: this.validate
             }
         },
         inputStyle() {
@@ -137,13 +138,17 @@ export default {
         },
         getInput() {
             return this.$refs.input || this.$refs.textarea
+        },
+        parent() {
+            return this.$parent.$options.name === 'ZtFormItem'
         }
     },
     data() {
         return {
             showClear: false,
             showPwd: false,
-            showEye: false
+            showEye: false,
+            validate: false
         }
     },
     methods: {
@@ -154,6 +159,18 @@ export default {
         inputWrapperLeave() {
             this.clearable && (this.showClear = false)
             this.showPassword && (this.showEye = false)
+        },
+        handleEvent(e, eventName) {
+            this.$emit(eventName, e.target.value)
+            if (this.parent && this.$parent.getTrigger === eventName) {
+                this.$parent.startValidate()
+            }
+        },
+        clearValue() {
+            this.$emit('input', '')
+            if (this.parent) {
+                this.$parent.startValidate()
+            }
         },
         //暴露的方法
         focus() {

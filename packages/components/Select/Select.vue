@@ -1,5 +1,5 @@
 <template>
-    <div ref="ztSelect" class="zt-select" :class="{ disabled: disabled }" :style="styles">
+    <div ref="ztSelect" class="zt-select" :class="{ disabled: disabled, validate: validate }" :style="styles">
         <div
             ref="selectContent"
             class="zt-select-content"
@@ -15,7 +15,7 @@
                 icon="clear"
                 :size="fontSize"
                 class="zt-select-content-icon"
-                @click.stop="updateVal('', '')"
+                @click.stop="clearValue"
             />
             <ZtIcon
                 v-else
@@ -81,7 +81,8 @@ export default {
             label: '',
             options: [],
             showClear: false,
-            isTop: false // 选项列表是否位于上方
+            isTop: false, // 选项列表是否位于上方
+            validate: false
         }
     },
     mounted() {
@@ -124,6 +125,13 @@ export default {
         updateVal(label, value) {
             this.$emit('valueChange', value)
             label !== '' && this.$emit('onChange', label)
+            if (this.$parent.$options.name === 'ZtFormItem' && this.$parent.isRequired) {
+                this.$parent.startValidate()
+            }
+        },
+        clearValue() {
+            this.updateVal('', '')
+            this.showSelect && this.toggleSelect()
         },
         toggleSelect() {
             if (this.disabled) return

@@ -59,6 +59,9 @@ export default {
         },
         updateVal(val) {
             this.$emit('change', val)
+            if (this.$parent.$options.name === 'ZtFormItem' && this.$parent.isRequired) {
+                this.$parent.startValidate()
+            }
         }
     },
     watch: {

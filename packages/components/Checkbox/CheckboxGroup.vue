@@ -1,6 +1,6 @@
 <template>
     <div style="display: inline-block">
-        <div v-if="showCheckAll">
+        <div v-if="showCheckAll" style="margin-bottom: 10px">
             <zt-checkbox
                 name="zt-checkbox-all"
                 :border="checkAllBorder"
@@ -76,6 +76,7 @@ export default {
     methods: {
         updateVal() {
             this.$emit('change', this.checkboxOptions)
+            this.startValidate()
         },
         getCheckboxs() {
             this.checkboxs = this.$children.filter(item => item.$options.name === 'ZtCheckbox' && item.name !== 'zt-checkbox-all')
@@ -93,6 +94,7 @@ export default {
                 })
             }
             this.$emit('checkAllChange', this.checkboxOptions)
+            this.startValidate()
             this.isClickAll = false
         },
         // 设置全选按钮状态
@@ -111,6 +113,11 @@ export default {
             this.checkboxs.forEach(item => {
                 item.isChecked = this.checkboxOptions.includes(item.label)
             })
+        },
+        startValidate() {
+            if (this.$parent.$options.name === 'ZtFormItem' && this.$parent.isRequired) {
+                this.$parent.startValidate()
+            }
         }
     },
     watch: {
