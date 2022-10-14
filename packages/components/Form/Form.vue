@@ -16,15 +16,24 @@ export default {
         },
         labelWidth: {
             type: String
+        },
+        labelPosition: {
+            type: String,
+            default: 'right'
+        },
+        inline: {
+            type: Boolean,
+            default: false
+        },
+        disabled: {
+            type: Boolean,
+            default: false
         }
     },
     provide() {
         return {
             ZtForm: this
         }
-    },
-    data() {
-        return {}
     },
     methods: {
         validate(cb) {

@@ -1,5 +1,5 @@
 <template>
-    <button :class="btnClass" :style="btnStyle" :disabled="disabled" @click="handleClick">
+    <button :class="btnClass" :style="btnStyle" :disabled="isDisabled" @click="handleClick">
         <ZtIcon class="loading-loop" icon="loading" v-if="loading" />
         <ZtIcon :icon="icon" :custom="customIcon" v-if="(icon || customIcon) && !loading" />
         <span style="padding: 0 2px" v-if="$slots.default">
@@ -85,6 +85,11 @@ export default {
             default: ''
         }
     },
+    data() {
+        return {
+            isDisabled: this.disabled
+        }
+    },
     computed: {
         btnClass() {
             return [
@@ -92,12 +97,12 @@ export default {
                 `${prefixCls}--${this.type}`,
                 `${prefixCls}--${this.size}`,
                 {
-                    [`${prefixCls}-hover`]: !this.disabled && !this.loading,
-                    [`${prefixCls}-focus`]: !this.disabled && !this.loading,
+                    [`${prefixCls}-hover`]: !this.isDisabled && !this.loading,
+                    [`${prefixCls}-focus`]: !this.isDisabled && !this.loading,
                     'is-round': this.round,
                     'is-circle': this.circle,
-                    'is-shake': this.shake && !this.disabled && !this.loading,
-                    'is-disabled': this.disabled,
+                    'is-shake': this.shake && !this.isDisabled && !this.loading,
+                    'is-disabled': this.isDisabled,
                     'is-loading': this.loading
                 }
             ]

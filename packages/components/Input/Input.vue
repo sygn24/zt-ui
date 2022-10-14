@@ -8,7 +8,7 @@
             :style="inputStyle"
             :type="showPassword ? (showPwd ? 'text' : 'password') : type"
             :value="value"
-            :disabled="disabled"
+            :disabled="isDisabled"
             v-bind="$attrs"
             @input="handleEvent($event, 'input')"
             @change="handleEvent($event, 'change')"
@@ -25,7 +25,7 @@
             type="textarea"
             :value="value"
             :rows="rows"
-            :disabled="disabled"
+            :disabled="isDisabled"
             v-bind="$attrs"
             @input="handleEvent($event, 'input')"
             @change="handleEvent($event, 'change')"
@@ -101,13 +101,13 @@ export default {
     computed: {
         styles() {
             return {
-                width: this.type == 'textarea' ? '400px' : '200px',
-                height: this.type == 'textarea' ? `${this.rows * 32}px` : '32px'
+                width: this.type == 'textarea' ? '400px' : '240px',
+                height: this.type == 'textarea' ? `${this.rows * 40}px` : '40px'
             }
         },
         inputClass() {
             return {
-                disabled: this.disabled,
+                disabled: this.isDisabled,
                 validate: this.validate
             }
         },
@@ -145,6 +145,7 @@ export default {
     },
     data() {
         return {
+            isDisabled:this.disabled,
             showClear: false,
             showPwd: false,
             showEye: false,

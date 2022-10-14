@@ -22,7 +22,7 @@
         </div>
         <div class="row">
             <h3>只读</h3>
-            <zt-rate v-model="value3" :count="5" disabled>
+            <zt-rate v-model="value3" :count="5" disabled half>
                 <span style="color: var(--warning)">{{ value3 }} 分</span>
             </zt-rate>
         </div>
@@ -39,7 +39,7 @@ export default {
             value3: 2,
             value4: 3.5
         }
-    },
+    }
 }
 </script>
 

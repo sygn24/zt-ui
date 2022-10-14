@@ -1,7 +1,7 @@
 <template>
-    <div class="zt-form-item-wrapper">
-        <div class="zt-form-item">
-            <label class="zt-form-item-label" :style="{ width: ZtForm.labelWidth }">
+    <div class="zt-form-item-wrapper" :class="{ inline: ZtForm.inline }">
+        <div class="zt-form-item" :style="{ display: ZtForm.labelPosition === 'top' ? 'block' : 'flex' }">
+            <label class="zt-form-item-label" :style="labelStyle">
                 <span class="required-star" v-if="isRequired">*</span>
                 <span>{{ label }}</span>
             </label>
@@ -30,6 +30,10 @@ export default {
         required: {
             type: Boolean,
             default: false
+        },
+        disabled: {
+            type: Boolean,
+            default: false
         }
     },
     data() {
@@ -37,12 +41,26 @@ export default {
             error: ''
         }
     },
+    mounted() {
+        this.setIsDisabled(this.isDisabled)
+    },
     computed: {
         isRequired() {
             return this.required || (this.ZtForm.rules && this.prop && (this.ZtForm.rules[this.prop] || []).some(con => con.required))
         },
+        isDisabled() {
+            return this.ZtForm.disabled || this.disabled
+        },
         getTrigger() {
             return this.ZtForm.rules && this.ZtForm.rules[this.prop] && this.ZtForm.rules[this.prop][0].trigger
+        },
+        labelStyle() {
+            return {
+                width: this.ZtForm.labelWidth,
+                textAlign: this.ZtForm.labelPosition === 'top' ? 'left' : this.ZtForm.labelPosition,
+                display: this.ZtForm.labelPosition === 'top' ? 'block' : '',
+                marginBottom: this.ZtForm.labelPosition === 'top' ? '5px' : ''
+            }
         }
     },
     methods: {
@@ -54,7 +72,6 @@ export default {
                       [`${this.prop}`]: rules[this.prop]
                   }
                 : {}
-
             let validator = new schema(descriptor)
 
             return validator.validate(
@@ -78,6 +95,18 @@ export default {
             if (this.$children.length && this.$children[0].validate) {
                 this.$children[0].validate = false
             }
+        },
+        setIsDisabled(val) {
+            if (this.$children.length) {
+                this.$children.forEach(item => {
+                    item.isDisabled = val
+                })
+            }
+        }
+    },
+    watch: {
+        isDisabled(val) {
+            this.setIsDisabled(val)
         }
     }
 }

@@ -37,7 +37,8 @@ export default {
     },
     data() {
         return {
-            radios: []
+            radios: [],
+            isDisabled:this.disabled
         }
     },
     mounted() {

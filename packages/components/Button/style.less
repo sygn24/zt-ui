@@ -25,6 +25,15 @@
 			border: 1px solid var(--primary);
 			color: var(--primary);
 		}
+
+		&.is-disabled {
+
+			&:hover,
+			&:focus {
+				border-color: var(--base-border);
+				color: var(--primary-text);
+			}
+		}
 	}
 
 	&--dashed {
@@ -37,6 +46,15 @@
 			border: 1px dashed var(--primary);
 			color: var(--primary);
 		}
+
+		&.is-disabled {
+
+			&:hover,
+			&:focus {
+				border-color: var(--base-border);
+				color: var(--primary-text);
+			}
+		}
 	}
 
 	&--text {
@@ -47,6 +65,14 @@
 		&:hover,
 		&:focus {
 			color: var(--primary);
+		}
+
+		&.is-disabled {
+
+			&:hover,
+			&:focus {
+				color: var(--primary-text);
+			}
 		}
 	}
 

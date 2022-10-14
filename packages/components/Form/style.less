@@ -1,13 +1,18 @@
 .zt-form-item-wrapper {
   position: relative;
   margin-bottom: 20px;
+
+  &.inline {
+    display: inline-block;
+    margin-right: 10px;
+  }
 }
 
 .zt-form-item {
   display: flex;
   align-items: center;
+
   &-label {
-    text-align: right;
     padding: 0 10px 0 0;
     vertical-align: middle;
 
@@ -33,10 +38,11 @@
   transform: translateY(-10px);
   opacity: 0;
 }
+
 .error-fade-enter-to,
 .error-fade-leave {
-    transform: translateY(0px);
-    opacity: 1;
+  transform: translateY(0px);
+  opacity: 1;
 }
 
 .error-fade-enter-active,

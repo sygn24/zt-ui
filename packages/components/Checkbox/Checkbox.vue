@@ -83,8 +83,8 @@ export default {
             return color
         },
         isDisabled() {
-            if (this.isGroup && this.$parent.disabled) {
-                return this.$parent.disabled
+            if (this.isGroup && this.$parent.isDisabled) {
+                return this.$parent.isDisabled
             } else {
                 return this.disabled
             }

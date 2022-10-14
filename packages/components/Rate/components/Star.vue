@@ -2,7 +2,7 @@
     <span class="star-wrapper">
         <ZtIcon class="star" :icon="starIcon" :color="starColor" size="18" />
         <span class="mask1" @mouseenter="enterHalfStar" @mouseleave="leaveHalfStar" @click.stop="clickHalfStar" v-if="allowHalf"></span>
-        <span class="mask2" v-if="showHalf" @mouseenter="showHalf = false">
+        <span class="mask2" v-if="showHalf" @mouseenter="mask2Enter">
             <ZtIcon icon="star-fill" color="var(--base-border)" size="18" />
         </span>
     </span>
@@ -32,12 +32,17 @@ export default {
     },
     methods: {
         enterHalfStar() {
+            if (this.$parent.isDisabled) return
             this.showHalf = true
         },
         leaveHalfStar() {
             if (!this.select) {
                 this.showHalf = false
             }
+        },
+        mask2Enter() {
+            if (this.$parent.isDisabled) return
+            this.showHalf = false
         },
         clickHalfStar() {
             this.select = true
@@ -67,12 +72,12 @@ export default {
         .zt-icon {
             position: absolute;
             left: -9px;
-            transition: all 0.3s ease-out;
+            transition: all 0.15s ease-out;
         }
     }
 }
 .star {
     padding: 0 3px;
-    transition: all 0.3s ease-out;
+    transition: all 0.15s ease-out;
 }
 </style>

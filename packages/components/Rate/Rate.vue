@@ -40,6 +40,10 @@ export default {
         disabled: {
             type: Boolean,
             default: false
+        },
+        color: {
+            type: String,
+            default: 'var(--warning)'
         }
     },
     model: {
@@ -47,24 +51,25 @@ export default {
         event: 'onChange'
     },
     mounted() {
-        this.getStars()
         this.setLightStar(this.value)
     },
     data() {
         return {
             stars: [],
-            isSet: false
+            isSet: false,
+            isDisabled: this.disabled
         }
     },
     methods: {
-        getStars() {
-            this.stars = this.$children
-        },
         // 根据当前索引设置对应star实例的颜色
         setStarColor(item, index, num) {
             if (index < num) {
                 item.starIcon = 'star-fill'
-                item.starColor = 'var(--warning)'
+                if (!this.isDisabled) {
+                    item.starColor = this.color
+                } else {
+                    item.starColor = 'var(--darker-bg1)'
+                }
             } else {
                 item.starIcon = 'star'
                 item.starColor = 'var(--base-border)'
@@ -74,7 +79,7 @@ export default {
             let isFloat = String(num).indexOf('.') //检测小数
             num = Math.ceil(num) //向上取整
             // 遍历star实例数组，设置对应星星高亮
-            this.stars.forEach((item, index) => {
+            this.$children.forEach((item, index) => {
                 this.setStarColor(item, index, num)
                 if (!this.half) return
                 // 如果isFloat!==-1则设置当前选择的star为半星
@@ -87,8 +92,8 @@ export default {
             })
         },
         enterStar(num) {
-            if (this.disabled) return
-            this.stars.forEach((item, index) => {
+            if (this.isDisabled) return
+            this.$children.forEach((item, index) => {
                 this.setStarColor(item, index, num)
                 if (!this.half) return
                 // 鼠标经过其他 非半颗星时，清空当前的半星
@@ -97,20 +102,25 @@ export default {
             this.isSet = false
         },
         clickStar(num) {
-            if (this.disabled) return
+            if (this.isDisabled) return
             this.setLightStar(num)
             this.$emit('onChange', num)
             this.isSet = true
         },
         // 点击设置半星
         clickHalfStar(num) {
-            if (this.disabled) return
+            if (this.isDisabled) return
             this.clickStar(num)
         },
         mouseLeave() {
-            if (this.disabled) return
+            if (this.isDisabled) return
             // 点击设置过后 鼠标移出就不再设置
             !this.isSet && this.setLightStar(this.value)
+        }
+    },
+    watch: {
+        isDisabled(val) {
+            this.setLightStar(this.value)
         }
     }
 }

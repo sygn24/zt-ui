@@ -1,5 +1,5 @@
 <template>
-    <div ref="ztSelect" class="zt-select" :class="{ disabled: disabled, validate: validate }" :style="styles">
+    <div ref="ztSelect" class="zt-select" :class="{ disabled: isDisabled, validate: validate }" :style="styles">
         <div
             ref="selectContent"
             class="zt-select-content"
@@ -82,7 +82,8 @@ export default {
             options: [],
             showClear: false,
             isTop: false, // 选项列表是否位于上方
-            validate: false
+            validate: false,
+            isDisabled: this.disabled
         }
     },
     mounted() {
@@ -134,7 +135,7 @@ export default {
             this.showSelect && this.toggleSelect()
         },
         toggleSelect() {
-            if (this.disabled) return
+            if (this.isDisabled) return
             this.showSelect = !this.showSelect
             this.showSelect && this.calcBottomHeight()
         },

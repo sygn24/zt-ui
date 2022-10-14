@@ -55,7 +55,8 @@ export default {
     },
     data() {
         return {
-            isChecked: this.value
+            isChecked: this.value,
+            isDisabled:this.disabled
         }
     },
     computed: {
@@ -69,7 +70,7 @@ export default {
                 `${prefixCls}`,
                 `${prefixCls}-${this.size}`,
                 {
-                    [`${prefixCls}-disabled`]: this.disabled,
+                    [`${prefixCls}-disabled`]: this.isDisabled,
                     checked: this.isChecked,
                     loading: this.loading
                 }
@@ -84,7 +85,7 @@ export default {
     },
     methods: {
         toggle() {
-            if (this.disabled) return
+            if (this.isDisabled) return
             if (this.loading) return
             this.isChecked = !this.isChecked
             this.$emit('onChange', this.isChecked)

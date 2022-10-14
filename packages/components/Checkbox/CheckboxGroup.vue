@@ -65,7 +65,8 @@ export default {
             checkboxs: [],
             checkAll: false,
             checkSome: false,
-            isClickAll: false
+            isClickAll: false,
+            isDisabled: this.disabled
         }
     },
     mounted() {

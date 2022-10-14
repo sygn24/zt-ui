@@ -1,45 +1,84 @@
 <template>
     <div>
         <div class="row">
-            <zt-form ref="form" :model="formdata" :rules="rules" label-width="80px">
-                <zt-form-item label="活动名称" prop="name">
-                    <zt-input placeholder="请输入活动名称" v-model="formdata.name" clearable style="width: 220px; height: 40px" />
-                </zt-form-item>
-                <zt-form-item label="活动区域" prop="area">
-                    <zt-select placeholder="请选择活动区域" v-model="formdata.area" clearable style="width: 220px; height: 40px">
-                        <zt-option v-for="item in options" :key="item.value" :label="item.label" :value="item.value"></zt-option>
-                    </zt-select>
-                </zt-form-item>
-                <zt-form-item label="即时配送" prop="delivery">
-                    <zt-switch v-model="formdata.delivery"></zt-switch>
-                </zt-form-item>
-                <zt-form-item label="星级" prop="rate">
-                    <zt-rate v-model="formdata.rate" :count="8" half>
-                        <span style="color: var(--primary)">{{ formdata.rate }} 星</span>
-                    </zt-rate>
-                </zt-form-item>
-                <zt-form-item label="活动性质" prop="type">
-                    <zt-checkbox-group v-model="formdata.type">
-                        <zt-checkbox label="美食/餐厅线上活动"></zt-checkbox>
-                        <zt-checkbox label="地推活动"></zt-checkbox>
-                        <zt-checkbox label="线下主题活动"></zt-checkbox>
-                        <zt-checkbox label="单纯品牌曝光"></zt-checkbox>
-                    </zt-checkbox-group>
-                </zt-form-item>
-                <zt-form-item label="特殊资源" prop="resource">
-                    <zt-radio-group v-model="formdata.resource">
-                        <zt-radio label="线上品牌商赞助"></zt-radio>
-                        <zt-radio label="线下场地免费"></zt-radio>
-                    </zt-radio-group>
-                </zt-form-item>
-                <zt-form-item label="活动形式" prop="desc">
-                    <zt-input type="textarea" v-model="formdata.desc" maxlength="100" show-limit />
-                </zt-form-item>
-                <zt-form-item>
-                    <zt-button type="primary" style="margin-right: 15px" @click="submit">立即创建</zt-button>
-                    <zt-button @click="reset">重置</zt-button>
-                </zt-form-item>
-            </zt-form>
+            <div class="col">
+                <h3>表单标签对齐方式</h3>
+                <zt-radio-group v-model="labelPosition" button>
+                    <zt-radio label="left">左对齐</zt-radio>
+                    <zt-radio label="right">右对齐</zt-radio>
+                    <zt-radio label="top">顶部对齐</zt-radio>
+                </zt-radio-group>
+            </div>
+            <div class="col">
+                <h3>是否禁用表单</h3>
+                <zt-switch v-model="formDisabled"></zt-switch>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <h3>表单简单验证</h3>
+                <zt-form
+                    ref="form"
+                    :model="formdata"
+                    :rules="rules"
+                    label-width="80px"
+                    :label-position="labelPosition"
+                    :disabled="formDisabled"
+                >
+                    <zt-form-item label="活动名称" prop="name">
+                        <zt-input placeholder="请输入活动名称" v-model="formdata.name" clearable />
+                    </zt-form-item>
+                    <zt-form-item label="活动区域" prop="area">
+                        <zt-select placeholder="请选择活动区域" v-model="formdata.area" clearable>
+                            <zt-option v-for="item in options" :key="item.value" :label="item.label" :value="item.value"></zt-option>
+                        </zt-select>
+                    </zt-form-item>
+                    <zt-form-item label="即时配送" prop="delivery">
+                        <zt-switch v-model="formdata.delivery"></zt-switch>
+                    </zt-form-item>
+                    <zt-form-item label="星级" prop="rate">
+                        <zt-rate v-model="formdata.rate" :count="8" color="var(--primary)" half>
+                            <span style="color: var(--primary)">{{ formdata.rate }} 星</span>
+                        </zt-rate>
+                    </zt-form-item>
+                    <zt-form-item label="活动性质" prop="type">
+                        <zt-checkbox-group v-model="formdata.type">
+                            <zt-checkbox label="美食/餐厅线上活动"></zt-checkbox>
+                            <zt-checkbox label="地推活动"></zt-checkbox>
+                            <zt-checkbox label="线下主题活动"></zt-checkbox>
+                            <zt-checkbox label="单纯品牌曝光"></zt-checkbox>
+                        </zt-checkbox-group>
+                    </zt-form-item>
+                    <zt-form-item label="特殊资源" prop="resource">
+                        <zt-radio-group v-model="formdata.resource">
+                            <zt-radio label="线上品牌商赞助" border></zt-radio>
+                            <zt-radio label="线下场地免费" border></zt-radio>
+                        </zt-radio-group>
+                    </zt-form-item>
+                    <zt-form-item label="活动形式" prop="desc">
+                        <zt-input type="textarea" v-model="formdata.desc" maxlength="100" show-limit />
+                    </zt-form-item>
+                    <zt-form-item>
+                        <zt-button type="primary" style="margin-right: 15px" @click="submit">立即创建</zt-button>
+                        <zt-button @click="reset">重置</zt-button>
+                    </zt-form-item>
+                </zt-form>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <h3>行内模式</h3>
+                <zt-form label-width="80px" inline :label-position="labelPosition">
+                    <zt-form-item label="活动名称" prop="name">
+                        <zt-input placeholder="请输入活动名称" v-model="formdata.name" clearable />
+                    </zt-form-item>
+                    <zt-form-item label="活动区域" prop="area">
+                        <zt-select placeholder="请选择活动区域" v-model="formdata.area" clearable>
+                            <zt-option v-for="item in options" :key="item.value" :label="item.label" :value="item.value"></zt-option>
+                        </zt-select>
+                    </zt-form-item>
+                </zt-form>
+            </div>
         </div>
     </div>
 </template>
@@ -50,6 +89,8 @@ export default {
 
     data() {
         return {
+            labelPosition: 'right',
+            formDisabled: true,
             formdata: {
                 name: '',
                 area: '',
