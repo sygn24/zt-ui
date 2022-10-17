@@ -21,9 +21,15 @@
             </zt-rate>
         </div>
         <div class="row">
+            <h3>自定义颜色</h3>
+            <zt-rate v-model="value3" :count="5" color="var(--success)">
+                <span style="color: var(--success)">{{ value3 }} 分</span>
+            </zt-rate>
+        </div>
+        <div class="row">
             <h3>只读</h3>
-            <zt-rate v-model="value3" :count="5" disabled half>
-                <span style="color: var(--warning)">{{ value3 }} 分</span>
+            <zt-rate v-model="value5" :count="5" disabled>
+                <span style="color: var(--warning)">{{ value5 }} 分</span>
             </zt-rate>
         </div>
     </div>
@@ -37,7 +43,8 @@ export default {
             value: 3,
             value2: 5,
             value3: 2,
-            value4: 3.5
+            value4: 3.5,
+            value5:2
         }
     }
 }

@@ -1,5 +1,5 @@
 <template>
-    <div class="zt-pagination">
+    <div class="zt-pagination" :style="theme">
         <span class="zt-pagination-total" v-show="showTotal">共 {{ Math.ceil(total) }} 条</span>
         <page-size-select v-show="showSizes" @pageSizeChange="pageSizeChange" />
         <toggle-btn direction="left" :page="1" :disabled="page === 1" />
@@ -74,6 +74,10 @@ export default {
         showJumper: {
             type: Boolean,
             default: false
+        },
+        themeColor:{
+            type:String,
+            default:'var(--primary)'
         }
     },
     data() {
@@ -103,6 +107,11 @@ export default {
         isLessThan10() {
             if (this.lastPageNum < 10) return true
             return false
+        },
+        theme(){
+            return {
+                '--themeColor':this.themeColor
+            }
         }
     },
     methods: {

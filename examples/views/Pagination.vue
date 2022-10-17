@@ -14,14 +14,23 @@
         <div class="row">
             <h3>带有背景色</h3>
             <zt-pagination :total="200" :current-page.sync="currentPage3" background show-total></zt-pagination>
+            <zt-pagination
+                :total="200"
+                :current-page.sync="currentPage3"
+                background
+                show-total
+                theme-color="var(--success)"
+            ></zt-pagination>
         </div>
         <div class="row">
             <h3>带有边框</h3>
             <zt-pagination :total="200" border show-total></zt-pagination>
+            <zt-pagination :total="200" border show-total theme-color="var(--warning)"></zt-pagination>
         </div>
         <div class="row">
             <h3>边框背景同时使用</h3>
             <zt-pagination :total="200" border background show-total></zt-pagination>
+            <zt-pagination :total="200" border background show-total theme-color="var(--warning)"></zt-pagination>
         </div>
         <div class="row">
             <h3>自定义当前页码和每页数量，显示总条数</h3>
@@ -106,7 +115,7 @@ export default {
 </script>
 
 <style lang="less" scoped>
-.page{
+.page {
     height: 1200px;
 }
 .row {
