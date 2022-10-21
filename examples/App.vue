@@ -2,7 +2,7 @@
     <div id="app">
         <header>zt-ui测试</header>
         <main>
-            <leftNav />
+            <leftMenu />
             <div class="rightContent">
                 <router-view></router-view>
             </div>
@@ -10,10 +10,10 @@
     </div>
 </template>
 <script>
-import leftNav from './leftNav.vue'
+import leftMenu from './leftMenu.vue'
 export default {
     components: {
-        leftNav
+        leftMenu
     }
 }
 </script>
@@ -31,10 +31,13 @@ header {
 main {
     height: calc(100vh - 80px);
     display: flex;
+    background: #f2f4f6;
     .rightContent {
+        background: #fff;
         flex: 1;
         overflow: auto;
-        padding: 30px 50px;
+        padding: 30px;
+        margin-left: 10px;
     }
 }
 </style>
