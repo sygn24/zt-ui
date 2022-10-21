@@ -16,6 +16,9 @@ export default {
     data() {
         return {
             iconList: [
+                'other',
+                'component',
+                'element',
                 'search',
                 'clear',
                 'ellipsis',

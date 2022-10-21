@@ -1,5 +1,5 @@
 <template>
-    <span class="star-wrapper">
+    <span class="star-wrapper" :class="{ disabled: $parent.isDisabled }">
         <ZtIcon class="star" :icon="starIcon" :color="starColor" size="18" />
         <span class="mask1" @mouseenter="enterHalfStar" @mouseleave="leaveHalfStar" @click.stop="clickHalfStar" v-if="allowHalf"></span>
         <span class="mask2" v-if="showHalf" @mouseenter="mask2Enter">
@@ -55,6 +55,9 @@ export default {
 .star-wrapper {
     position: relative;
     cursor: pointer;
+    &.disabled {
+        cursor: not-allowed;
+    }
     .mask1 {
         height: 20px;
         width: 12px;

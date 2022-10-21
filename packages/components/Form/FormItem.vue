@@ -8,7 +8,7 @@
             <slot></slot>
         </div>
         <transition name="error-fade">
-            <div v-if="error" class="error-tips" :style="{ marginLeft: ZtForm.labelWidth }">
+            <div v-if="error" class="error-tips" :style="{ marginLeft: ZtForm.labelPosition === 'top' ? '' : ZtForm.labelWidth }">
                 {{ error }}
             </div>
         </transition>

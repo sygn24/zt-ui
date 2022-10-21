@@ -57,7 +57,6 @@ export default {
 
 <style lang="less" scoped>
 .tabs {
-    width: 500px;
     .tab1 {
         margin-bottom: 50px;
     }
