@@ -16,6 +16,7 @@ import Input from './components/Input'
 import { Radio, RadioGroup } from './components/Radio'
 import { Checkbox, CheckboxGroup } from './components/Checkbox'
 import { Form, FormItem } from './components/Form'
+import {Menu,MenuItem,Submenu,MenuItemGroup} from './components/Menu'
 import { Timeline, TimelineItem } from './components/Timeline'
 import loadingDirective from './components/Loading/directive'
 import "./assets/index.css"
@@ -26,22 +27,17 @@ const components = [
   Tooltip,
   Icon,
   Modal,
-  Tabs,
-  TabPane,
+  Tabs,TabPane,
   Rate,
   Switch,
   Pagination,
-  Select,
-  Option,
+  Select,Option,
   Input,
-  Radio,
-  RadioGroup,
-  Checkbox,
-  CheckboxGroup,
-  Form,
-  FormItem,
-  Timeline,
-  TimelineItem
+  Radio,RadioGroup,
+  Checkbox,CheckboxGroup,
+  Form,FormItem,
+  Menu,MenuItem,Submenu,MenuItemGroup,
+  Timeline,TimelineItem
 ]
 
 // 定义 install 方法，接收 Vue 作为参数。如果使用 use 注册插件，那么所有的组件都会被注册
