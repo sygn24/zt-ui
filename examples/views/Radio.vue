@@ -3,7 +3,7 @@
         <div class="row">
             <div class="col">
                 <h3>单独使用</h3>
-                <zt-radio label="选项一" v-model="value1" @change="change">选项一</zt-radio>
+                <zt-radio  label="选项一" v-model="value1" @change="change">选项一</zt-radio>
             </div>
         </div>
         <div class="row">
@@ -45,11 +45,11 @@
         <div class="row">
             <div class="col">
                 <h3>带有边框</h3>
-                <zt-radio-group v-model="value7">
+                <zt-radio-group v-model="value7" disabled>
                     <zt-radio label="备选一" border></zt-radio>
                     <zt-radio label="备选二" border></zt-radio>
                     <zt-radio label="备选三" border></zt-radio>
-                    <zt-radio label="备选四" border disabled></zt-radio>
+                    <zt-radio label="备选四" border></zt-radio>
                 </zt-radio-group>
             </div>
         </div>
