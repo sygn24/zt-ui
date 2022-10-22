@@ -42,6 +42,18 @@
             <zt-button circle loading></zt-button>
         </div>
         <div class="row">
+            <h3>按钮组</h3>
+            <zt-button-group>
+                <zt-button type="primary" icon="arrow-left-bold">上一页</zt-button>
+                <zt-button type="primary">下一页<ZtIcon icon="arrow-right-bold" style="margin-left: 5px" /></zt-button>
+            </zt-button-group>
+            <zt-button-group>
+                <zt-button type="primary" icon="edit">编辑</zt-button>
+                <zt-button type="primary" icon="share">分享</zt-button>
+                <zt-button type="primary" icon="good">点赞</zt-button>
+            </zt-button-group>
+        </div>
+        <div class="row">
             <h3>禁用状态</h3>
             <zt-button disabled @click="handleClick()">默认按钮</zt-button>
             <zt-button disabled type="dashed">虚线按钮</zt-button>
@@ -98,6 +110,12 @@ export default {
     }
     .zt-button {
         margin: 10px 10px 10px 0;
+    }
+    .zt-button-group {
+        margin: 10px 10px 10px 0;
+        .zt-button {
+            margin: 0;
+        }
     }
 }
 </style>

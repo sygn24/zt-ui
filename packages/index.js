@@ -1,5 +1,6 @@
 // 导入组件
 import Button from './components/Button'
+import ButtonGroup from './components/ButtonGroup'
 import Progress from './components/Progress'
 import Message from './components/Message'
 import Tooltip from './components/Tooltip'
@@ -22,7 +23,7 @@ import loadingDirective from './components/Loading/directive'
 import "./assets/index.css"
 // 组件列表
 const components = [
-  Button,
+  Button,ButtonGroup,
   Progress,
   Tooltip,
   Icon,
@@ -61,5 +62,21 @@ if (typeof window !== 'undefined' && window.Vue) {
 
 export default {
   // 导出的对象必须具有 install，才能被 Vue.use() 方法安装
-  install
+  install,
+  Button,ButtonGroup,
+  Progress,
+  Tooltip,
+  Icon,
+  Modal,
+  Tabs,TabPane,
+  Rate,
+  Switch,
+  Pagination,
+  Select,Option,
+  Input,
+  Radio,RadioGroup,
+  Checkbox,CheckboxGroup,
+  Form,FormItem,
+  Menu,MenuItem,Submenu,MenuItemGroup,
+  Timeline,TimelineItem
 }
