@@ -54,11 +54,12 @@
         </div>
         <div class="row">
             <h3>自定义</h3>
-            <zt-button padding="15px 15px" icon="success"></zt-button>
+            <zt-button padding="15px" icon="success"></zt-button>
             <zt-button type="success" font-size="20px" icon="upload">自定义字体大小</zt-button>
             <zt-button background="#666" text-color="yellow" border-color="red">自定义颜色</zt-button>
             <zt-button type="primary">
-                <ZtIcon icon="eyeoff" size="20" color="red" />自定义图标
+                <ZtIcon icon="eyeoff" color="red" />
+                自定义图标
                 <ZtIcon icon="eye" />
             </zt-button>
         </div>
@@ -74,7 +75,7 @@ export default {
             loading: false
         }
     },
-    
+
     methods: {
         handleClick() {
             this.$msg('点击了')

@@ -1,8 +1,8 @@
 <template>
     <button :class="btnClass" :style="btnStyle" :disabled="isDisabled" @click="handleClick">
         <ZtIcon class="loading-loop" icon="loading" v-if="loading" />
-        <ZtIcon :icon="icon" :custom="customIcon" v-if="(icon || customIcon) && !loading" />
-        <span style="padding: 0 2px" v-if="$slots.default">
+        <ZtIcon :icon="icon" :custom="customIcon" :size="fontSize" v-if="(icon || customIcon) && !loading" />
+        <span v-if="$slots.default">
             <slot></slot>
         </span>
     </button>

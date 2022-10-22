@@ -64,7 +64,6 @@ export default {
     },
     mounted() {
         this.horizontalModel && document.addEventListener('mouseup', e => this.mouseupCloseDropdownList(e))
-        // this.getParentSubMenu()
     },
     beforeDestroy() {
         this.horizontalModel && document.removeEventListener('mouseup', e => this.mouseupCloseDropdownList(e))

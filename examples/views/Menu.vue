@@ -3,7 +3,7 @@
         <div class="row">
             <div class="col">
                 <h3>垂直模式</h3>
-                <zt-menu v-model="activeindex1" @onSelect="onSelect">
+                <zt-menu :activeindex1.sync="activeindex1" @onSelect="onSelect">
                     <zt-menu-item index="1">
                         <ZtIcon icon="file" />
                         <span class="title">文章管理</span>

@@ -21,7 +21,7 @@ export default {
         },
         uniqueOpened: {
             type: Boolean,
-            default: true
+            default: false
         },
         showActiveLine: {
             type: Boolean,
