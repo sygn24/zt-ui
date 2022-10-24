@@ -49,7 +49,7 @@ export default {
     computed: {
         wrapperClass() {
             return {
-                border: this.border,
+                border: this.border || this.isBorder,
                 checked: this.isChecked,
                 disabled: this.isDisabled,
                 vertical: !this.isButton && this.$parent.vertical,
@@ -75,6 +75,9 @@ export default {
         },
         isButton() {
             return this.isGroup && this.$parent.button
+        },
+        isBorder() {
+            return this.isGroup && this.$parent.border
         }
     },
     methods: {

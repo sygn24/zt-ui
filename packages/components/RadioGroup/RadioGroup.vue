@@ -23,6 +23,10 @@ export default {
             type: Boolean,
             default: false
         },
+        border: {
+            type: Boolean,
+            default: false
+        },
         size: {
             type: String,
             default: 'medium',
@@ -38,7 +42,7 @@ export default {
     data() {
         return {
             radios: [],
-            isDisabled:this.disabled
+            isDisabled: this.disabled
         }
     },
     mounted() {
