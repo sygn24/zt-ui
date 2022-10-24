@@ -1,6 +1,6 @@
 .zt-checkbox {
   display: inline-block;
-  margin-right: 20px;
+  margin: 0 20px 10px 0;
   cursor: pointer;
   user-select: none;
   transition: all .15s ease-out;
@@ -59,6 +59,7 @@
     position: relative;
     width: 14px;
     height: 14px;
+    font-size: 0px;
     border: 1px solid var(--base-border);
     background-color: #fff;
     border-radius: 2px;
@@ -103,78 +104,5 @@
     margin-left: 4px;
     font-size: 14px;
     transition: all .15s ease-out;
-  }
-}
-
-.zt-checkbox-group {
-  display: inline-block;
-
-  .zt-checkbox:last-child {
-    margin-right: 0;
-    margin-bottom: 0;
-  }
-
-  &.button {
-    white-space: nowrap;
-
-    .zt-checkbox {
-      display: inline-block;
-      border: 1px solid var(--base-border);
-      margin-right: 0;
-      border-right: 0;
-      border-radius: 0;
-      background: #fff;
-
-      &:hover {
-        color: var(--primary);
-      }
-
-      &:first-child {
-        border-radius: 4px 0 0 4px;
-      }
-
-      &:last-child {
-        border-radius: 0 4px 4px 0;
-        border-right: 1px solid var(--base-border);
-      }
-
-      &.disabled {
-        &:hover {
-          color: var(--disabled-text);
-        }
-      }
-
-      &.checked {
-        background: var(--primary);
-        border-color: var(--primary) #fff;
-        color: #fff;
-
-        &:first-child {
-          border-left-color: var(--primary);
-        }
-
-        &:last-child {
-          border-right-color: var(--primary);
-        }
-
-        &.disabled {
-          border-color: var(--base-border);
-          background: var(--disabled-bg);
-          color: var(--disabled-text);
-        }
-      }
-
-      &.medium {
-        padding: 6px 12px;
-      }
-
-      &.large {
-        padding: 8px 16px;
-      }
-
-      &.small {
-        padding: 4px 8px;
-      }
-    }
   }
 }

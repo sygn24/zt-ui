@@ -180,7 +180,7 @@ export default {
         return {
             options1: ['选项一', '选项二', '选项三', '选项四'],
             options2: ['备选一', '备选二', '备选三', '备选四'],
-            value1: true,
+            value1: false,
             value2: false,
             value3: true,
             value4: ['选项一', '选项三'],
@@ -196,7 +196,8 @@ export default {
     },
     methods: {
         change(val) {
-            console.log(val, this.value1)
+            this.$msg('选中状态' + this.value1)
+            console.log(val)
         },
         groupChange(val) {
             console.log(val)

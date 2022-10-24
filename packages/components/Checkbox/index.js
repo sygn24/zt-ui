@@ -1,3 +1,7 @@
 import Checkbox from './Checkbox.vue'
-import CheckboxGroup from './CheckboxGroup.vue'
-export { Checkbox, CheckboxGroup }
+
+Checkbox.install = function (Vue) {
+  Vue.component(Checkbox.name, Checkbox)
+}
+
+export default Checkbox

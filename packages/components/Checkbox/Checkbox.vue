@@ -57,7 +57,7 @@ export default {
     computed: {
         wrapperClass() {
             return {
-                border: this.border,
+                border: this.border || this.isBorder,
                 checked: this.isChecked,
                 disabled: this.isDisabled,
                 vertical: !this.isButton && this.$parent.vertical,
@@ -68,8 +68,8 @@ export default {
         innerClass() {
             return {
                 checked: this.isChecked || (this.checkAllBtn && this.$parent.checkSome),
+                checksome: this.checkAllBtn && this.$parent.checkSome && !this.$parent.checkAll,
                 disabled: this.isDisabled,
-                checksome: this.checkAllBtn && this.$parent.checkSome && !this.$parent.checkAll
             }
         },
         iconColor() {
@@ -94,6 +94,9 @@ export default {
         },
         isButton() {
             return this.isGroup && this.$parent.button
+        },
+        isBorder() {
+            return this.isGroup && this.$parent.border
         },
         checkAllBtn() {
             return this.isGroup && this.name === 'zt-checkbox-all'

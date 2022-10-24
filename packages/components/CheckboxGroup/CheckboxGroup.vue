@@ -1,6 +1,6 @@
 <template>
     <div style="display: inline-block">
-        <div v-if="showCheckAll" style="margin-bottom: 10px">
+        <div v-if="showCheckAll">
             <zt-checkbox
                 name="zt-checkbox-all"
                 :border="checkAllBorder"
@@ -18,7 +18,7 @@
 </template>
 
 <script>
-import ZtCheckbox from './Checkbox.vue'
+import ZtCheckbox from '../Checkbox/Checkbox.vue'
 export default {
     name: 'ZtCheckboxGroup',
     components: { ZtCheckbox },
@@ -36,6 +36,10 @@ export default {
             default: false
         },
         vertical: {
+            type: Boolean,
+            default: false
+        },
+        border: {
             type: Boolean,
             default: false
         },
