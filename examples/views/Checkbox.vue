@@ -67,14 +67,14 @@
         <div class="row">
             <div class="col">
                 <h3>带有边框</h3>
-                <zt-checkbox-group v-model="value7" show-check-all check-all-border>
-                    <zt-checkbox v-for="item in options2" :label="item" :key="item" border></zt-checkbox>
+                <zt-checkbox-group v-model="value7" show-check-all border>
+                    <zt-checkbox v-for="item in options2" :label="item" :key="item"></zt-checkbox>
                 </zt-checkbox-group>
             </div>
             <div class="col">
                 <h3>带有边框</h3>
-                <zt-checkbox-group v-model="value7" show-check-all check-all-border disabled>
-                    <zt-checkbox v-for="item in options2" :label="item" :key="item" border></zt-checkbox>
+                <zt-checkbox-group v-model="value7" show-check-all disabled border>
+                    <zt-checkbox v-for="item in options2" :label="item" :key="item"></zt-checkbox>
                 </zt-checkbox-group>
             </div>
         </div>

@@ -3,7 +3,7 @@
         <div v-if="showCheckAll">
             <zt-checkbox
                 name="zt-checkbox-all"
-                :border="checkAllBorder"
+                :border="border"
                 :size="size"
                 label="全选"
                 v-model="checkAll"
@@ -44,10 +44,6 @@ export default {
             default: false
         },
         showCheckAll: {
-            type: Boolean,
-            default: false
-        },
-        checkAllBorder: {
             type: Boolean,
             default: false
         },
