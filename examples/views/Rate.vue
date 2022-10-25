@@ -2,7 +2,7 @@
     <div class="rate">
         <div class="row">
             <h3>基础</h3>
-            <zt-rate v-model="value" :count="8"></zt-rate>
+            <zt-rate v-model="value" :count="8" @change="change"></zt-rate>
         </div>
         <div class="row">
             <h3>自定义文字</h3>
@@ -46,7 +46,12 @@ export default {
             value4: 3.5,
             value5:2
         }
-    }
+    },
+    methods: {
+            change(val) {
+                this.$msg('当前选择：' + val + '星')
+            }
+        }
 }
 </script>
 

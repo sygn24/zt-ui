@@ -104,7 +104,7 @@ export default {
         clickStar(num) {
             if (this.isDisabled) return
             this.setLightStar(num)
-            this.$emit('onChange', num)
+            this.$emit('change', num)
             this.isSet = true
         },
         // 点击设置半星

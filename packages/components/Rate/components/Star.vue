@@ -69,7 +69,7 @@ export default {
         height: 18px;
         width: 10px;
         overflow: hidden;
-        background: #fff;
+        background: inherit;
         position: absolute;
         left: 12px;
         .zt-icon {
