@@ -48,7 +48,7 @@ export default {
     },
     model: {
         prop: 'value',
-        event: 'onChange'
+        event: 'change'
     },
     mounted() {
         this.setLightStar(this.value)
