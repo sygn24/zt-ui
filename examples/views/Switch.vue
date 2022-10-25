@@ -2,7 +2,7 @@
     <div class="switch">
         <div class="row">
             <h3>基础使用</h3>
-            <zt-switch v-model="value" @onChange="toggle"></zt-switch>
+            <zt-switch v-model="value" @change="toggle"></zt-switch>
         </div>
         <div class="row">
             <h3>不同尺寸</h3>
@@ -63,8 +63,9 @@ export default {
         }
     },
     methods: {
-        toggle() {
+        toggle(val) {
             this.$msg('开关状态:' + this.value)
+            console.log(val)
         }
     }
 }

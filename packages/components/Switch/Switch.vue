@@ -51,7 +51,7 @@ export default {
     },
     model: {
         prop: 'value',
-        event: 'onChange'
+        event: 'change'
     },
     data() {
         return {
@@ -88,7 +88,7 @@ export default {
             if (this.isDisabled) return
             if (this.loading) return
             this.isChecked = !this.isChecked
-            this.$emit('onChange', this.isChecked)
+            this.$emit('change', this.isChecked)
         }
     }
 }
