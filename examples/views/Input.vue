@@ -19,8 +19,8 @@
         <div class="row">
             <div class="col">
                 <h3>带Icon的输入框</h3>
-                <zt-input placeholder="请输入内容" style="margin-right: 20px" prefix-icon="user-fill" v-model="value2"></zt-input>
-                <zt-input placeholder="请输入内容" suffix-icon="search" v-model="value2"></zt-input>
+                <zt-input placeholder="请输入内容" style="width:180px;margin-right: 20px" prefix-icon="user-fill" v-model="value2"></zt-input>
+                <zt-input placeholder="请输入内容" style="width:180px;margin-right: 20px" suffix-icon="search" v-model="value2"></zt-input>
             </div>
         </div>
         <div class="row">
@@ -36,8 +36,8 @@
                 <zt-input placeholder="请输入内容" type="password" show-password maxlength="10" v-model="value3"></zt-input>
             </div>
             <div class="col">
-                <h3>可清空密码框，不能传show-password</h3>
-                <zt-input placeholder="请输入内容" type="password" clearable v-model="value3"></zt-input>
+                <h3>可清空密码框</h3>
+                <zt-input placeholder="请输入内容" type="password" show-password clearable v-model="value3"></zt-input>
             </div>
         </div>
         <div class="row">

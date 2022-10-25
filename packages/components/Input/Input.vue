@@ -14,7 +14,7 @@
             @change="handleEvent($event, 'change')"
             @blur="handleEvent($event, 'blur')"
             @focus="$emit('focus', $event.target.value)"
-            @keyup.enter="$emit('keyupEnter', $event)"
+            @keyup.enter="$emit('keyupEnter', $event.target.value)"
         />
         <textarea
             v-else
@@ -31,7 +31,7 @@
             @change="handleEvent($event, 'change')"
             @blur="handleEvent($event, 'blur')"
             @focus="$emit('focus', $event.target.value)"
-            @keyup.enter="$emit('keyupEnter', $event)"
+            @keyup.enter="$emit('keyupEnter', $event.target.value)"
         />
         <ZtIcon v-if="showClearIcon" class="zt-input-icon-suffix function" icon="clear" size="12" @click="clearValue" />
         <ZtIcon
@@ -113,8 +113,11 @@ export default {
         },
         inputStyle() {
             return {
-                paddingLeft: this.type == 'textarea' || this.prefixIcon == '' ? '10px' : '22px',
-                paddingRight: this.type == 'textarea' || (this.suffixIcon == '' && !this.clearable && !this.showPassword) ? '10px' : '22px',
+                paddingLeft: this.type == 'textarea' || (!this.$slots.prefix && this.prefixIcon == '') ? '10px' : '22px',
+                paddingRight:
+                    this.type == 'textarea' || (!this.$slots.suffix && this.suffixIcon == '' && !this.clearable && !this.showPassword)
+                        ? '10px'
+                        : '22px',
                 paddingTop: this.type == 'textarea' ? '6px' : '0px'
             }
         },
@@ -125,10 +128,16 @@ export default {
             return this.type !== 'textarea' && this.suffixIcon !== '' && (!this.showClear || this.value == '')
         },
         showClearIcon() {
-            return this.type !== 'textarea' && this.clearable && this.showClear && this.value !== '' && !this.showPassword
+            return this.type !== 'textarea' && this.clearable && this.showClear && this.value !== ''
         },
         showEyeIcon() {
-            return this.type !== 'textarea' && this.showPassword && (this.showEye || this.value !== '') && !this.showLimit
+            return (
+                this.type !== 'textarea' &&
+                this.showPassword &&
+                (this.showEye || this.value !== '') &&
+                !(this.clearable && this.value !== '') &&
+                !this.showLimit
+            )
         },
         showLimitText() {
             return this.$attrs.maxlength && this.showLimit && (!this.showClear || this.value == '')
@@ -145,7 +154,7 @@ export default {
     },
     data() {
         return {
-            isDisabled:this.disabled,
+            isDisabled: this.disabled,
             showClear: false,
             showPwd: false,
             showEye: false,
