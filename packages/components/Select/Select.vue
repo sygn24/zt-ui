@@ -125,7 +125,7 @@ export default {
         },
         updateVal(label, value) {
             this.$emit('valueChange', value)
-            label !== '' && this.$emit('onChange', label)
+            label !== '' && this.$emit('change', label)
             if (this.$parent.$options.name === 'ZtFormItem' && this.$parent.isRequired) {
                 this.$parent.startValidate()
             }

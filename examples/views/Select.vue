@@ -32,7 +32,7 @@
         </div>
         <div class="row">
             <h3>自定义默认提示内容，选项改变的回调</h3>
-            <zt-select v-model="value5" placeholder="请选择食物" clearable @onChange="change">
+            <zt-select v-model="value5" placeholder="请选择食物" clearable @change="change">
                 <zt-option v-for="item in options2" :key="item.value" :label="item.label" :value="item.value"></zt-option>
             </zt-select>
         </div>
@@ -133,8 +133,7 @@ export default {
 
     methods: {
         change(label) {
-            this.$msg('点击了' + label + '--' + this.value5)
-            console.log(this.value4)
+            this.$msg('选择了' + this.value5 + '--' + label)
         }
     }
 }
