@@ -1,3 +1,8 @@
 import Select from './Select.vue'
-import Option from './Option.vue'
-export { Select, Option }
+
+Select.install = function (Vue) {
+  Vue.component(Select.name, Select)
+}
+
+export default Select
+

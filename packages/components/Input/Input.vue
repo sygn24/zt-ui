@@ -33,12 +33,12 @@
             @focus="$emit('focus', $event.target.value)"
             @keyup.enter="$emit('keyupEnter', $event.target.value)"
         />
-        <ZtIcon v-if="showClearIcon" class="zt-input-icon-suffix function" icon="clear" size="12" @click="clearValue" />
+        <ZtIcon v-if="showClearIcon" class="zt-input-icon-suffix function" icon="clear" size="14" @click="clearValue" />
         <ZtIcon
             v-if="showEyeIcon"
             class="zt-input-icon-suffix function"
             :icon="showPwd ? 'eye' : 'eyeoff'"
-            color="var(--plac-text)"
+            size="16"
             @click="showPwd = !showPwd"
         />
         <span class="zt-input-limit" :class="limitTextPosition" v-if="showLimitText">{{ value.length }}/{{ $attrs.maxlength }}</span>
