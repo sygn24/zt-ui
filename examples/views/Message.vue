@@ -2,23 +2,27 @@
     <div>
         <div class="row">
             <h3>不同类型,默认3s自动后关闭</h3>
-            <zt-button type="primary" @click="handleClick1()">默认提示</zt-button>
-            <zt-button type="success" @click="handleClick2()" icon="zt-icon-success">成功信息</zt-button>
-            <zt-button type="warning" @click="handleClick3()" icon="zt-icon-warning">警告信息</zt-button>
-            <zt-button type="danger" @click="handleClick4()" icon="zt-icon-error" textColor="#fff">错误信息</zt-button>
+            <zt-button type="primary" @click="handleClick1">默认提示</zt-button>
+            <zt-button type="success" @click="handleClick2" icon="zt-icon-success">成功信息</zt-button>
+            <zt-button type="warning" @click="handleClick3" icon="zt-icon-warning">警告信息</zt-button>
+            <zt-button type="danger" @click="handleClick4" icon="zt-icon-error" textColor="#fff">错误信息</zt-button>
         </div>
         <div class="row">
             <h3>带有背景颜色</h3>
-            <zt-button type="primary" @click="handleClick8()">默认提示</zt-button>
-            <zt-button type="success" @click="handleClick9()" icon="zt-icon-success">成功信息</zt-button>
-            <zt-button type="warning" @click="handleClick10()" icon="zt-icon-warning">警告信息</zt-button>
-            <zt-button type="danger" @click="handleClick11()" icon="zt-icon-error" textColor="#fff">错误信息</zt-button>
+            <zt-button type="primary" @click="handleClick8">默认提示</zt-button>
+            <zt-button type="success" @click="handleClick9" icon="zt-icon-success">成功信息</zt-button>
+            <zt-button type="warning" @click="handleClick10" icon="zt-icon-warning">警告信息</zt-button>
+            <zt-button type="danger" @click="handleClick11" icon="zt-icon-error" textColor="#fff">错误信息</zt-button>
         </div>
         <div class="row">
             <h3>手动关闭，自定义几秒后关闭</h3>
-            <zt-button @click="handleClick5()">可以手动关闭的消息</zt-button>
-            <zt-button type="dashed" @click="handleClick6()">自定义10秒后关闭</zt-button>
-            <zt-button round @click="handleClick7()">自定义距顶部偏移距离</zt-button>
+            <zt-button @click="handleClick5">可以手动关闭的消息</zt-button>
+            <zt-button type="dashed" @click="handleClick6">自定义10秒后关闭</zt-button>
+            <zt-button round @click="handleClick7">自定义距顶部偏移距离</zt-button>
+        </div>
+        <div class="row">
+            <h3>加载中</h3>
+            <zt-button @click="handleClickL">加载中消息</zt-button>
         </div>
     </div>
 </template>
@@ -59,6 +63,12 @@ export default {
         },
         handleClick11() {
             this.$msg.error({ msg: '错误信息', background: true })
+        },
+        handleClickL() {
+            this.$msg.loading({ msg: 'Loading...' })
+            setTimeout(() => {
+                this.$msg.close()
+            }, 3000)
         }
     }
 }

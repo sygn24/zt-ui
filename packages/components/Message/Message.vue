@@ -2,9 +2,9 @@
     <div class="zt-message-box" :style="{ top: top + 'px' }">
         <transition name="message-fade" @after-leave="handleAfterLeave">
             <div class="zt-message" :class="backgroundColor" v-show="show">
-                <ZtIcon :icon="type" :color="iconColor" />
+                <ZtIcon :icon="type" :color="iconColor" :class="{ 'loading-loop': type === 'loading' }" />
                 <span class="zt-message-text">{{ msg }}</span>
-                <ZtIcon icon="close" class="zt-message-close" v-if="showClose" @click="handleClose" />
+                <ZtIcon icon="close" class="zt-message-close" v-if="showClose && type !== 'loading'" @click="handleClose" />
             </div>
         </transition>
     </div>
@@ -49,9 +49,11 @@ export default {
         }
     },
     mounted() {
-        this.timer = setTimeout(() => {
-            this.handleClose()
-        }, this.dt)
+        if (this.type !== 'loading') {
+            this.timer = setTimeout(() => {
+                this.handleClose()
+            }, this.dt)
+        }
     },
     computed: {
         backgroundColor() {
@@ -74,7 +76,7 @@ export default {
     methods: {
         handleClose() {
             this.show = false
-            this.onClose && this.onClose()
+            this.remove && this.remove()
             clearTimeout(this.timer)
             this.timer = null
         },

@@ -22,8 +22,8 @@ function creatMsg (options) {
   })
   // 给实例添加一个id属性，供后面删除时查找
   instance.msgId = ++num + 'msg'
-  // 给实例添加关闭方法，当关闭的时候从instanceArr数组中删除当前实例
-  instance.onClose = () => {
+  // 给实例添加移除方法，当关闭的时候从instanceArr数组中删除当前实例
+  instance.remove = () => {
     removeMsg(instance.msgId)
   }
   // 将新创建的实例存到实例数组中
@@ -33,6 +33,16 @@ function creatMsg (options) {
     // 显示对话框
     instance.show = true
   })
+  // 添加关闭方法，加载类型时手动调用
+  if (options.type === 'loading') {
+    creatMsg.close = () => {
+      instanceArr.forEach(item => {
+        if (item.type === 'loading') {
+          item.handleClose()
+        }
+      })
+    }
+  }
 }
 
 // 根据msgId从instanceArr实例数组中删除Msg实例
@@ -55,7 +65,7 @@ function removeMsg (msgId) {
   })
 }
 // 挂载不同类型的提示
-['success', 'error', 'info', 'warning'].forEach(type => {
+['success', 'error', 'info', 'warning', 'loading'].forEach(type => {
   creatMsg[type] = options => {
     if (typeof options === 'string') {
       options = {
