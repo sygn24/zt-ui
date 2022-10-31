@@ -3,16 +3,16 @@
         <div class="row">
             <h3>不同类型,默认3s自动后关闭</h3>
             <zt-button type="primary" @click="handleClick1">默认提示</zt-button>
-            <zt-button type="success" @click="handleClick2" icon="zt-icon-success">成功信息</zt-button>
-            <zt-button type="warning" @click="handleClick3" icon="zt-icon-warning">警告信息</zt-button>
-            <zt-button type="danger" @click="handleClick4" icon="zt-icon-error" textColor="#fff">错误信息</zt-button>
+            <zt-button type="success" @click="handleClick2" icon="success">成功信息</zt-button>
+            <zt-button type="warning" @click="handleClick3" icon="warning">警告信息</zt-button>
+            <zt-button type="danger" @click="handleClick4" icon="error" textColor="#fff">错误信息</zt-button>
         </div>
         <div class="row">
             <h3>带有背景颜色</h3>
             <zt-button type="primary" @click="handleClick8">默认提示</zt-button>
-            <zt-button type="success" @click="handleClick9" icon="zt-icon-success">成功信息</zt-button>
-            <zt-button type="warning" @click="handleClick10" icon="zt-icon-warning">警告信息</zt-button>
-            <zt-button type="danger" @click="handleClick11" icon="zt-icon-error" textColor="#fff">错误信息</zt-button>
+            <zt-button type="success" @click="handleClick9" icon="success">成功信息</zt-button>
+            <zt-button type="warning" @click="handleClick10" icon="warning">警告信息</zt-button>
+            <zt-button type="danger" @click="handleClick11" icon="error" textColor="#fff">错误信息</zt-button>
         </div>
         <div class="row">
             <h3>手动关闭，自定义几秒后关闭</h3>
@@ -23,6 +23,7 @@
         <div class="row">
             <h3>加载中</h3>
             <zt-button @click="handleClickL">加载中消息</zt-button>
+            <zt-button @click="handleClickAll" icon="error">关闭所有实例</zt-button>
         </div>
     </div>
 </template>
@@ -69,6 +70,9 @@ export default {
             setTimeout(() => {
                 this.$msg.close()
             }, 3000)
+        },
+        handleClickAll() {
+            this.$msg.close()
         }
     }
 }

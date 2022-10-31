@@ -49,7 +49,7 @@ export default {
         }
     },
     mounted() {
-        if (this.type !== 'loading') {
+        if (this.type !== 'loading' && this.dt > 0) {
             this.timer = setTimeout(() => {
                 this.handleClose()
             }, this.dt)
