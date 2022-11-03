@@ -101,6 +101,9 @@ export default {
         },
         afterLeave() {
             this.$emit('closed')
+            if (this.destroyOnClose && this.$el && this.$el.parentNode) {
+                this.$el.parentNode.removeChild(this.$el)
+            }
         }
     },
     watch: {
@@ -115,9 +118,6 @@ export default {
                 }
             } else {
                 this.$emit('close')
-                if (this.destroyOnClose && this.$el && this.$el.parentNode) {
-                    this.$el.parentNode.removeChild(this.$el)
-                }
             }
         }
     }
