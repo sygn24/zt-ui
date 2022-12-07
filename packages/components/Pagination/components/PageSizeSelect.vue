@@ -1,5 +1,5 @@
 <template>
-    <zt-select v-model="value" width="100" height="32" @onChange="pageSizeChange">
+    <zt-select v-model="value" width="100" height="32" @change="pageSizeChange">
         <zt-option v-for="item in options" :key="item.value" :label="item.label" :value="item.value"></zt-option>
     </zt-select>
 </template>
