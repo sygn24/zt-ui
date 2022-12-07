@@ -34,7 +34,7 @@ export default {
     },
     model: {
         prop: 'value',
-        event: 'onClick'
+        event: 'tab-click'
     },
     provide() {
         return { TabsInstance: this }
@@ -44,7 +44,8 @@ export default {
             navList: [],
             activeKey: this.value, //当前激活的tab面板
             lineWidth: '',
-            lineOffset: 0
+            lineOffset: 0,
+            animatedCount: 0
         }
     },
     computed: {
@@ -53,7 +54,7 @@ export default {
             return {
                 width: `${this.lineWidth}px`,
                 left: `${this.lineOffset}px`,
-                transition: this.animated ? 'all .3s ease-out' : 'none'
+                transition: this.animated && this.animatedCount > 0 ? 'all .3s ease-out' : 'none'
             }
         }
     },
@@ -125,7 +126,8 @@ export default {
                 })
             }
             this.activeKey = item.name
-            this.$emit('onClick', item.name)
+            this.$emit('tab-click', item.name)
+            this.animatedCount++
         }
     },
     watch: {

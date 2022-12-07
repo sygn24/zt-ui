@@ -3,7 +3,7 @@
         <div class="tab1">
             <h2>开启切换动画</h2>
             <div class="row">
-                <zt-tabs v-model="activeTab" :animated="true" @onClick="toggleTab">
+                <zt-tabs v-model="activeTab" animated @tab-click="toggleTab">
                     <zt-tab-pane name="Tabs1" label="Tabs1首页">
                         <h2 style="color: red; margin-bottom: 20px">Tabs1首页内容</h2>
                         <Button />
@@ -43,13 +43,13 @@ export default {
     components: { Button },
     data() {
         return {
-            activeTab: 'Tabs1',
+            activeTab: 'Tabs2',
             activeTab2: 'Tabs4'
         }
     },
     methods: {
         toggleTab(name) {
-            this.$msg('切换到' + name)
+            this.$msg('切换到' + this.activeTab)
         }
     }
 }

@@ -1,5 +1,5 @@
 <template>
-    <transition name="tab-slide" v-if="animated">
+    <transition name="tab-slide" v-if="TabsInstance.animated && TabsInstance.animatedCount > 0">
         <div class="zt-tabs-panes-item" v-show="show" :class="{ reverse: isReverse }">
             <slot></slot>
         </div>
@@ -26,12 +26,10 @@ export default {
         return {
             show: false,
             isReverse: false, //控制反方向动画
-            animated: false
         }
     },
     mounted() {
         this.TabsInstance.initTabs()
-        this.animated = this.TabsInstance.animated
     },
     watch: {
         name() {
