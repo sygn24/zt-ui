@@ -3,7 +3,7 @@
         <div class="row">
             <div class="col">
                 <h3>垂直模式</h3>
-                <zt-menu :activeindex1.sync="activeindex1" @onSelect="onSelect">
+                <zt-menu v-model="activeindex1" @onSelect="onSelect">
                     <zt-menu-item index="1">
                         <ZtIcon icon="file" />
                         <span class="title">文章管理</span>
@@ -207,7 +207,7 @@
         </div>
         <div class="row">
             <div class="col">
-                <h3>自定义颜色,隐藏边框和激活状态线条</h3>
+                <h3>自定义颜色和宽度,隐藏边框和激活状态线条</h3>
                 <zt-menu
                     v-model="activeindex5"
                     :background-color="backgroundColor"
