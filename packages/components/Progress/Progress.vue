@@ -5,7 +5,7 @@
         :style="progressTrackStyle"
         @mousemove="setTooltip"
         @mouseleave="progressTrackLeave"
-        @click.self="changeProgress"
+        @click="changeProgress"
     >
         <!-- 进度条 -->
         <div :class="vertical ? 'progress-bar-vertical' : 'progress-bar'" ref="progressBar" :style="progressBarStyle">
@@ -196,7 +196,7 @@ export default {
         setProgressBar(percent) {
             if (!this.vertical) {
                 this.$refs.progressBar.style.width = percent + '%'
-                if (this.hiddenRoundBtn ||this.readonly) return
+                if (this.hiddenRoundBtn || this.readonly) return
                 this.$refs.roundBtn.style.left = percent + '%'
             } else {
                 this.$refs.progressBar.style.height = percent + '%'
@@ -249,7 +249,6 @@ export default {
                 this.isDrag = true
                 let percentLength = this.getMousePosition(e)
                 this.setProgressBar(percentLength)
-                // this.$emit("update:percent", percentLength);
                 this.setTooltip(e)
             }
             // 鼠标松开，就停止拖拽，让鼠标移动事件解除,并且改变进度条
