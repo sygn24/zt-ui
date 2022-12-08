@@ -1,36 +1,31 @@
 <template>
     <div
-        ref="progressBox"
-        :class="vertical ? 'progressBox-vertical' : 'progressBox'"
-        :style="progressBoxStyle"
+        ref="progressTrack"
+        :class="vertical ? 'progress-track-vertical' : 'progress-track'"
+        :style="progressTrackStyle"
         @mousemove="setTooltip"
-        @mouseleave="progressBoxLeave"
-        @click="changeProgressBar"
+        @mouseleave="progressTrackLeave"
+        @click="changeProgress"
     >
         <!-- 进度条 -->
-        <div :class="vertical ? 'progressBar-vertical' : 'progressBar'" ref="progressBar" :style="progressBarStyle">
-            <div :class="vertical ? 'activeBar-vertical' : 'activeBar'" v-if="isActiveBar && !disabled"></div>
+        <div :class="vertical ? 'progress-bar-vertical' : 'progress-bar'" ref="progressBar" :style="progressBarStyle">
+            <div :class="vertical ? 'active-bar-vertical' : 'active-bar'" v-if="showActiveBar && !readonly"></div>
         </div>
         <!-- 进度条上圆形按钮 -->
-        <transition name="base-fade">
+        <transition name="base-fade" v-if="!hiddenRoundBtn && !readonly">
             <div
-                :class="vertical ? 'radiusBtn-vertical' : 'radiusBtn'"
-                ref="radiusBtn"
-                :style="radiusBtnStyle"
-                v-show="showRadiusBtn ? showRadiusBtn : hoverShowRadiusBtn"
-                @mouseenter="radiusBtnHover"
-                @mouseleave="radiusBtnLeave"
+                :class="vertical ? 'round-btn-vertical' : 'round-btn'"
+                ref="roundBtn"
+                :style="roundBtnStyle"
+                v-show="alwaysShowRoundBtn ? alwaysShowRoundBtn : hoverShowRoundBtn"
+                @mouseenter="roundBtnHover"
+                @mouseleave="roundBtnLeave"
                 @mousedown="dragProgressBar"
             ></div>
         </transition>
         <!--提示框  -->
-        <transition name="base-fade">
-            <div
-                :class="vertical ? 'tooltip-vertical' : 'tooltip'"
-                ref="tooltip"
-                :style="tooltipStyle"
-                v-show="showToolTip && hoverShowToolTip"
-            >
+        <transition name="base-fade" v-if="showTooltip && !readonly">
+            <div :class="vertical ? 'tooltip-vertical' : 'tooltip'" ref="tooltip" :style="tooltipStyle" v-show="hoverShowToolTip">
                 <span>{{ tooltipTxt }}</span>
             </div>
         </transition>
@@ -47,32 +42,37 @@ export default {
             default: 0
         },
         // 进度条尺寸
-        progressSize: {
+        size: {
             type: Number,
             default: 8
         },
         // 进度条颜色
-        progressColor: {
+        color: {
             type: [String, Array],
             default: 'var(--primary)'
         },
-        // 进度条背景盒子颜色
-        progressBgColor: {
+        // 进度条轨道颜色
+        trackColor: {
             type: String,
-            default: '#eee'
+            default: 'var(--darker-bg2)'
         },
-        // 是否一直显示圆形按钮
-        showRadiusBtn: {
+        // 是否一直显示圆钮，false则是鼠标经过显示
+        alwaysShowRoundBtn: {
             type: Boolean,
             default: true
         },
-        // 是否禁用进度条
-        disabled: {
+        // 是否隐藏圆钮
+        hiddenRoundBtn: {
+            type: Boolean,
+            default: false
+        },
+        // 是否只读
+        readonly: {
             type: Boolean,
             default: false
         },
         // 是否显示提示框
-        showToolTip: {
+        showTooltip: {
             type: Boolean,
             default: true
         },
@@ -86,7 +86,7 @@ export default {
             type: Function
         },
         // 是否显示activeBar
-        isActiveBar: {
+        showActiveBar: {
             type: Boolean,
             default: true
         },
@@ -104,8 +104,8 @@ export default {
     data() {
         return {
             tooltipTxt: 0, //悬浮提示框文本
-            hoverShowRadiusBtn: false, //鼠标经过显示进度条圆按钮
-            radiusBtnActive: false, //圆按钮是否处于活跃
+            hoverShowRoundBtn: false, //鼠标经过显示进度条圆按钮
+            roundBtnActive: false, //圆按钮是否处于活跃
             hoverShowToolTip: false, //鼠标经过显示tooltip
             isDrag: false //是否正在拖拽进度条
         }
@@ -115,17 +115,17 @@ export default {
     },
     model: {
         prop: 'percent',
-        event: 'onChange'
+        event: 'change'
     },
     computed: {
-        // 进度条盒子样式
-        progressBoxStyle() {
+        // 进度条轨道样式
+        progressTrackStyle() {
             let style = {
-                height: this.vertical ? this.height : `${this.progressSize}px`,
-                width: this.vertical ? `${this.progressSize}px` : '',
-                borderRadius: `${this.progressSize}px`,
-                background: this.progressBgColor,
-                cursor: this.disabled ? 'not-allowed' : 'pointer'
+                height: this.vertical ? this.height : `${this.size}px`,
+                width: this.vertical ? `${this.size}px` : '',
+                borderRadius: `${this.size}px`,
+                background: this.trackColor,
+                cursor: this.readonly ? ' ' : 'pointer'
             }
             return style
         },
@@ -133,65 +133,60 @@ export default {
         progressBarStyle() {
             let style = {
                 // width: `${this.percent}%`,
-                borderRadius: `${this.progressSize}px`,
-                background: this.disabled
-                    ? '#c0c4cc'
-                    : typeof this.progressColor == 'string'
-                    ? this.progressColor
-                    : `linear-gradient(to right,${this.progressColor[0]} 0%,${this.progressColor[1]} 100%)`,
+                borderRadius: `${this.size}px`,
+                background:
+                    typeof this.color == 'string'
+                        ? this.color
+                        : `linear-gradient(to right,${this.color[0]} 0%,${this.color[1]} 100%)`,
                 transition: this.isDrag ? 'none' : 'all 0.3s ease-out',
-                cursor: this.disabled ? 'not-allowed' : 'pointer'
+                cursor: this.readonly ? '' : 'pointer'
             }
             return style
         },
         // 圆形按钮样式
-        radiusBtnStyle() {
+        roundBtnStyle() {
             let style = {
                 // left: `${this.percent}%`,
-                width: this.radiusBtnActive ? `${this.radiusBtnSize + 3}px` : `${this.radiusBtnSize}px`,
-                height: this.radiusBtnActive ? `${this.radiusBtnSize + 3}px` : `${this.radiusBtnSize}px`,
-                transform: this.vertical ? `translate(-50%,${this.radiusBtnSize / 2}px)` : `translate(${-this.radiusBtnSize / 2}px,-50%)`,
+                width: this.roundBtnActive ? `${this.roundBtnSize + 3}px` : `${this.roundBtnSize}px`,
+                height: this.roundBtnActive ? `${this.roundBtnSize + 3}px` : `${this.roundBtnSize}px`,
+                transform: this.vertical ? `translate(-50%,${this.roundBtnSize / 2}px)` : `translate(${-this.roundBtnSize / 2}px,-50%)`,
                 transition: this.isDrag ? 'none' : 'all 0.3s ease-out',
-                cursor: this.disabled ? 'not-allowed' : 'pointer',
-                borderColor: this.disabled ? '#c0c4cc' : typeof this.progressColor == 'string' ? this.progressColor : this.progressColor[1],
-                '--circleColor': this.disabled
-                    ? '#c0c4cc'
-                    : typeof this.progressColor == 'string'
-                    ? this.progressColor
-                    : this.progressColor[1]
+                cursor: this.readonly ? '' : 'pointer',
+                borderColor: typeof this.color == 'string' ? this.color : this.color[1],
+                '--circleColor': typeof this.color == 'string' ? this.color : this.color[1]
             }
             return style
         },
         // 进度条圆形按钮大小，根据进度条大小动态计算
-        radiusBtnSize() {
-            let radiusBtnSize = this.progressSize >= 8 ? this.progressSize * 2 : this.progressSize * 2.5
-            radiusBtnSize = this.progressSize <= 3 ? this.progressSize * 4 : radiusBtnSize
-            radiusBtnSize = radiusBtnSize < 12 ? 12 : radiusBtnSize
-            return radiusBtnSize
+        roundBtnSize() {
+            let roundBtnSize = this.size >= 8 ? this.size * 2 : this.size * 2.5
+            roundBtnSize = this.size <= 3 ? this.size * 4 : roundBtnSize
+            roundBtnSize = roundBtnSize < 12 ? 12 : roundBtnSize
+            return roundBtnSize
         },
-        // tooltip盒子样式
+        // tooltip样式
         tooltipStyle() {
             return {
-                bottom: this.vertical ? '' : `${this.progressSize + 10}px`,
-                left: this.vertical ? `${this.progressSize + 10}px` : ''
+                bottom: this.vertical ? '' : `${this.size + 10}px`,
+                left: this.vertical ? `${this.size + 10}px` : ''
             }
         }
     },
     methods: {
         // 获取鼠标在进度条上的位置，返回一个百分比值
         getMousePosition(e) {
-            let progressBox = this.$refs.progressBox
+            let progressTrack = this.$refs.progressTrack
             if (!this.vertical) {
-                let pWidth = progressBox.getBoundingClientRect().width //进度条总宽度
-                let pLeft = progressBox.getBoundingClientRect().left //进度条距左边距离
+                let pWidth = progressTrack.getBoundingClientRect().width //进度条总宽度
+                let pLeft = progressTrack.getBoundingClientRect().left //进度条距左边距离
                 let mPositon = e.clientX - pLeft //鼠标在进度条上的位置
                 mPositon = mPositon <= 0 ? 0 : mPositon //设置最小边界值
                 mPositon = mPositon >= pWidth ? pWidth : mPositon //设置最大边界值
                 let percentLength = Math.ceil((mPositon * 100) / pWidth)
                 return percentLength
             } else {
-                let pHeight = progressBox.getBoundingClientRect().height
-                let pBottom = progressBox.getBoundingClientRect().bottom
+                let pHeight = progressTrack.getBoundingClientRect().height
+                let pBottom = progressTrack.getBoundingClientRect().bottom
                 let mPositon = pBottom - e.clientY
                 mPositon = mPositon <= 0 ? 0 : mPositon
                 mPositon = mPositon >= pHeight ? pHeight : mPositon
@@ -203,17 +198,16 @@ export default {
         setProgressBar(percent) {
             if (!this.vertical) {
                 this.$refs.progressBar.style.width = percent + '%'
-                this.$refs.radiusBtn.style.left = percent + '%'
+                this.$refs.roundBtn.style.left = percent + '%'
             } else {
                 this.$refs.progressBar.style.height = percent + '%'
-                this.$refs.radiusBtn.style.bottom = percent + '%'
+                this.$refs.roundBtn.style.bottom = percent + '%'
             }
         },
         // 鼠标在进度条上移动时,设置tooltip位置,设置当前位置百分比数值
         setTooltip(e) {
-            this.hoverShowRadiusBtn = true
-            if (this.disabled) return //禁用进度条
-            if (!this.showToolTip) return // 父组件传值控制不显示tooltip
+            this.hoverShowRoundBtn = true
+            if (!this.showTooltip) return // 父组件传值控制不显示tooltip
             this.hoverShowToolTip = true
             let percentLength = this.getMousePosition(e)
             if (!this.vertical) {
@@ -228,30 +222,28 @@ export default {
                     : percentLength
                 : percentLength
         },
-        //改变进度条progressBar
-        changeProgressBar(e) {
-            if (this.disabled) return
+        //改变进度条
+        changeProgress(e) {
+            if (this.readonly) return
             let percentLength = this.getMousePosition(e)
-            this.$emit('onChange', percentLength)
+            this.$emit('change', percentLength)
         },
         // 鼠标经过圆形按钮
-        radiusBtnHover() {
-            this.hoverShowRadiusBtn = true
-            this.radiusBtnActive = true
+        roundBtnHover() {
+            this.hoverShowRoundBtn = true
+            this.roundBtnActive = true
         },
         // 鼠标离开圆形按钮
-        radiusBtnLeave() {
+        roundBtnLeave() {
             if (!this.isDrag) {
-                this.hoverShowRadiusBtn = false
-                this.radiusBtnActive = false
+                this.hoverShowRoundBtn = false
+                this.roundBtnActive = false
             }
         },
         // 鼠标按下圆形按钮拖拽进度条
         dragProgressBar() {
-            //禁用进度条
-            if (this.disabled) return
             // 鼠标移动，拖拽进度条
-            this.radiusBtnHover()
+            this.roundBtnHover()
             let move = e => {
                 this.isDrag = true
                 let percentLength = this.getMousePosition(e)
@@ -263,18 +255,18 @@ export default {
             let moveup = e => {
                 this.isDrag = false
                 document.removeEventListener('mousemove', move)
-                this.changeProgressBar(e)
-                this.progressBoxLeave()
-                this.radiusBtnActive = false
+                this.changeProgress(e)
+                this.progressTrackLeave()
+                this.roundBtnActive = false
                 document.removeEventListener('mouseup', moveup)
             }
             document.addEventListener('mousemove', move)
             document.addEventListener('mouseup', moveup)
         },
         // 鼠标离开进度条栏
-        progressBoxLeave() {
+        progressTrackLeave() {
             this.hoverShowToolTip = false
-            this.hoverShowRadiusBtn = false
+            this.hoverShowRoundBtn = false
         }
     },
     watch: {
