@@ -78,7 +78,9 @@ export default {
         }
     },
     methods: {
-        changeProgress(len) {},
+        changeProgress(len) {
+            this.$msg('进度:' + len)
+        },
         changeProgress2(len) {},
         changeProgress3(len) {},
         changeProgress4(len) {},

@@ -5,7 +5,7 @@
         :style="progressTrackStyle"
         @mousemove="setTooltip"
         @mouseleave="progressTrackLeave"
-        @click="changeProgress"
+        @click.self="changeProgress"
     >
         <!-- 进度条 -->
         <div :class="vertical ? 'progress-bar-vertical' : 'progress-bar'" ref="progressBar" :style="progressBarStyle">
@@ -135,9 +135,7 @@ export default {
                 // width: `${this.percent}%`,
                 borderRadius: `${this.size}px`,
                 background:
-                    typeof this.color == 'string'
-                        ? this.color
-                        : `linear-gradient(to right,${this.color[0]} 0%,${this.color[1]} 100%)`,
+                    typeof this.color == 'string' ? this.color : `linear-gradient(to right,${this.color[0]} 0%,${this.color[1]} 100%)`,
                 transition: this.isDrag ? 'none' : 'all 0.3s ease-out',
                 cursor: this.readonly ? '' : 'pointer'
             }
@@ -198,15 +196,18 @@ export default {
         setProgressBar(percent) {
             if (!this.vertical) {
                 this.$refs.progressBar.style.width = percent + '%'
+                if (this.hiddenRoundBtn ||this.readonly) return
                 this.$refs.roundBtn.style.left = percent + '%'
             } else {
                 this.$refs.progressBar.style.height = percent + '%'
+                if (this.hiddenRoundBtn || this.readonly) return
                 this.$refs.roundBtn.style.bottom = percent + '%'
             }
         },
         // 鼠标在进度条上移动时,设置tooltip位置,设置当前位置百分比数值
         setTooltip(e) {
             this.hoverShowRoundBtn = true
+            if (this.readonly) return
             if (!this.showTooltip) return // 父组件传值控制不显示tooltip
             this.hoverShowToolTip = true
             let percentLength = this.getMousePosition(e)
