@@ -107,7 +107,7 @@ export default {
             if (this.horizontalModel) {
                 // 如果在水平模式下,需要关闭其他menuItem的激活状态
                 this.Menu.$children.forEach(child => {
-                    if (child.$options.name === 'ZtMenuItem') {
+                    if (child.$options.name === 'ZtMenuItem' || (child.$options.name === 'ZtSubmenu' && child.index !== this.index)) {
                         child.isActive = false
                     }
                 })
@@ -125,6 +125,7 @@ export default {
         },
         // 获取当前点击submenu的所有父级submenu
         getParentSubMenu() {
+            this.parentIndexArr = []
             let getParentSub = vm => {
                 let parent = vm.$parent
                 if (parent.$options.name === 'ZtMenuItemGroup') {
@@ -145,9 +146,9 @@ export default {
                     if (child.$options.name === 'ZtMenuItemGroup') {
                         getBrotherSubMenu(child)
                     }
-                    if (child.$options.name === 'ZtSubmenu' && child.index !== this.index) {
+                    if (child.$options.name === 'ZtSubmenu' && child.index !== this.index && child.showMore) {
                         getBrotherSubMenu(child)
-                        if (this.parentIndexArr.indexOf(child.index) < 0) {
+                        if (this.parentIndexArr.indexOf(child.index) < 0 ) {
                             child.showMore = false
                         }
                     }

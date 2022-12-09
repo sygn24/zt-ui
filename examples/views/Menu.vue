@@ -137,6 +137,19 @@
                             <zt-menu-item index="3-4"> 流失用户流失用户</zt-menu-item>
                         </zt-menu-item-group>
                     </zt-submenu>
+                    <zt-submenu index="4">
+                        <template slot="title">
+                            <span>人员管理</span>
+                        </template>
+                        <zt-menu-item-group title="内容管理">
+                            <zt-menu-item index="4-1"> 文章管理 </zt-menu-item>
+                            <zt-menu-item index="4-2"> 评论管理 </zt-menu-item>
+                        </zt-menu-item-group>
+                        <zt-menu-item-group title="统计分析">
+                            <zt-menu-item index="4-3"> 用户留存 </zt-menu-item>
+                            <zt-menu-item index="4-4"> 流失用户</zt-menu-item>
+                        </zt-menu-item-group>
+                    </zt-submenu>
                 </zt-menu>
             </div>
             <div class="col">
