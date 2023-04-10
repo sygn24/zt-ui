@@ -132,3 +132,40 @@
     opacity: 0;
     transform: translateY(80px) scaleY(0.2);
 }
+
+/* Drawer抽屉 动画*/
+.drawer-slide-enter-active,
+.drawer-slide-leave-active {
+	transition: all 0.3s ease-in-out;
+}
+.drawer-slide-enter.right,
+.drawer-slide-leave-to.right {
+	transform: translateX(100%);
+}
+.drawer-slide-enter-to.right{
+	transform: translateX(0);
+}
+
+.drawer-slide-enter.left,
+.drawer-slide-leave-to.left {
+	transform: translateX(-100%);
+}
+.drawer-slide-enter-to.left {
+	transform: translateX(0);
+}
+
+.drawer-slide-enter.top,
+.drawer-slide-leave-to.top {
+	transform: translateY(-100%);
+}
+.drawer-slide-enter-to.top {
+	transform: translateY(0);
+}
+
+.drawer-slide-enter.bottom,
+.drawer-slide-leave-to.bottom {
+	transform: translateY(100%);
+}
+.drawer-slide-enter-to.bottom {
+	transform: translateY(0);
+}

@@ -23,6 +23,7 @@ import CheckboxGroup  from './components/CheckboxGroup'
 import { Form, FormItem } from './components/Form'
 import {Menu,MenuItem,Submenu,MenuItemGroup} from './components/Menu'
 import { Timeline, TimelineItem } from './components/Timeline'
+import Drawer  from './components/Drawer'
 import loadingDirective from './components/Loading/directive'
 import "./assets/index.css"
 // 组件列表
@@ -42,6 +43,7 @@ const components = [
   Checkbox,CheckboxGroup,
   Form,FormItem,
   Menu,MenuItem,Submenu,MenuItemGroup,
+  Drawer,
   Timeline,TimelineItem
 ]
 

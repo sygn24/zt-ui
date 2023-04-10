@@ -104,6 +104,11 @@ const routes = [
 		name: "Menu",
 		component: () => import("../views/Menu.vue"),
 	},
+	{
+		path: "/drawer",
+		name: "Drawer",
+		component: () => import("../views/Drawer.vue"),
+	},
 
 ];
 

@@ -45,7 +45,8 @@ export default {
                         { name: 'Message消息提示', index: '/message' },
                         { name: 'Tooltip文字提示', index: '/tooltip' },
                         { name: 'Modal对话框', index: '/modal' },
-                        { name: 'Confirm确认框', index: '/confirm' }
+                        { name: 'Confirm确认框', index: '/confirm' },
+                        { name: 'Drawer抽屉', index: '/drawer' }
                     ]
                 },
                 {
