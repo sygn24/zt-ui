@@ -5,10 +5,11 @@
 </template>
 
 <script>
-import { Select, Option } from '../../Select'
+import ZtSelect from '../../Select'
+import ZtOption from '../../SelectOption'
 export default {
     name: 'PageSizeSelect',
-    components: { Select, Option },
+    components: { ZtSelect, ZtOption },
     created() {
         this.initPageSizes()
     },
