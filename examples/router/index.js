@@ -109,6 +109,11 @@ const routes = [
 		name: "Drawer",
 		component: () => import("../views/Drawer.vue"),
 	},
+	{
+		path: "/carousel",
+		name: "Carousel",
+		component: () => import("../views/Carousel.vue"),
+	},
 
 ];
 

@@ -46,7 +46,8 @@ export default {
                         { name: 'Tooltip文字提示', index: '/tooltip' },
                         { name: 'Modal对话框', index: '/modal' },
                         { name: 'Confirm确认框', index: '/confirm' },
-                        { name: 'Drawer抽屉', index: '/drawer' }
+                        { name: 'Drawer抽屉', index: '/drawer' },
+                        { name: 'Carousel走马灯', index: '/carousel' }
                     ]
                 },
                 {

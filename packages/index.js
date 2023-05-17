@@ -24,6 +24,8 @@ import { Form, FormItem } from './components/Form'
 import {Menu,MenuItem,Submenu,MenuItemGroup} from './components/Menu'
 import { Timeline, TimelineItem } from './components/Timeline'
 import Drawer  from './components/Drawer'
+import Carousel  from './components/Carousel'
+import CarouselItem  from './components/CarouselItem'
 import loadingDirective from './components/Loading/directive'
 import "./assets/index.css"
 // 组件列表
@@ -44,6 +46,8 @@ const components = [
   Form,FormItem,
   Menu,MenuItem,Submenu,MenuItemGroup,
   Drawer,
+  Carousel,
+  CarouselItem,
   Timeline,TimelineItem
 ]
 
