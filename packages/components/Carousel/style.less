@@ -7,6 +7,7 @@
 
   &-content {
     position: relative;
+    display: flex;
     height: 100%;
     transition: all .5s ease;
   }
@@ -62,8 +63,19 @@
           opacity: 1;
           width: 24px;
         }
-        &.hover{
+
+        &.hover {
           opacity: 1;
+        }
+
+        &.dot {
+          width: 8px;
+          height: 8px;
+          border-radius: 50%;
+
+          &.active {
+            width: 8px;
+          }
         }
       }
     }

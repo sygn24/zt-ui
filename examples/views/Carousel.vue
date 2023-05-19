@@ -52,8 +52,8 @@
                 </zt-carousel>
             </div>
             <div class="col">
-                <h3>Click 指示器触发，自定义显示第三张</h3>
-                <zt-carousel :initial-index="3" trigger="click">
+                <h3>Click 指示器触发，自定义显示第二张</h3>
+                <zt-carousel :current="2" trigger="click">
                     <zt-carousel-item>
                         <div class="bg">
                             <span>1</span>
@@ -158,6 +158,33 @@
             <div class="col">
                 <h3>关闭自动轮播，自定义宽高</h3>
                 <zt-carousel :autoplay="false" :width="300" :height="180">
+                    <zt-carousel-item>
+                        <div class="bg">
+                            <span>1</span>
+                        </div>
+                    </zt-carousel-item>
+                    <zt-carousel-item>
+                        <div class="bg" style="background: pink">
+                            <span>2</span>
+                        </div>
+                    </zt-carousel-item>
+                    <zt-carousel-item>
+                        <div class="bg" style="background: 7db9e8">
+                            <span>3</span>
+                        </div>
+                    </zt-carousel-item>
+                    <zt-carousel-item>
+                        <div class="bg" style="background: red">
+                            <span>4</span>
+                        </div>
+                    </zt-carousel-item>
+                </zt-carousel>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <h3>关闭循环播放，设置指示器样式为圆形</h3>
+                <zt-carousel :interval="1000" :loop="false" indicator-type="dot">
                     <zt-carousel-item>
                         <div class="bg">
                             <span>1</span>
