@@ -1,19 +1,21 @@
-# ztj-ui
-
-## Project setup
+# zt-ui
 ```
-npm install
+参照Element-ui、iView组件库的样式，基于Vue2自己动手封装，实现了一些简单的组件，用于学习练手。
 ```
-
-### Compiles and hot-reloads for development
+## 依赖安装
 ```
-npm run serve
+npm install -g yarn
+yarn install
 ```
 
-### Compiles and minifies for production
+### 项目运行
 ```
-npm run build
+yarn dev
+yarn docs:dev(文档说明)
 ```
 
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+### 项目打包
+```
+yarn build
+yarn docs:build(文档说明)
+```

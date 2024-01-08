@@ -183,6 +183,7 @@ export default {
         // 停止轮播
         stopPlay() {
             this.timer && clearInterval(this.timer)
+            this.timer = null
         },
         // 切换元素
         toggleItem(step) {
@@ -246,7 +247,7 @@ export default {
         this.initCurrent()
         this.autoPlay()
     },
-    beforeDestroed() {
+    destroyed() {
         this.stopPlay()
     }
 }

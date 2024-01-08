@@ -74,6 +74,7 @@ export default {
     watch: {
         $route(to) {
             this.defaultActive = to.path
+            document.querySelector('.rightContent').scrollTo(0, 0);
         }
     }
 }
