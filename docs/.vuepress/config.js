@@ -1,7 +1,7 @@
 module.exports = {
     title: 'ZT-UI组件库',
     description: '封装了一些常用的组件',
-    port: '8080',
+    port: '8088',
     themeConfig: {
         nav: [
             { text: '首页', link: '/' },
@@ -31,5 +31,6 @@ module.exports = {
             ]
         }
     },
+    base:'/zt-ui',
     plugins: ['demo-container']
 }
