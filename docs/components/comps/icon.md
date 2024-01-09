@@ -10,7 +10,7 @@
     <div>
         <div class="iconList">
             <span class="item" v-for="(icon, index) in iconList" :key="index">
-                <ZtIcon :icon="icon" size="22" color="var(--primary)" />
+                <zt-icon :icon="icon" size="22" color="var(--primary)" />
                 <p style="padding-top: 5px">{{ icon }}</p>
             </span>
         </div>

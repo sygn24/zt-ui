@@ -3,7 +3,7 @@
         <zt-menu v-model="defaultActive" router width="200px" :show-border="false" style="padding: 15px 0">
             <zt-menu-item-group v-for="(item, index) in allList" :key="index" :title="item.title" style="font-size: 14px">
                 <zt-menu-item v-for="(item2, index2) in item.list" :key="index2" :index="item2.index" style="font-size: 16px">
-                    <ZtIcon icon="component" />
+                    <zt-icon icon="component" />
                     <span class="title">{{ item2.name }}</span>
                 </zt-menu-item>
             </zt-menu-item-group>

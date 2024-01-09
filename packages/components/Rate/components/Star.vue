@@ -1,9 +1,9 @@
 <template>
     <span class="star-wrapper" :class="{ disabled: $parent.isDisabled }">
-        <ZtIcon class="star" :icon="starIcon" :color="starColor" size="18" />
+        <zt-icon class="star" :icon="starIcon" :color="starColor" size="18" />
         <span class="mask1" @mouseenter="enterHalfStar" @mouseleave="leaveHalfStar" @click.stop="clickHalfStar" v-if="allowHalf"></span>
         <span class="mask2" v-if="showHalf" @mouseenter="mask2Enter">
-            <ZtIcon icon="star-fill" color="var(--base-border)" size="18" />
+            <zt-icon icon="star-fill" color="var(--base-border)" size="18" />
         </span>
     </span>
 </template>

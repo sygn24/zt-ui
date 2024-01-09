@@ -33,8 +33,8 @@
             @focus="$emit('focus', $event.target.value)"
             @keyup.enter="$emit('keyupEnter', $event.target.value)"
         />
-        <ZtIcon v-if="showClearIcon" class="zt-input-icon-suffix function" icon="clear" size="14" @click="clearValue" />
-        <ZtIcon
+        <zt-icon v-if="showClearIcon" class="zt-input-icon-suffix function" icon="clear" size="14" @click="clearValue" />
+        <zt-icon
             v-if="showEyeIcon"
             class="zt-input-icon-suffix function"
             :icon="showPwd ? 'eye' : 'eyeoff'"
@@ -44,11 +44,11 @@
         <span class="zt-input-limit" :class="limitTextPosition" v-if="showLimitText">{{ value.length }}/{{ $attrs.maxlength }}</span>
         <span class="zt-input-icon-prefix" v-if="$slots.prefix || showPrefixIcon">
             <slot name="prefix" />
-            <ZtIcon :icon="prefixIcon" v-if="showPrefixIcon" />
+            <zt-icon :icon="prefixIcon" v-if="showPrefixIcon" />
         </span>
         <span class="zt-input-icon-suffix" v-if="$slots.suffix || showSuffixIcon">
             <slot name="suffix" />
-            <ZtIcon :icon="suffixIcon" v-if="showSuffixIcon" />
+            <zt-icon :icon="suffixIcon" v-if="showSuffixIcon" />
         </span>
     </div>
 </template>

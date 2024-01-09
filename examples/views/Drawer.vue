@@ -25,7 +25,7 @@
             <zt-drawer :visible.sync="show3">
                 <template #title>
                     <div>
-                        <ZtIcon icon="info" color="var(--primary)" size="20" />
+                        <zt-icon icon="info" color="var(--primary)" size="20" />
                         <span>自定义标题</span>
                     </div>
                 </template>

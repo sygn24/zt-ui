@@ -12,12 +12,12 @@
         <template v-if="childLen">
             <transition name="base-fade">
                 <div class="zt-carousel-arrow zt-carousel-arrow-prev" @click="toggleItem(-1)" v-show="showArrow">
-                    <ZtIcon icon="arrow-left-bold" color="#fff" />
+                    <zt-icon icon="arrow-left-bold" color="#fff" />
                 </div>
             </transition>
             <transition name="base-fade">
                 <div class="zt-carousel-arrow zt-carousel-arrow-next" @click="toggleItem(1)" v-show="showArrow">
-                    <ZtIcon icon="arrow-right-bold" color="#fff" />
+                    <zt-icon icon="arrow-right-bold" color="#fff" />
                 </div>
             </transition>
         </template>

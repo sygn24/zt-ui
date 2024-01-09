@@ -1,6 +1,6 @@
 <template>
     <button class="zt-pagination-toggle" :class="classes" :style="styles" :disabled="disabled" @click="togglePageNum">
-        <ZtIcon :icon="`arrow-${direction}-bold`" :size="$parent.small ? 12 : 13" />
+        <zt-icon :icon="`arrow-${direction}-bold`" :size="$parent.small ? 12 : 13" />
     </button>
 </template>
 

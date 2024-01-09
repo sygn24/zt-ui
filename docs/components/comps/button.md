@@ -87,7 +87,7 @@
 ```html
 <zt-button-group>
     <zt-button type="primary" icon="arrow-left-bold">上一页</zt-button>
-    <zt-button type="primary">下一页<ZtIcon icon="arrow-right-bold" style="margin-left: 5px" /></zt-button>
+    <zt-button type="primary">下一页<zt-icon icon="arrow-right-bold" style="margin-left: 5px" /></zt-button>
 </zt-button-group>
 <zt-button-group>
     <zt-button type="primary" icon="edit">编辑</zt-button>
@@ -167,9 +167,9 @@
 <zt-button type="success" font-size="20px" icon="upload">自定义字体大小</zt-button>
 <zt-button background="#666" text-color="yellow" border-color="red">自定义颜色</zt-button>
 <zt-button type="primary">
-    <ZtIcon icon="eyeoff" color="red" />
+    <zt-icon icon="eyeoff" color="red" />
     使用icon组件
-    <ZtIcon icon="eye" />
+    <zt-icon icon="eye" />
 </zt-button>
 ```
 

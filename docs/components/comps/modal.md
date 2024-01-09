@@ -42,7 +42,7 @@
     <zt-modal :visible.sync="show" width="40%" top="25vh">
         <template #title>
             <div>
-                <ZtIcon icon="info" color="#2d8cf0" size="20" />
+                <zt-icon icon="info" color="#2d8cf0" size="20" />
                 <span>自定义标题</span>
             </div>
         </template>

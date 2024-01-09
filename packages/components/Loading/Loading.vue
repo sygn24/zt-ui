@@ -2,7 +2,7 @@
     <transition name="base-fade" @after-leave="handleAfterLeave">
         <div class="zt-loading" :class="classes" :style="styles" v-show="show">
             <div class="zt-loading-content">
-                <ZtIcon :icon="icon" :size="iconSize" :color="color" class="loading-loop" v-if="icon !== ''" />
+                <zt-icon :icon="icon" :size="iconSize" :color="color" class="loading-loop" v-if="icon !== ''" />
                 <component :is="loadingAnimation" :color="color" v-else></component>
                 <div class="zt-loading-content-text" :style="{ color: color }" v-if="text !== ''">{{ text }}</div>
             </div>

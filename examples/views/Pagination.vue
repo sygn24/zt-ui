@@ -74,6 +74,8 @@
                 show-total
                 show-sizes
                 show-jumper
+                background
+                theme-color="var(--warning)"
             ></zt-pagination>
         </div>
     </div>

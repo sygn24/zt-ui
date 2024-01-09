@@ -5,16 +5,16 @@
                 <div class="zt-modal" :style="style" v-show="visable">
                     <div class="zt-modal-header">
                         <div class="zt-modal-header-title">
-                            <ZtIcon
+                            <zt-icon
                                 :custom="customIcon.icon"
                                 :color="customIcon.color"
                                 :size="customIcon.size"
                                 v-if="customIcon.icon !== ''"
                             />
-                            <ZtIcon :icon="type" :color="typeContent" size="20" v-else />
+                            <zt-icon :icon="type" :color="typeContent" size="20" v-else />
                             <span style="padding-left: 5px">{{ title }}</span>
                         </div>
-                        <ZtIcon icon="close" class="zt-modal-header-close" @click="handleClose" />
+                        <zt-icon icon="close" class="zt-modal-header-close" @click="handleClose" />
                     </div>
                     <div class="zt-modal-body">{{ content }}</div>
                     <div class="zt-modal-footer">

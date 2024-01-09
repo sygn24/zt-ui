@@ -1,8 +1,6 @@
 import Vue from 'vue';
 import Loading from './Loading.vue';
 
-let instance
-
 const loadingDirective = (Vue) => {
   Vue.directive('loading', {
     update (el, binding) {
@@ -16,12 +14,12 @@ const loadingDirective = (Vue) => {
         options = value || {}
       }
       const { loading } = options
-      loading ? createLoading(el, options) : remove(el?.LoadingInstance?.$el)
+      loading ? createLoading(el, options) : removeLoading(el?.LoadingInstance?.$el)
     },
     unbind (el, binding) {
       const { loading } = binding.value || {}
       // 如果还在展示加载特效，则关闭
-      loading && remove(el?.LoadingInstance?.$el)
+      loading && removeLoading(el?.LoadingInstance?.$el)
     }
   })
 }
@@ -38,9 +36,10 @@ const createLoading = (target, options) => {
   // 设置默认背景色和文字为空
   if (!options.bgColor) options.bgColor = 'hsla(0,0%,100%,.9)'
   if (!options.text) options.text = ''
+  
   // 创建loading实例
   const loadingConstructor = Vue.extend(Loading)
-  instance = new loadingConstructor({
+  const instance = new loadingConstructor({
     el: document.createElement('div'),
     propsData: options,
   })
@@ -51,11 +50,10 @@ const createLoading = (target, options) => {
   parentNode.LoadingInstance = instance
 }
 
-const remove = (target) => {
+const removeLoading = (target) => {
   if (!target) return
-  instance.show = false
+  target.parentNode.LoadingInstance.show = false
   target.parentNode.LoadingInstance = null
-
 }
 
 export default loadingDirective

@@ -28,10 +28,10 @@
             </zt-switch>
             <zt-switch v-model="value2">
                 <template #open>
-                    <ZtIcon icon="select" />
+                    <zt-icon icon="select" />
                 </template>
                 <template #close>
-                    <ZtIcon icon="close" />
+                    <zt-icon icon="close" />
                 </template>
             </zt-switch>
         </div>

@@ -78,10 +78,10 @@
     </zt-switch>
     <zt-switch>
         <template #open>
-            <ZtIcon icon="select" />
+            <zt-icon icon="select" />
         </template>
         <template #close>
-            <ZtIcon icon="close" />
+            <zt-icon icon="close" />
         </template>
     </zt-switch>
     <zt-switch true-color="#2bb669" false-color="#ed4014" default-text></zt-switch>

@@ -1,7 +1,9 @@
 <template>
-    <zt-select v-model="value" width="100" height="32" @change="pageSizeChange">
-        <zt-option v-for="item in options" :key="item.value" :label="item.label" :value="item.value"></zt-option>
-    </zt-select>
+    <div class="zt-page-size-select">
+        <zt-select v-model="value" width="100" height="32" @change="pageSizeChange">
+            <zt-option v-for="item in options" :key="item.value" :label="item.label" :value="item.value"></zt-option>
+        </zt-select>
+    </div>
 </template>
 
 <script>
@@ -38,15 +40,25 @@ export default {
 </script>
 
 <style lang="less" scoped>
-::v-deep .zt-select-option {
-    text-align: center;
-}
-::v-deep .zt-select-drop {
-    &::before {
-        left: 35px;
+.zt-page-size-select ::v-deep {
+    .zt-select-option {
+        text-align: center;
     }
-    &::after {
-        left: 35px;
+    .zt-select-option.current {
+        color: var(--themeColor);
+    }
+    .zt-select-drop {
+        &::before {
+            left: 35px;
+        }
+        &::after {
+            left: 35px;
+        }
+    }
+    .zt-select {
+        &:hover {
+            border-color: var(--themeColor);
+        }
     }
 }
 </style>

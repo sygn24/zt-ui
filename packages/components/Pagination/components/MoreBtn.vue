@@ -7,7 +7,7 @@
         @mouseleave="ellipsis = true"
         @click="moreBtnClick"
     >
-        <ZtIcon :icon="ellipsis ? 'ellipsis' : `double-arrow-${direction}`" :size="$parent.small ? 12 : 13" />
+        <zt-icon :icon="ellipsis ? 'ellipsis' : `double-arrow-${direction}`" :size="$parent.small ? 12 : 13" />
     </span>
 </template>
 

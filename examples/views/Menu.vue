@@ -5,15 +5,15 @@
                 <h3>垂直模式</h3>
                 <zt-menu v-model="activeindex1" @onSelect="onSelect">
                     <zt-menu-item index="1">
-                        <ZtIcon icon="file" />
+                        <zt-icon icon="file" />
                         <span class="title">文章管理</span>
                     </zt-menu-item>
                     <zt-menu-item index="2">
-                        <ZtIcon icon="comment" />
+                        <zt-icon icon="comment" />
                         <span class="title">评论管理</span>
                     </zt-menu-item>
                     <zt-menu-item index="3">
-                        <ZtIcon icon="setting" />
+                        <zt-icon icon="setting" />
                         <span class="title">系统设置</span>
                     </zt-menu-item>
                 </zt-menu>
@@ -32,21 +32,21 @@
                     <zt-menu-item-group>
                         <span slot="title">内容管理</span>
                         <zt-menu-item index="1-1">
-                            <ZtIcon icon="file" />
+                            <zt-icon icon="file" />
                             <span class="title">文章管理</span>
                         </zt-menu-item>
                         <zt-menu-item index="1-2">
-                            <ZtIcon icon="comment" />
+                            <zt-icon icon="comment" />
                             <span class="title">评论管理</span>
                         </zt-menu-item>
                     </zt-menu-item-group>
                     <zt-menu-item-group title="统计分析">
                         <zt-menu-item index="2-1">
-                            <ZtIcon icon="like" />
+                            <zt-icon icon="like" />
                             <span class="title">用户留存</span>
                         </zt-menu-item>
                         <zt-menu-item index="2-2">
-                            <ZtIcon icon="meh" />
+                            <zt-icon icon="meh" />
                             <span class="title">流失用户</span>
                         </zt-menu-item>
                     </zt-menu-item-group>
@@ -59,32 +59,32 @@
                 <zt-menu v-model="activeindex3">
                     <zt-submenu index="1">
                         <template slot="title">
-                            <ZtIcon icon="file" />
+                            <zt-icon icon="file" />
                             <span class="title">内容管理</span>
                         </template>
                         <zt-menu-item index="1-1">
-                            <ZtIcon icon="file" />
+                            <zt-icon icon="file" />
                             <span class="title">文章管理</span>
                         </zt-menu-item>
                         <zt-menu-item index="1-2">
-                            <ZtIcon icon="comment" />
+                            <zt-icon icon="comment" />
                             <span class="title">评论管理</span>
                         </zt-menu-item>
                     </zt-submenu>
                     <zt-submenu index="2">
                         <template slot="title">
-                            <ZtIcon icon="edit" />
+                            <zt-icon icon="edit" />
                             <span class="title">统计分析管理</span>
                         </template>
                         <zt-menu-item-group>
                             <span slot="title">内容统计</span>
                             <zt-menu-item index="2-1">
-                                <ZtIcon icon="file" />
+                                <zt-icon icon="file" />
                                 <span class="title">文章统计</span>
                             </zt-menu-item>
                             <zt-submenu index="2-2">
                                 <template slot="title">
-                                    <ZtIcon icon="navigation" />
+                                    <zt-icon icon="navigation" />
                                     <span class="title">评论统计</span>
                                 </template>
                                 <zt-menu-item index="2-2-1"> 最新评论 </zt-menu-item>
@@ -95,22 +95,22 @@
                             <zt-menu-item index="2-3"> 新人统计 </zt-menu-item>
                             <zt-submenu index="2-4">
                                 <template slot="title">
-                                    <ZtIcon icon="navigation" />
+                                    <zt-icon icon="navigation" />
                                     <span class="title">人员管理</span>
                                 </template>
                                 <zt-menu-item index="2-4-1"> 用户留存 </zt-menu-item>
                                 <zt-menu-item index="2-4-2"> 流失用户 </zt-menu-item>
                                 <zt-submenu index="2-4-3">
                                     <template slot="title">
-                                        <ZtIcon icon="navigation" />
+                                        <zt-icon icon="navigation" />
                                         <span class="title">统计分析</span>
                                     </template>
                                     <zt-menu-item index="2-4-3-1">
-                                        <ZtIcon icon="like" />
+                                        <zt-icon icon="like" />
                                         <span class="title">用户留存</span>
                                     </zt-menu-item>
                                     <zt-menu-item index="2-4-3-2">
-                                        <ZtIcon icon="meh" />
+                                        <zt-icon icon="meh" />
                                         <span class="title">流失用户</span>
                                     </zt-menu-item>
                                 </zt-submenu>
@@ -157,32 +157,32 @@
                 <zt-menu v-model="activeindex3" unique-opened>
                     <zt-submenu index="1">
                         <template slot="title">
-                            <ZtIcon icon="file" />
+                            <zt-icon icon="file" />
                             <span class="title">内容管理</span>
                         </template>
                         <zt-menu-item index="1-1">
-                            <ZtIcon icon="file" />
+                            <zt-icon icon="file" />
                             <span class="title">文章管理</span>
                         </zt-menu-item>
                         <zt-menu-item index="1-2">
-                            <ZtIcon icon="comment" />
+                            <zt-icon icon="comment" />
                             <span class="title">评论管理</span>
                         </zt-menu-item>
                     </zt-submenu>
                     <zt-submenu index="2">
                         <template slot="title">
-                            <ZtIcon icon="edit" />
+                            <zt-icon icon="edit" />
                             <span class="title">统计分析管理</span>
                         </template>
                         <zt-menu-item-group>
                             <span slot="title">内容统计</span>
                             <zt-menu-item index="2-1">
-                                <ZtIcon icon="file" />
+                                <zt-icon icon="file" />
                                 <span class="title">文章统计</span>
                             </zt-menu-item>
                             <zt-submenu index="2-2">
                                 <template slot="title">
-                                    <ZtIcon icon="navigation" />
+                                    <zt-icon icon="navigation" />
                                     <span class="title">评论统计</span>
                                 </template>
                                 <zt-menu-item index="2-2-1"> 最新评论 </zt-menu-item>
@@ -193,22 +193,22 @@
                             <zt-menu-item index="2-3"> 新人统计 </zt-menu-item>
                             <zt-submenu index="2-4">
                                 <template slot="title">
-                                    <ZtIcon icon="navigation" />
+                                    <zt-icon icon="navigation" />
                                     <span class="title">人员管理</span>
                                 </template>
                                 <zt-menu-item index="2-4-1"> 用户留存 </zt-menu-item>
                                 <zt-menu-item index="2-4-2"> 流失用户 </zt-menu-item>
                                 <zt-submenu index="2-4-3">
                                     <template slot="title">
-                                        <ZtIcon icon="navigation" />
+                                        <zt-icon icon="navigation" />
                                         <span class="title">统计分析</span>
                                     </template>
                                     <zt-menu-item index="2-4-3-1">
-                                        <ZtIcon icon="like" />
+                                        <zt-icon icon="like" />
                                         <span class="title">用户留存</span>
                                     </zt-menu-item>
                                     <zt-menu-item index="2-4-3-2">
-                                        <ZtIcon icon="meh" />
+                                        <zt-icon icon="meh" />
                                         <span class="title">流失用户</span>
                                     </zt-menu-item>
                                 </zt-submenu>
@@ -231,15 +231,15 @@
                     :show-border="false"
                 >
                     <zt-menu-item index="1">
-                        <ZtIcon icon="file" />
+                        <zt-icon icon="file" />
                         <span class="title">文章管理</span>
                     </zt-menu-item>
                     <zt-menu-item index="2">
-                        <ZtIcon icon="comment" />
+                        <zt-icon icon="comment" />
                         <span class="title">评论管理</span>
                     </zt-menu-item>
                     <zt-menu-item index="3">
-                        <ZtIcon icon="setting" />
+                        <zt-icon icon="setting" />
                         <span class="title">系统设置</span>
                     </zt-menu-item>
                 </zt-menu>
@@ -257,11 +257,11 @@
                     height="80px"
                 >
                     <zt-menu-item index="1">
-                        <ZtIcon icon="file" />
+                        <zt-icon icon="file" />
                         <span class="title">文章管理</span>
                     </zt-menu-item>
                     <zt-menu-item index="2">
-                        <ZtIcon icon="comment" />
+                        <zt-icon icon="comment" />
                         <span class="title">评论管理</span>
                     </zt-menu-item>
                     <zt-submenu index="3">

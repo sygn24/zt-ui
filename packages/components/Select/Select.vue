@@ -10,14 +10,14 @@
             <div class="zt-select-content-label ellipsis" :class="{ plac: label == '' }" :title="label">
                 {{ label == '' ? placeholder : label }}
             </div>
-            <ZtIcon
+            <zt-icon
                 v-if="clearable && showClear && label !== ''"
                 icon="clear"
                 :size="fontSize"
                 class="zt-select-content-icon"
                 @click.stop="clearValue"
             />
-            <ZtIcon
+            <zt-icon
                 v-else
                 icon="arrow-down-bold"
                 :size="fontSize"

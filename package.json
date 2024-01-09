@@ -17,7 +17,7 @@
     "vue-router": "^3.5.1",
     "vuepress": "^1.9.7",
     "vuepress-plugin-demo-container": "^0.2.0",
-    "webpack": "4"
+    "webpack": "4.0.0"
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "~5.0.0",

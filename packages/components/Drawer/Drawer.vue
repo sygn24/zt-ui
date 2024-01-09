@@ -4,7 +4,7 @@
             <transition name="drawer-slide" @after-enter="afterEnter" @after-leave="afterLeave">
                 <div class="zt-drawer" :class="`${direction}`" :style="style" v-show="visible">
                     <div class="zt-drawer-content">
-                        <ZtIcon
+                        <zt-icon
                             icon="close"
                             class="zt-drawer-header-close"
                             @click="handelClose"
@@ -32,7 +32,7 @@
     <transition name="drawer-slide" @after-enter="afterEnter" @after-leave="afterLeave" v-else>
         <div class="zt-drawer" :class="`${direction}`" :style="style" v-show="visible">
             <div class="zt-drawer-content">
-                <ZtIcon
+                <zt-icon
                     icon="close"
                     class="zt-drawer-header-close"
                     @click="handelClose"

@@ -2,9 +2,9 @@
     <div class="zt-message-box" :style="{ top: top + 'px' }">
         <transition name="message-fade" @after-leave="handleAfterLeave">
             <div class="zt-message" :class="backgroundColor" v-show="show">
-                <ZtIcon :icon="type" :color="iconColor" :class="{ 'loading-loop': type === 'loading' }" />
+                <zt-icon :icon="type" :color="iconColor" :class="{ 'loading-loop': type === 'loading' }" />
                 <span class="zt-message-text">{{ msg }}</span>
-                <ZtIcon icon="close" class="zt-message-close" v-if="showClose && type !== 'loading'" @click="handleClose" />
+                <zt-icon icon="close" class="zt-message-close" v-if="showClose && type !== 'loading'" @click="handleClose" />
             </div>
         </transition>
     </div>

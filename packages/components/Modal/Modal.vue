@@ -7,7 +7,7 @@
                         <slot name="title">
                             <span>{{ title }}</span>
                         </slot>
-                        <ZtIcon icon="close" class="zt-modal-header-close" @click="handelClose" v-if="showClose" />
+                        <zt-icon icon="close" class="zt-modal-header-close" @click="handelClose" v-if="showClose" />
                     </div>
                     <div class="zt-modal-body">
                         <slot></slot>

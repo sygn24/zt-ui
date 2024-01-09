@@ -2,7 +2,7 @@
     <div class="zt-menu-submenu">
         <div ref="ztMenuItemInstance" class="zt-menu-submenu-title ellipsis" :style="styles" :class="titleClass" @click="showMoreMenu">
             <slot name="title">{{ title }}</slot>
-            <ZtIcon icon="arrow-down-bold" size="12" class="zt-menu-submenu-icon" :class="iconClass" />
+            <zt-icon icon="arrow-down-bold" size="12" class="zt-menu-submenu-icon" :class="iconClass" />
             <span
                 class="zt-menu-item-line"
                 :class="horizontalModel ? 'horizontal' : ''"

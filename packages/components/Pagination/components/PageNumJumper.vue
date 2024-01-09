@@ -1,5 +1,5 @@
 <template>
-    <span>
+    <span class="zt-page-num-jumper">
         <span>前往 </span>
         <zt-input style="width: 50px; height: 32px" type="number" v-model="pageNum" @blur="tooglePage" @keyupEnter="tooglePage"></zt-input>
         <span> 页</span>
@@ -38,4 +38,10 @@ export default {
 }
 </script>
 
-<style lang="less" scoped></style>
+<style lang="less" scoped>
+.zt-page-num-jumper ::v-deep .zt-input-inner{
+    &:hover,&:focus{
+        border-color: var(--themeColor);
+    }
+}
+</style>
