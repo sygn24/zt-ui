@@ -31,6 +31,6 @@ module.exports = {
             ]
         }
     },
-    base:'/zt-ui',
+    base:'/zt-ui/',
     plugins: ['demo-container']
 }
