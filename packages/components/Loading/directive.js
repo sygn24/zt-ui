@@ -25,17 +25,13 @@ const loadingDirective = (Vue) => {
 }
 
 const createLoading = (target, options) => {
-  // 判断当前的Vue实例是否运行在服务器上,判断是否已经开启加载特效
+  // 判断当前的Vue实例是否运行在服务器上，判断是否已经开启加载特效
   if (Vue.prototype.$isServer || target?.LoadingInstance) return
   const parentNode = target || document.body
 
   // 判断是否存在定位，没有则添加定位
   const position = getComputedStyle(parentNode).position
   if (!position || position == 'static') parentNode.style.position = 'relative'
-
-  // 设置默认背景色和文字为空
-  if (!options.bgColor) options.bgColor = 'hsla(0,0%,100%,.9)'
-  if (!options.text) options.text = ''
   
   // 创建loading实例
   const loadingConstructor = Vue.extend(Loading)
@@ -43,9 +39,9 @@ const createLoading = (target, options) => {
     el: document.createElement('div'),
     propsData: options,
   })
-  // 显示加载
+
+  //显示加载，将实例添加到DOM树，并将实例引用存储在父节点上以便后续移除
   instance.show = true
-  //loading实例是一个Vue组件对象，真正的DOM放在实例的$el属性上
   parentNode.appendChild(instance.$el)
   parentNode.LoadingInstance = instance
 }

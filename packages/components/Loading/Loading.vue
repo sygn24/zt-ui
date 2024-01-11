@@ -21,7 +21,7 @@ export default {
     props: {
         text: {
             type: String,
-            default: '拼命加载中...'
+            default: ''
         },
         icon: {
             type: String,
@@ -37,7 +37,7 @@ export default {
         },
         bgColor: {
             type: String,
-            default: 'rgba(0, 0, 0, 0.7)'
+            default: 'hsla(0,0%,100%,.9)'
         },
         // 加载动画类型
         animationType: {
