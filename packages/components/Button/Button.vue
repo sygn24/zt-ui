@@ -68,11 +68,11 @@ export default {
             type: String,
             default: ''
         },
-        background: {
+        backgroundColor: {
             type: String,
             default: ''
         },
-        textColor: {
+        color: {
             type: String,
             default: ''
         },
@@ -94,8 +94,8 @@ export default {
         btnClass() {
             return [
                 `${prefixCls}`,
-                `${prefixCls}--${this.type}`,
                 `${prefixCls}--${this.size}`,
+                `${prefixCls}--${this.type}`,
                 {
                     [`${prefixCls}-hover`]: !this.isDisabled && !this.loading,
                     [`${prefixCls}-focus`]: !this.isDisabled && !this.loading,
@@ -110,9 +110,9 @@ export default {
         btnStyle() {
             return {
                 padding: this.padding,
-                backgroundColor: this.background,
-                color: this.textColor,
-                borderColor: this.borderColor || this.background,
+                backgroundColor: this.backgroundColor,
+                color: this.color,
+                borderColor: this.borderColor || this.backgroundColor,
                 fontSize: this.fontSize
             }
         }

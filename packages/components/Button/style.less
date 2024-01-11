@@ -8,10 +8,52 @@
 	font-size: 14px;
 	transition: all 0.3s ease-out;
 	border-radius: 3px;
+	vertical-align: middle;
 
 	&-hover:hover,
 	&-focus:focus {
-		opacity: 0.8;
+		opacity: 0.7;
+	}
+
+	// 尺寸
+	&--large {
+		padding: 11px 22px;
+
+		&.is-circle {
+			width: 40px;
+			height: 40px;
+		}
+	}
+
+	&--medium {
+		padding: 9px 18px;
+
+		&.is-circle {
+			width: 36px;
+			height: 36px;
+		}
+	}
+
+	&--small {
+		padding: 8px 16px;
+		font-size: 12px;
+		border-radius: 2px;
+
+		&.is-circle {
+			width: 32px;
+			height: 32px;
+		}
+	}
+
+	&--mini {
+		padding: 6px 12px;
+		font-size: 12px;
+		border-radius: 2px;
+
+		&.is-circle {
+			width: 28px;
+			height: 28px;
+		}
 	}
 
 	// 类型
@@ -60,18 +102,15 @@
 	&--text {
 		background: #fff;
 		border: none;
-		color: var(--primary-text);
-
-		&:hover,
-		&:focus {
-			color: var(--primary);
-		}
+		color: var(--primary);
+		padding-right: 0;
+		padding-left: 0;
 
 		&.is-disabled {
-
+			color: var(--disabled-text);
 			&:hover,
 			&:focus {
-				color: var(--primary-text);
+				color: var(--disabled-text);
 			}
 		}
 	}
@@ -105,27 +144,6 @@
 		border: 1px solid var(--danger);
 		color: #fff;
 	}
-
-	// 尺寸
-	&--large {
-		padding: 11px 22px;
-	}
-
-	&--medium {
-		padding: 9px 18px;
-	}
-
-	&--small {
-		padding: 8px 16px;
-		font-size: 12px;
-		border-radius: 2px;
-	}
-
-	&--mini {
-		padding: 6px 12px;
-		font-size: 12px;
-		border-radius: 2px;
-	}
 }
 
 // 点击后是否抖动
@@ -140,9 +158,12 @@
 
 // 是否是圆形按钮
 .is-circle {
-	padding: 11px 12px;
+	padding: 0;
 	border-radius: 50%;
+	white-space: nowrap;
+	overflow: hidden;
 }
+
 
 // 是否禁用
 .is-disabled {
@@ -156,5 +177,5 @@
 }
 
 .zt-button [class*=zt-icon-]+span {
-	margin-left:5px;
+	margin-left: 5px;
 }
