@@ -1,7 +1,7 @@
 # Switch 开关
 
 ## 基础用法
-
+基础用法，状态切换时会触发事件。
 ::: demo
 
 ```html
@@ -62,7 +62,7 @@
 
 ## 自定义
 
-通过 `slot` 可以自定义内容，设置属性 true-color 和 false-color 可以自定义背景色
+通过 `slot` 可以自定义内容，设置属性 `true-color` 和 `false-color` 可以自定义背景色
 
 ::: demo
 

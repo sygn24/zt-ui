@@ -50,13 +50,15 @@
 ::: demo 设置`disabled`属性来定义按钮是否可用，接受一个`Boolean`值。
 
 ```html
-<zt-button disabled @click="handleClick()">默认按钮</zt-button>
-<zt-button disabled type="dashed">虚线按钮</zt-button>
-<zt-button disabled type="primary">主要按钮</zt-button>
-<zt-button disabled type="info">信息按钮</zt-button>
-<zt-button disabled type="success">成功按钮</zt-button>
-<zt-button disabled type="warning">警告按钮</zt-button>
-<zt-button disabled type="danger">危险按钮</zt-button>
+<div class="row">
+    <zt-button disabled @click="handleClick()">默认按钮</zt-button>
+    <zt-button disabled type="dashed">虚线按钮</zt-button>
+    <zt-button disabled type="primary">主要按钮</zt-button>
+    <zt-button disabled type="info">信息按钮</zt-button>
+    <zt-button disabled type="success">成功按钮</zt-button>
+    <zt-button disabled type="warning">警告按钮</zt-button>
+    <zt-button disabled type="danger">危险按钮</zt-button>
+</div>
 <script>
     export default {
         methods: {
@@ -76,7 +78,10 @@
 ::: demo 设置`type`属性值为`text`即可。
 
 ```html
-<zt-button type="text">文字按钮</zt-button> <zt-button type="text" disabled>文字按钮</zt-button>
+<div class="row">
+    <zt-button type="text">文字按钮</zt-button>
+    <zt-button type="text" disabled>文字按钮</zt-button>
+</div>
 ```
 
 :::
@@ -109,38 +114,40 @@
 ::: demo 使用`<zt-button-group>`标签来嵌套你的按钮。
 
 ```html
-<zt-button-group>
-    <zt-button type="primary" icon="arrow-left-bold">上一页</zt-button>
-    <zt-button type="primary">下一页<zt-icon icon="arrow-right-bold" style="margin-left: 5px" /></zt-button>
-</zt-button-group>
-<zt-button-group>
-    <zt-button icon="arrow-left-bold" disabled>上一页</zt-button>
-    <zt-button>下一页<zt-icon icon="arrow-right-bold" style="margin-left: 5px" /></zt-button>
-</zt-button-group>
-<zt-button-group>
-    <zt-button>取消</zt-button>
-    <zt-button type="primary">确定</zt-button>
-</zt-button-group>
-<zt-button-group>
-    <zt-button type="primary" icon="edit">编辑</zt-button>
-    <zt-button type="primary" icon="share">分享</zt-button>
-    <zt-button type="primary" icon="good">点赞</zt-button>
-</zt-button-group>
-<zt-button-group>
-    <zt-button icon="edit">编辑</zt-button>
-    <zt-button icon="share">分享</zt-button>
-    <zt-button icon="good">点赞</zt-button>
-</zt-button-group>
-<zt-button-group>
-    <zt-button icon="edit" type="primary">编辑</zt-button>
-    <zt-button icon="share">分享</zt-button>
-    <zt-button icon="good" type="dashed">点赞</zt-button>
-</zt-button-group>
-<zt-button-group>
-    <zt-button type="primary" round icon="edit">编辑</zt-button>
-    <zt-button type="primary" round icon="share">分享</zt-button>
-    <zt-button type="primary" round icon="good">点赞</zt-button>
-</zt-button-group>
+<div class="row">
+    <zt-button-group>
+        <zt-button type="primary" icon="arrow-left-bold">上一页</zt-button>
+        <zt-button type="primary">下一页<zt-icon icon="arrow-right-bold" style="margin-left: 5px" /></zt-button>
+    </zt-button-group>
+    <zt-button-group>
+        <zt-button icon="arrow-left-bold" disabled>上一页</zt-button>
+        <zt-button>下一页<zt-icon icon="arrow-right-bold" style="margin-left: 5px" /></zt-button>
+    </zt-button-group>
+    <zt-button-group>
+        <zt-button>取消</zt-button>
+        <zt-button type="primary">确定</zt-button>
+    </zt-button-group>
+    <zt-button-group>
+        <zt-button type="primary" icon="edit">编辑</zt-button>
+        <zt-button type="primary" icon="share">分享</zt-button>
+        <zt-button type="primary" icon="good">点赞</zt-button>
+    </zt-button-group>
+    <zt-button-group>
+        <zt-button icon="edit">编辑</zt-button>
+        <zt-button icon="share">分享</zt-button>
+        <zt-button icon="good">点赞</zt-button>
+    </zt-button-group>
+    <zt-button-group>
+        <zt-button icon="edit" type="primary">编辑</zt-button>
+        <zt-button icon="share">分享</zt-button>
+        <zt-button icon="good" type="dashed">点赞</zt-button>
+    </zt-button-group>
+    <zt-button-group>
+        <zt-button type="primary" round icon="edit">编辑</zt-button>
+        <zt-button type="primary" round icon="share">分享</zt-button>
+        <zt-button type="primary" round icon="good">点赞</zt-button>
+    </zt-button-group>
+</div>
 ```
 
 :::
@@ -151,11 +158,13 @@
 ::: demo 要设置为 loading 状态，只要设置`loading`属性为`true`即可。
 
 ```html
-<zt-button type="info" :loading="loading" @click="loadingClick">信息按钮</zt-button>
-<zt-button type="success" loading>成功按钮</zt-button>
-<zt-button type="warning" loading>警告按钮</zt-button>
-<zt-button type="danger" loading>危险按钮</zt-button>
-<zt-button circle loading></zt-button>
+<div class="row">
+    <zt-button type="info" :loading="loading" @click="loadingClick">信息按钮</zt-button>
+    <zt-button type="success" loading>成功按钮</zt-button>
+    <zt-button type="warning" loading>警告按钮</zt-button>
+    <zt-button type="danger" loading>危险按钮</zt-button>
+    <zt-button circle loading></zt-button>
+</div>
 <script>
     export default {
         data() {
@@ -183,14 +192,15 @@
 ::: demo 不同尺寸的按钮，使用`size`属性来定义按钮尺寸，默认`medium`
 
 ```html
-<zt-button size="large">超大按钮</zt-button>
-<zt-button type="primary" size="medium">中等按钮</zt-button>
-<zt-button type="success" size="small">小型按钮</zt-button>
-<zt-button type="danger" size="mini">超小按钮</zt-button>
+<div class="row">
+    <zt-button size="large">超大按钮</zt-button>
+    <zt-button type="primary" size="medium">中等按钮</zt-button>
+    <zt-button type="success" size="small">小型按钮</zt-button>
+    <zt-button type="danger" size="mini">超小按钮</zt-button>
+</div>
 ```
 
 :::
-
 
 ## 自定义
 
@@ -198,14 +208,16 @@
 ::: demo 可以设置`padding`、`backgroundColor`、`color`、`borderColor`、`fontSize`属性
 
 ```html
-<zt-button padding="15px 15px" icon="success"></zt-button>
-<zt-button type="success" font-size="20px" icon="upload">自定义字体大小</zt-button>
-<zt-button background-color="#666" color="yellow" border-color="red">自定义颜色</zt-button>
-<zt-button type="primary">
-    <zt-icon icon="eyeoff" color="red" />
-    使用icon组件
-    <zt-icon icon="eye" />
-</zt-button>
+<div class="row">
+    <zt-button padding="15px 15px" icon="success"></zt-button>
+    <zt-button type="success" font-size="20px" icon="upload">自定义字体大小</zt-button>
+    <zt-button background-color="#666" color="yellow" border-color="red">自定义颜色</zt-button>
+    <zt-button type="primary">
+        <zt-icon icon="eyeoff" color="red" />
+        使用icon组件
+        <zt-icon icon="eye" />
+    </zt-button>
+</div>
 ```
 
 :::

@@ -228,6 +228,7 @@
         :current-page.sync="currentPage"
         :page-size.sync="pageSize"
         :page-sizes="[50, 100, 150, 200, 300]"
+        theme-color="var(--success)"
         @size-change="pageSzieChange"
         @current-change="pageChange"
         border
