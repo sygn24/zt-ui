@@ -1,6 +1,6 @@
 module.exports = {
     title: 'ZT-UI组件库',
-    description: '封装了一些常用的组件',
+    description: '参照Element-ui、iView组件库的样式，基于Vue2自己动手封装，实现了一些简单的组件，用于学习练手。',
     port: '8088',
     themeConfig: {
         nav: [
