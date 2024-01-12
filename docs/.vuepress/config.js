@@ -11,26 +11,51 @@ module.exports = {
         sidebar: {
             '/components/': [
                 '/components/',
-                '/components/comps/button.md',
-                '/components/comps/icon.md',
-                '/components/comps/radio.md',
-                '/components/comps/checkbox.md',
-                '/components/comps/input.md',
-                '/components/comps/select.md',
-                '/components/comps/rate.md',
-                '/components/comps/switch.md',
-                '/components/comps/form.md',
-                '/components/comps/message.md',
-                '/components/comps/modal.md',
-                '/components/comps/confirm.md',
-                '/components/comps/menu.md',
-                '/components/comps/pagination.md',
-                '/components/comps/tabs.md',
-                '/components/comps/progress.md',
-                '/components/comps/tooltip.md'
+                {
+                    title: '基础组件',
+                    collapsable: true, // 是否可折叠，默认为true
+                    children: ['/components/comps/button.md', '/components/comps/icon.md']
+                },
+                {
+                    title: '表单组件',
+                    collapsable: true,
+                    children: [
+                        '/components/comps/input.md',
+                        '/components/comps/radio.md',
+                        '/components/comps/checkbox.md',
+                        '/components/comps/switch.md',
+                        '/components/comps/select.md',
+                        '/components/comps/rate.md',
+                        '/components/comps/form.md'
+                    ]
+                },
+                {
+                    title: '消息视图',
+                    collapsable: true,
+                    children: [
+                        '/components/comps/message.md', 
+                        '/components/comps/modal.md', 
+                        '/components/comps/confirm.md', 
+                        '/components/comps/tooltip.md'
+                    ]
+                },
+                {
+                    title: '导航组件',
+                    collapsable: true,
+                    children: [
+                        '/components/comps/menu.md',
+                        '/components/comps/pagination.md',
+                        '/components/comps/tabs.md',
+                    ]
+                },
+                {
+                    title: '其他组件',
+                    collapsable: true,
+                    children: ['/components/comps/progress.md']
+                }
             ]
         }
     },
-    base:'/zt-ui/',
+    base: '/zt-ui/',
     plugins: ['demo-container']
 }

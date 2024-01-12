@@ -1,7 +1,7 @@
 ---
 home: true
 heroText: ZT-UI组件库
-tagline: 封装了一些常用的组件
+tagline: 参照Element-ui、iView组件库的样式，基于Vue2自己动手封装，实现了一些简单的组件，用于学习练手。
 actionText: 快速上手 →
 actionLink: /components/comps/button
 features:
