@@ -30,12 +30,16 @@ module.exports = {
                     ]
                 },
                 {
-                    title: '消息视图',
+                    title: '视图组件',
                     collapsable: true,
                     children: [
                         '/components/comps/message.md', 
                         '/components/comps/modal.md', 
-                        '/components/comps/confirm.md', 
+                        '/components/comps/confirm.md',
+                        '/components/comps/drawer.md',
+                        '/components/comps/loading.md',
+                        '/components/comps/carousel.md',
+                        '/components/comps/progress.md', 
                         '/components/comps/tooltip.md'
                     ]
                 },
@@ -51,7 +55,7 @@ module.exports = {
                 {
                     title: '其他组件',
                     collapsable: true,
-                    children: ['/components/comps/progress.md']
+                    children: ['/components/comps/timeline.md']
                 }
             ]
         }

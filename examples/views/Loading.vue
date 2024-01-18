@@ -49,7 +49,7 @@ export default {
             loading: false,
             loadingOptions: {
                 loading: false,
-                bgColor: 'rgba(0,0,0,.8)',
+                background: 'rgba(0,0,0,.8)',
                 icon: 'loading',
                 text: 'Loading'
             }
@@ -100,7 +100,7 @@ export default {
         },
         loading4() {
             this.$loading({
-                bgColor: 'hsla(0,0%,100%,.9)',
+                background: 'hsla(0,0%,100%,.9)',
                 color: 'green'
             })
             setTimeout(() => {
