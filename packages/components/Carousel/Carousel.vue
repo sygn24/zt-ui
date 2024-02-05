@@ -1,35 +1,22 @@
 <template>
-    <div
-        class="zt-carousel-wrapper"
-        :style="style"
-        ref="carousel"
-        @mouseenter="carouselEnter"
-        @mouseleave="carouselLeave"
-    >
-        <div class="zt-carousel-content" ref="content">
+    <div class="zt-carousel-wrapper" :style="wrapperStyle" ref="carousel" @mouseenter="carouselEnter" @mouseleave="carouselLeave">
+        <div class="zt-carousel-content" :style="contentStyle" ref="content">
             <slot></slot>
         </div>
         <template v-if="childLen">
             <transition name="base-fade">
-                <div class="zt-carousel-arrow zt-carousel-arrow-prev" @click="toggleItem(-1)" v-show="showArrow">
+                <div class="zt-carousel-arrow zt-carousel-arrow-prev" :style="arrowStyle" @click="toggleItem(-1)" v-show="showArrow">
                     <zt-icon icon="arrow-left-bold" color="#fff" />
                 </div>
             </transition>
             <transition name="base-fade">
-                <div class="zt-carousel-arrow zt-carousel-arrow-next" @click="toggleItem(1)" v-show="showArrow">
+                <div class="zt-carousel-arrow zt-carousel-arrow-next" :style="arrowStyle" @click="toggleItem(1)" v-show="showArrow">
                     <zt-icon icon="arrow-right-bold" color="#fff" />
                 </div>
             </transition>
         </template>
-        <div class="zt-carousel-indicator" v-if="childLen" :style="indicatorStyle">
-            <div
-                class="zt-carousel-indicator-item"
-                v-for="i in childLen"
-                :key="i"
-                @mouseenter="indicatorEnter(i)"
-                @mouseleave="indicatorLeave(i)"
-                @click="indicatorClick(i)"
-            >
+        <div class="zt-carousel-indicator" v-if="trigger !== 'none' && childLen" :style="indicatorStyle">
+            <div class="zt-carousel-indicator-item" v-for="i in childLen" :key="i" @mouseenter="indicatorEnter(i)" @mouseleave="indicatorLeave(i)" @click="indicatorClick(i)">
                 <span class="zt-carousel-indicator-item-rect" :class="indicatorClass(i)"></span>
             </div>
         </div>
@@ -47,7 +34,7 @@ export default {
         },
         height: {
             type: Number,
-            default: 200
+            default: 300
         },
         current: {
             type: Number,
@@ -69,14 +56,14 @@ export default {
             type: String,
             default: 'hover',
             validator: trigger => {
-                return ['click', 'hover'].includes(trigger)
+                return ['click', 'hover', 'none'].includes(trigger)
             }
         },
         arrow: {
             type: String,
             default: 'hover',
             validator: arrow => {
-                return ['always', 'hover', 'never'].includes(arrow)
+                return ['always', 'hover', 'none'].includes(arrow)
             }
         },
         indicatorPosition: {
@@ -108,15 +95,19 @@ export default {
         }
     },
     computed: {
-        style() {
-            let style = {
-                height: this.height + 'px'
-            }
-            if (this.width) style.width = this.width + 'px'
+        wrapperStyle() {
+            let style = {}
+            if (this.width) style.width = `${this.width}px`
+            if (this.indicatorPosition === 'outside') style.height = `${this.height + 30}px`
             return style
         },
+        contentStyle() {
+            if (this.height) return { height:`${this.height}px`}
+        },
+        arrowStyle() {
+            if (this.indicatorPosition === 'outside') return {top: 'calc(50% - 15px)' }
+        },
         indicatorStyle() {
-            if (this.indicatorPosition === 'outside') return { bottom: 0 }
             if (this.indicatorPosition === 'none') return { display: 'none' }
         },
         indicatorClass() {

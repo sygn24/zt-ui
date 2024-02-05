@@ -30,7 +30,7 @@
                 <h3>默认 Hover 指示器触发，显示第一张</h3>
                 <zt-carousel>
                     <zt-carousel-item>
-                        <div class="bg">
+                        <div class="bg" style="background: #506b9e">
                             <span>1</span>
                         </div>
                     </zt-carousel-item>
@@ -40,7 +40,7 @@
                         </div>
                     </zt-carousel-item>
                     <zt-carousel-item>
-                        <div class="bg" style="background: 7db9e8">
+                        <div class="bg" style="background: #7db9e8">
                             <span>3</span>
                         </div>
                     </zt-carousel-item>
@@ -55,7 +55,7 @@
                 <h3>Click 指示器触发，自定义显示第二张</h3>
                 <zt-carousel :current="2" trigger="click">
                     <zt-carousel-item>
-                        <div class="bg">
+                        <div class="bg" style="background: #506b9e">
                             <span>1</span>
                         </div>
                     </zt-carousel-item>
@@ -65,7 +65,7 @@
                         </div>
                     </zt-carousel-item>
                     <zt-carousel-item>
-                        <div class="bg" style="background: 7db9e8">
+                        <div class="bg" style="background: #7db9e8">
                             <span>3</span>
                         </div>
                     </zt-carousel-item>
@@ -82,7 +82,7 @@
                 <h3>设置箭头总是显示</h3>
                 <zt-carousel arrow="always">
                     <zt-carousel-item>
-                        <div class="bg">
+                        <div class="bg" style="background: #506b9e">
                             <span>1</span>
                         </div>
                     </zt-carousel-item>
@@ -92,7 +92,7 @@
                         </div>
                     </zt-carousel-item>
                     <zt-carousel-item>
-                        <div class="bg" style="background: 7db9e8">
+                        <div class="bg" style="background: #7db9e8">
                             <span>3</span>
                         </div>
                     </zt-carousel-item>
@@ -105,9 +105,9 @@
             </div>
             <div class="col">
                 <h3>隐藏箭头显示</h3>
-                <zt-carousel arrow="never">
+                <zt-carousel arrow="none">
                     <zt-carousel-item>
-                        <div class="bg">
+                        <div class="bg" style="background: #506b9e">
                             <span>1</span>
                         </div>
                     </zt-carousel-item>
@@ -117,7 +117,7 @@
                         </div>
                     </zt-carousel-item>
                     <zt-carousel-item>
-                        <div class="bg" style="background: 7db9e8">
+                        <div class="bg" style="background: #7db9e8">
                             <span>3</span>
                         </div>
                     </zt-carousel-item>
@@ -134,7 +134,7 @@
                 <h3>设置自动轮播时间间隔为1s</h3>
                 <zt-carousel :interval="1000">
                     <zt-carousel-item>
-                        <div class="bg">
+                        <div class="bg" style="background: #506b9e">
                             <span>1</span>
                         </div>
                     </zt-carousel-item>
@@ -144,7 +144,7 @@
                         </div>
                     </zt-carousel-item>
                     <zt-carousel-item>
-                        <div class="bg" style="background: 7db9e8">
+                        <div class="bg" style="background: #7db9e8">
                             <span>3</span>
                         </div>
                     </zt-carousel-item>
@@ -159,7 +159,7 @@
                 <h3>关闭自动轮播，自定义宽高</h3>
                 <zt-carousel :autoplay="false" :width="300" :height="180">
                     <zt-carousel-item>
-                        <div class="bg">
+                        <div class="bg" style="background: #506b9e">
                             <span>1</span>
                         </div>
                     </zt-carousel-item>
@@ -169,7 +169,7 @@
                         </div>
                     </zt-carousel-item>
                     <zt-carousel-item>
-                        <div class="bg" style="background: 7db9e8">
+                        <div class="bg" style="background: #7db9e8">
                             <span>3</span>
                         </div>
                     </zt-carousel-item>
@@ -186,7 +186,7 @@
                 <h3>关闭循环播放，设置指示器样式为圆形</h3>
                 <zt-carousel :interval="1000" :loop="false" indicator-type="dot">
                     <zt-carousel-item>
-                        <div class="bg">
+                        <div class="bg" style="background: #506b9e">
                             <span>1</span>
                         </div>
                     </zt-carousel-item>
@@ -196,7 +196,7 @@
                         </div>
                     </zt-carousel-item>
                     <zt-carousel-item>
-                        <div class="bg" style="background: 7db9e8">
+                        <div class="bg" style="background: #7db9e8">
                             <span>3</span>
                         </div>
                     </zt-carousel-item>
