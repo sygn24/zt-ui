@@ -6,7 +6,7 @@
 
 <script>
 export default {
-    name: 'Timeline',
+    name: 'ZtTimeLine',
     props: {
         pending: {
             type: Boolean,

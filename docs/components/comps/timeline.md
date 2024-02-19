@@ -2,83 +2,93 @@
 
 ## 基础用法
 
-基础的、简洁的标签页
 ::: demo
 
 ```html
 <template>
-    <div style="height:100px">
-        <zt-tabs v-model="activeName" @tab-click="handleClick">
-            <zt-tab-pane label="用户管理" name="用户管理">用户管理</zt-tab-pane>
-            <zt-tab-pane label="配置管理" name="配置管理">配置管理</zt-tab-pane>
-            <zt-tab-pane label="角色管理" name="角色管理">角色管理</zt-tab-pane>
-            <zt-tab-pane label="定时任务补偿" name="定时任务补偿">定时任务补偿</zt-tab-pane>
-        </zt-tabs>
-    </div>
+    <zt-time-line pending>
+        <zt-time-line-item>
+            <p class="time">1976年</p>
+            <p class="content">Apple I 问世</p>
+        </zt-time-line-item>
+        <zt-time-line-item>
+            <p class="time">1984年</p>
+            <p class="content">发布 Macintosh</p>
+        </zt-time-line-item>
+        <zt-time-line-item>
+            <p class="time">2007年</p>
+            <p class="content">发布 iPhone</p>
+        </zt-time-line-item>
+        <zt-time-line-item>
+            <p class="time">2010年</p>
+            <p class="content">发布 iPad</p>
+        </zt-time-line-item>
+        <zt-time-line-item>
+            <p class="time">2011年10月5日</p>
+            <p class="content">史蒂夫·乔布斯去世</p>
+        </zt-time-line-item>
+    </zt-time-line>
 </template>
-<script>
-    export default {
-        data() {
-            return {
-                activeName: '配置管理'
-            }
-        },
-        methods: {
-            handleClick(tab) {
-                this.$msg('切换到' + tab)
-            }
-        }
-    }
-</script>
 ```
 
 :::
 
-## 开启切换动画
+## 圆圈颜色
 
-设置`animated`属性即可开启切换动画
 ::: demo
 
 ```html
 <template>
-    <div style="height:100px">
-        <zt-tabs v-model="activeName" @tab-click="handleClick" animated>
-            <zt-tab-pane label="用户管理" name="用户管理">用户管理</zt-tab-pane>
-            <zt-tab-pane label="配置管理" name="配置管理">配置管理</zt-tab-pane>
-            <zt-tab-pane label="角色管理" name="角色管理">角色管理</zt-tab-pane>
-            <zt-tab-pane label="定时任务补偿" name="定时任务补偿">定时任务补偿</zt-tab-pane>
-        </zt-tabs>
-    </div>
+    <zt-time-line>
+        <zt-time-line-item color="green">发布1.0版本</zt-time-line-item>
+        <zt-time-line-item color="green">发布2.0版本</zt-time-line-item>
+        <zt-time-line-item color="red">严重故障</zt-time-line-item>
+        <zt-time-line-item color="blue">发布3.0版本</zt-time-line-item>
+    </zt-time-line>
 </template>
-<script>
-    export default {
-        data() {
-            return {
-                activeName: '配置管理'
-            }
-        },
-        methods: {
-            handleClick(tab) {
-                this.$msg('切换到' + tab)
-            }
-        }
-    }
-</script>
+```
+
+:::
+
+## 自定义时间轴点
+
+::: demo
+
+```html
+<template>
+    <zt-time-line>
+        <zt-time-line-item>
+            <template #dot>
+                <zt-icon icon="component" color="green"></zt-icon>
+            </template>
+            <span>发布里程碑版本</span>xxxxx
+        </zt-time-line-item>
+        <zt-time-line-item>发布1.0版本</zt-time-line-item>
+        <zt-time-line-item>发布2.0版本</zt-time-line-item>
+        <zt-time-line-item>发布3.0版本</zt-time-line-item>
+    </zt-time-line>
+</template>
 ```
 
 :::
 
 ## API
 
-### Tabs Props
+### Timeline Props
 
-| 参数            | 说明                      | 类型    | 可选值 | 默认值              |
-| :-------------- | :------------------------ | :------ | ------ | :------------------ |
-| value / v-model | 绑定值，选中选项卡的 name | String  | —      | 第一个选项卡的 name |
-| animated        | 是否开启切换动画          | Boolean | —      | false               |
+| 参数    | 说明                           | 类型    | 可选值 | 默认值 |
+| :------ | :----------------------------- | :------ | ------ | :----- |
+| pending | 指定是否最后一个节点为幽灵节点 | Boolean | —      | false  |
 
-### Tabs Events
+### TimelineItem Props
 
-| 事件名    | 说明             | 回调参数           |
-| --------- | :--------------- | :----------------- |
-| tab-click | tab 被选中时触发 | 被选中 tab 的 name |
+| 参数  | 说明     | 类型   | 可选值 | 默认值  |
+| :---- | :------- | :----- | ------ | :------ |
+| color | 圆圈颜色 | String | —      | #2d8cf0 |
+
+### TimelineItem Slots
+
+| 名称 | 说明               |
+| ---- | :----------------- |
+| —    | 基本内容           |
+| dot  | 自定义时间轴点内容 |

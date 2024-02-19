@@ -21,7 +21,7 @@
                         <div class="zt-drawer-footer" v-if="showFooter">
                             <slot name="footer">
                                 <zt-button size="small" @click="cancel">取 消</zt-button>
-                                <zt-button type="primary" size="small" @click="ok">确 定</zt-button>
+                                <zt-button type="primary" size="small" @click="ok">确 认</zt-button>
                             </slot>
                         </div>
                     </div>
